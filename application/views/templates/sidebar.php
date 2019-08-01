@@ -32,11 +32,11 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="<?php echo base_url();?>users">Users</a>
-            <a class="collapse-item" href="<?php echo base_url();?>Admin/tes">Manufactures</a>
-            <a class="collapse-item" href="#">Warehouses</a>
-            <a class="collapse-item" href="#">Brands</a>
-            <a class="collapse-item" href="#">Customers</a>
-            <a class="collapse-item" href="#">Zones</a>
+            <a class="collapse-item" href="<?php echo base_url();?>">Manufactures</a>
+            <a class="collapse-item" href="<?php echo base_url();?>">Warehouses</a>
+            <a class="collapse-item" href="<?php echo base_url();?>">Brands</a>
+            <a class="collapse-item" href="<?php echo base_url();?>">Customers</a>
+            <a class="collapse-item" href="<?php echo base_url();?>">Zones</a>
           </div>
         </div>
       </li>
