@@ -3,7 +3,7 @@
 class M_manufactures extends CI_Model{
 
     function getManufactures(){
-        return $this->db->get('tb_manufactures');
+        return $this->db->get('manufactures');
     }
 
 }
