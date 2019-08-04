@@ -10,9 +10,9 @@
 						<h3>Users</h3>
 					</div>
 					<div class="panel-body">
-						<a href="#">
-								<button type="button" class="btn btn-info">Add</button>
-							</a>
+						<a href="<?php echo base_url();?>index.php/users/add" class="btn btn-info">
+							Add
+						</a>
 						<br /><br/>
 						<table id="dtuser" class="table table-bordered">
 							<thead>

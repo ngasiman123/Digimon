@@ -21,5 +21,16 @@ class users extends CI_Controller {
 		$data['listuser'] = $getData;
 		
         $this->load->view('v_home',$data);
+	}
+	
+	public function add()
+    {
+        $data['footer'] = "templates/v_footer";
+		$data['header'] = "templates/v_header";
+		$data['navbar'] = "templates/v_navbar";
+		$data['sidebar'] = "templates/v_sidebar";
+		$data['pluginjs'] = "templates/v_pluginjs";
+		$data['body'] = "users/v_add_user";		
+        $this->load->view('v_home',$data);
     }
 }
