@@ -7,7 +7,7 @@
 						<div class="panel-heading">Add User</div>
 						<div class="panel-body">
 							<label>Username:</label>
-							<input type="text" class="form-control" name="usr_name" placeholder="username">
+							<input type="text" class="form-control" name="usr_name">
 							<label>Fullname:</label>
 							<input type="text" class="form-control" name="nm_usr" pattern="[A-Za-z]{3,}" title="hanya boleh huruf" maxlength="50">
 							<label>Password User:</label>
