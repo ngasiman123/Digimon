@@ -6,7 +6,10 @@
   <!-- plugins:css -->
   <link rel="stylesheet" href="<?php echo base_url();?>/assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="<?php echo base_url();?>/assets/vendors/css/vendor.bundle.base.css">
-  <link rel="stylesheet" href="<?php echo base_url();?>/assets/vendors/css/vendor.bundle.addons.css">
+	<link rel="stylesheet" href="<?php echo base_url();?>/assets/vendors/css/vendor.bundle.addons.css">
+	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendors/css/bootstrap.min.css">
+	<script src="<?php echo base_url(); ?>assets/vendors/js/jquery.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/vendors/js/bootstrap.min.js"></script>
   <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->

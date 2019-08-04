@@ -17,7 +17,7 @@
 		</div>
 		</li>
 		<li class="nav-item">
-		<a class="nav-link" href="#">
+		<a class="nav-link" href="<?php echo base_url();?>index.php/dashboard">
 			<i class="menu-icon mdi mdi-television"></i>
 			<span class="menu-title">Dashboard</span>
 		</a>
@@ -31,7 +31,7 @@
 		<div class="collapse" id="master">
 			<ul class="nav flex-column sub-menu">
 			<li class="nav-item">
-				<a class="nav-link" href="#">User</a>
+				<a class="nav-link" href="<?php echo base_url();?>index.php/users">User</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="#">Customer</a>
