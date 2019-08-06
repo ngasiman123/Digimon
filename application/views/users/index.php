@@ -15,8 +15,8 @@
                   <thead>
                     <tr>
                       <th>No</th>
+                      <th>Username</th>
                       <th>Full Name</th>
-                      <th>Level</th>
                       <th>Email</th>
                       <th>Phone Number</th>
                       <th>Action</th>
@@ -75,7 +75,10 @@
             </div>
             <div class="form-group">
               <label for="zone">Zone Code</label>
-              <input type="combobutton" class="form-control" name="zone" id="zone">
+              <select class="form-control" name="zone" id="zone">
+               <option value="">ZN01</option>
+               <option value="">ZN02</option>
+              </select>
             </div>
             <div class="form-group">
               <label for="address">Address</label>

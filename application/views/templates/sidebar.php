@@ -23,6 +23,7 @@
         Master Data
       </div>
 
+
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
@@ -31,12 +32,19 @@
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="<?php echo base_url();?>users">Users</a>
-            <a class="collapse-item" href="<?php echo base_url();?>manufactures">Manufactures</a>
-            <a class="collapse-item" href="<?php echo base_url();?>warehouses">Warehouses</a>
-            <a class="collapse-item" href="<?php echo base_url();?>brands">Brands</a>
-            <a class="collapse-item" href="<?php echo base_url();?>customers">Customers</a>
-            <a class="collapse-item" href="<?php echo base_url();?>zones">Zones</a>
+            <!-- memanggil query join ke table access_menu dan user_menu dengan kondisi menu_header_id = 1 dan role_id sesuai dengan login -->
+          <?php
+            $role_id = $this->session->userdata('role_id');
+
+            $query_menu = "SELECT user_menu.menu, user_menu.url FROM access_menu 
+                            INNER JOIN user_menu on access_menu.menu_id = user_menu.menu_id 
+                            WHERE user_menu.menu_header_id = 1 AND access_menu.role_id = $role_id
+                            ";
+            $menu = $this->db->query($query_menu)->result_array();
+            foreach($menu as $m) :   
+          ?>
+            <a class="collapse-item" href="<?= base_url($m['url']);?>"><?= $m['menu']; ?></a>
+          <?php endforeach; ?>
           </div>
         </div>
       </li>
@@ -57,13 +65,19 @@
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="#">Request Master Filter</a>
-            <a class="collapse-item" href="#">Sales Approval</a>
-            <a class="collapse-item" href="#">Dept Head Approval</a>
-            <a class="collapse-item" href="#">Status Drawing Spec</a>
-            <a class="collapse-item" href="#">Status Packaging</a>
-            <a class="collapse-item" href="#">Realitation Master Filter</a>
+          <?php 
+            $role_id =$this->session->userdata('role_id');
+
+            $query_menu = "SELECT user_menu.menu, user_menu.url FROM access_menu
+                            INNER JOIN user_menu on access_menu.menu_id = user_menu.menu_id
+                            WHERE user_menu.menu_header_id = 2 AND access_menu.role_id = $role_id
+                            ";
+            $menu = $this->db->query($query_menu)->result_array();
+            foreach($menu as $m) :
+          ?>
+          <a class="collapse-item" href="<?= base_url($m['url']); ?>"><?= $m['menu']; ?></a>
           </div>
+          <?php endforeach; ?>
         </div>
       </li>
 
@@ -81,10 +95,20 @@
         </a>
         <div id="collapseInfo" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="#">Monitoring Progress</a>
-            <a class="collapse-item" href="#">Pending Request Reports</a>
-            <a class="collapse-item" href="#">Finish Request Reports</a>
+          <?php 
+            $role_id = $this->session->userdata('role_id');
+
+            $query_menu = "SELECT user_menu.menu, user_menu.url FROM access_menu
+                            INNER JOIN user_menu on access_menu.menu_id = user_menu.menu_id
+                            WHERE user_menu.menu_header_id = 3 AND access_menu.role_id = $role_id
+                          ";
+            $menu = $this->db->query($query_menu)->result_array();
+            foreach ($menu as $m) :
+          ?>
+            <a class="collapse-item" href="<?= base_url($m['url']); ?>"><?= $m['menu']; ?></a>
           </div>
+          <?php endforeach; ?>
+        </div>
       </li>
 
       <!-- Divider -->

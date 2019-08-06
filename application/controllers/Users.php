@@ -1,23 +1,36 @@
 <?php
-    
-class Users extends CI_Controller {
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class users extends CI_Controller {
 
     function __construct()
     {
         parent::__construct();
-        $this->load->model('m_users');
-        $this->load->helper('url');
+		$this->load->model('m_user');
     }
 
     public function index(){
+		$data['footer'] = "templates/v_footer";
+		$data['header'] = "templates/v_header";
+		$data['navbar'] = "templates/v_navbar";
+		$data['sidebar'] = "templates/v_sidebar";
+		$data['pluginjs'] = "templates/v_pluginjs";
+		$data['body'] = "users/v_list_user";
 
-        $data['title'] = 'Users';
-        $data['users'] = $this->m_users->getUsers()->result();
-
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar');
-        $this->load->view('templates/navbar');
-        $this->load->view('users/index',$data);
-        $this->load->view('templates/footer');
+		$getData = $this->m_user->retrieveuser();
+		$data['listuser'] = $getData;
+		
+        $this->load->view('v_home',$data);
+	}
+	
+	public function add()
+    {
+        $data['footer'] = "templates/v_footer";
+		$data['header'] = "templates/v_header";
+		$data['navbar'] = "templates/v_navbar";
+		$data['sidebar'] = "templates/v_sidebar";
+		$data['pluginjs'] = "templates/v_pluginjs";
+		$data['body'] = "users/v_add_user";		
+        $this->load->view('v_home',$data);
     }
 }
