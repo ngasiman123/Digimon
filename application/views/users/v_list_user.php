@@ -1,5 +1,5 @@
 <?php 
-	// echo $this->session->flashdata("msg");
+	echo $this->session->flashdata("msg");
 ?>
 <div class="row">
 	<div class="col-lg-12 grid-margin">
