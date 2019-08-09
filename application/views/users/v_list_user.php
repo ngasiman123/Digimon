@@ -32,7 +32,7 @@
 									<td><?php echo $row->address;?></td>
 									<td><?php echo $row->email;?></td>
 									<td>
-										<a href="#">
+										<a href="<?php echo base_url();?>index.php/users/edit/<?php echo $row->id;?>">
 											Edit
 										</a> |
 										<a href="#">
