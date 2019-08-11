@@ -25,6 +25,21 @@ class m_customer extends CI_Model
         return $this->db->get_where($this->_table, ["customer_code" => $id])->row();
     }
 
+    public function save(){
+        $post = $this->input->post();
+        $this->customer_code = $post["customer_code"];
+        $this->name = $post["name"];
+        $this->address = $post["address"];
+        $this->email = $post["email"];
+        $this->phone_number = $post["phone_number"];
+        $this->created_at = date('Y-m-d');
+        $this->updated_at = date('Y-m-d');
+        $this->created_by = 1;
+        $this->updated_by = 1;
+
+        $this->db->insert($this->_table, $this);
+    }
+
 }
 
 

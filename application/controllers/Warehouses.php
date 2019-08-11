@@ -20,6 +20,40 @@ class warehouses extends CI_Controller
 
         $this->load->view('v_home', $data);
     }
+
+    public function Add(){
+        $data['header'] = "templates/v_header";
+        $data['navbar'] = "templates/v_navbar";
+        $data['sidebar'] = "templates/v_sidebar";
+        $data['footer'] = "templates/v_footer";
+        $data['pluginjs'] = "templates/v_pluginjs";
+        $data['body'] = "warehouses/v_add_warehouse";
+
+        $this->load->view('v_home', $data);
+    }
+
+    public function Save(){
+        $warehouse = $this->m_warehouse;
+        $res = $warehouse->Save();
+
+        if ($res) {
+            $this->session->flashdata("msg", 
+            "<div class='alert alert-danger' role='alert'>
+                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <b>Warning !</b> Failed Saved.
+            </div>");
+            redirect("index.php/warehouses");
+        } else {
+            $this->session->flashdata("msg", 
+            "<div class='alert alert-info' role='alert'>
+                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <b>Information!</b> Data has been Saved.
+            </div>");
+            redirect("index.php/warehouses");
+        }
+        
+    }
+
 }
 
 

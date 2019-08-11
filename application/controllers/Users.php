@@ -31,7 +31,7 @@ class users extends CI_Controller {
 		$data['sidebar'] = "templates/v_sidebar";
 		$data['pluginjs'] = "templates/v_pluginjs";
 		$data['body'] = "users/v_add_user";		
-        $this->load->view('v_home',$data);
+        $this->load->view('v_home', $data);
 	}
 	
 	public function save()

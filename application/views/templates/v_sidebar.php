@@ -3,7 +3,7 @@
 		<li class="nav-item">
 		<a class="nav-link" href="<?php echo base_url();?>index.php/dashboard">
 			<i class="menu-icon mdi mdi-television"></i>
-			<span class="menu-title">Dashboard</span>
+			<span class="menu-title">Request Monitoring</span>
 		</a>
 		</li>
 		<li class="nav-item">
@@ -54,7 +54,11 @@
 							</li>
 							<li class="nav-item">
 				<a class="nav-link" href="#">Bill Of Material</a>
-			</li>
+							</li>
+							</li>
+							<li class="nav-item">
+				<a class="nav-link" href="#">Receive Master</a>
+							</li>
 			</ul>
 		</div>
 		</li>

@@ -8,8 +8,8 @@ class m_warehouse extends CI_Model
    public $created_at;
    public $updated_at;
    public $deleted_at;
-   public $created_by = 6;
-   public $updated_by = 6;
+   public $created_by = 1;
+   public $updated_by = 1;
    public $deleted_by;
 
    public function retrieveWarehouse(){
@@ -19,6 +19,16 @@ class m_warehouse extends CI_Model
 
     public function retrieveWarehouseByID($id){
         return $this->db->get_where($this->_table, ["warehouse_code" => $id ])->row();
+    }
+
+    public function Save(){
+        $post = $this->input->post();
+        $this->warehouse_code = $post["warehouse_code"];
+        $this->warehouse_name = $post["warehouse_name"];
+        $this->created_at = date('Y-m-d');
+        $this->updated_at = date('Y-m-d');
+
+        $this->db->insert($this->_table, $this);
     }
 }
 

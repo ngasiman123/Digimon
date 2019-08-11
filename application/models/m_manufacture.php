@@ -22,6 +22,19 @@ class m_manufacture extends CI_Model
         return $this->db->get_where($this->_table, ["manufacture_code" => $id])->row();
     }
 
+    public function Save(){
+        $post = $this->input->post();
+        $this->manufacture_code = $post["manufacture_code"];
+        $this->manufacture_name = $post["manufacture_name"];
+        $this->created_at = date('Y-m-d');
+        $this->updated_at = date('Y-m-d');
+        $this->created_by = 6;
+        $this->updated_by = 6;
+
+        $this->db->insert($this->_table, $this);
+
+    }
+
 
 }
 

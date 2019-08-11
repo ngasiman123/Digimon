@@ -22,6 +22,18 @@ class m_brand extends CI_Model
         return $this->db->get_where($this->_table, ["brand_code" => $id])->row();
     }
 
+    public function Save(){
+        $post = $this->input->post();
+        $this->brand_code = $post["brand_code"];
+        $this->brand_name = $post["brand_name"];
+        $this->created_at = date('Y-m-d');
+        $this->updated_at = date('Y-m-d');
+        $this->created_by = 6;
+        $this->updated_by = 6;
+
+        $this->db->insert($this->_table, $this);
+
+    }
 
 }
 

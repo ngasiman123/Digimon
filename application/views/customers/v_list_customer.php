@@ -11,7 +11,7 @@ echo $this->session->flashdata("msg");
                         <h3>Customers</h3>
                     </div>
                     <div class="panel panel-body">
-                        <a href="<?php echo base_url(); ?>/index.php/customers/add" class="btn btn-info">ADD</a>
+                        <a href="<?php echo base_url(); ?>index.php/Customers/add" class="btn btn-info">ADD</a>
                         <br><br>
                         <table id="dtcustomer" class="table table-bordered table-hover">
                             <thead>
