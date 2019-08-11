@@ -14,7 +14,7 @@
 							Add
 						</a>
 						<br /><br/>
-						<table id="dtuser" class="table table-bordered">
+						<table id="dtuser" class="table table-bordered table-hover">
 							<thead>
 								<tr>
 									<th>Username</th>

@@ -18,16 +18,16 @@
 				<a class="nav-link" href="<?php echo base_url();?>index.php/users">User</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#">Customer</a>
+				<a class="nav-link" href="<?php echo base_url();?>index.php/customers">Customer</a>
 							</li>
 							<li class="nav-item">
-				<a class="nav-link" href="#">Brand</a>
+				<a class="nav-link" href="<?php echo base_url();?>index.php/brands">Brand</a>
 							</li>
 							<li class="nav-item">
-				<a class="nav-link" href="#">Warehouse</a>
+				<a class="nav-link" href="<?php echo base_url();?>index.php/warehouses">Warehouse</a>
 							</li>
 							<li class="nav-item">
-				<a class="nav-link" href="#">Manufacture</a>
+				<a class="nav-link" href="<?php echo base_url();?>index.php/manufactures">Manufacture</a>
 			</li>
 			</ul>
 		</div>
