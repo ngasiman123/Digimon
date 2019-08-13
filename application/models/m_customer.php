@@ -21,8 +21,8 @@ class m_customer extends CI_Model
         return $query->result();
     }
 
-    public function retrieveCustomerByID($id){
-        return $this->db->get_where($this->_table, ["customer_code" => $id])->row();
+    public function retrieveCustomerByID($customer_code){
+        return $this->db->get_where($this->_table, ["customer_code" => $customer_code])->row();
     }
 
     public function save(){
@@ -38,6 +38,17 @@ class m_customer extends CI_Model
         $this->updated_by = 1;
 
         $this->db->insert($this->_table, $this);
+    }
+
+    public function edit(){
+
+    }
+
+    public function delete(){
+        $data['updated_at'] = date('Y-m-d');
+		
+		$this->db->where('customer_code',$customer_code);
+        $this->db->update("customers", $data);
     }
 
 }

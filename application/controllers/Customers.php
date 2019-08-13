@@ -51,6 +51,35 @@ class customers extends CI_Controller
 		}
     }
 
+    public function Edit(){
+        $data['header'] = "templates/v_header";
+        $data['navbar'] = "templates/v_navbar";
+        $data['sidebar'] = "templates/v_sidebar";
+        $data['footer'] = "templates/v_footer";
+        $data['pluginjs'] = "templates/v_pluginjs";
+        $data['body'] = "customers/v_edit_customer";
+
+        $customer_code = $this->uri->segment(3);
+		$customer = $this->m_customer;
+        $res = $customer->retrieveCustomerByID($customer_code);
+        
+        $data['customer_code'] = $res->customer_code;
+        $data['name'] = $res->name;
+        $data['address'] = $res->address;
+        $data['email'] = $res->email;
+        $data['phone_number'] = $res->phone_number;
+
+        $this->load->view('v_home', $data);
+    }
+
+    public function delete(){
+        $customer_code = $this->uri->segment(3);
+		$customer = $this->m_customer;
+        $res = $customer->retrieveCustomerByID($customer_code);
+        $data['customer_code'] = $res->customer_code;
+        $this->load->view('v_home', $data);
+    }
+
 }
 
 ?>

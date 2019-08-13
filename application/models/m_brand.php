@@ -18,8 +18,8 @@ class m_brand extends CI_Model
         return $query->result();
     }
 
-    public function retrievBrandByID($id){
-        return $this->db->get_where($this->_table, ["brand_code" => $id])->row();
+    public function retrieveBrandByID($brand_code){
+        return $this->db->get_where($this->_table, ["brand_code" => $brand_code])->row();
     }
 
     public function Save(){
@@ -34,6 +34,19 @@ class m_brand extends CI_Model
         $this->db->insert($this->_table, $this);
 
     }
+
+    public function update()
+    {		
+        $post = $this->input->post();
+        $brand_code = $post["brand_code"];
+        $data['brand_name'] = $post["brand_name"];
+        $data['brand_name'] = $post["brand_name"];
+        $data['updated_at'] = date('Y-m-d');
+		$data['updated_by'] = 6;
+		
+		$this->db->where('brand_code',$brand_code);
+        $this->db->update("brands", $data);
+	}
 
 }
 
