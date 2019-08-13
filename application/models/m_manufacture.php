@@ -18,8 +18,8 @@ class m_manufacture extends CI_Model
         return $query->result();
     }
 
-    public function retrievManufactureByID($id){
-        return $this->db->get_where($this->_table, ["manufacture_code" => $id])->row();
+    public function retrieveManufactureByID($manufacture_code){
+        return $this->db->get_where($this->_table, ["manufacture_code" => $manufacture_code])->row();
     }
 
     public function Save(){
@@ -34,6 +34,18 @@ class m_manufacture extends CI_Model
         $this->db->insert($this->_table, $this);
 
     }
+
+    public function update()
+    {		
+		$post = $this->input->post();
+		$manufacture_code = $post["manufacture_code"];
+		$data['manufacture_name'] = $post["manufacture_name"];
+        $data['updated_at'] = date('Y-m-d');
+		$data['updated_by'] = 1;
+		
+		$this->db->where('manufacture_code',$manufacture_code);
+        $this->db->update("manufactures", $data);
+	}
 
 
 }

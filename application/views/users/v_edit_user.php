@@ -8,15 +8,15 @@
 						<div class="panel-body">
 							<input type="text" class="form-control" name="id" value="<?php echo $id;?>" hidden>
 							<label>Username:</label>
-							<input type="text" class="form-control" name="user_name" value="<?php echo $user_name;?>">
+							<input type="text" class="form-control" name="user_name" value="<?php echo $user_name;?>" required>
 							<label>Fullname:</label>
-							<input type="text" class="form-control" name="name" maxlength="50" value="<?php echo $name;?>">
+							<input type="text" class="form-control" name="name" maxlength="50" value="<?php echo $name;?>"required>
 							<label>Address:</label>
-							<input type="text" class="form-control" name="address" value="<?php echo $address;?>">
+							<input type="text" class="form-control" name="address" value="<?php echo $address;?>"required>
 							<label>Email:</label>
-							<input type="text" class="form-control" name="email" value="<?php echo $email;?>">
+							<input type="text" class="form-control" name="email" value="<?php echo $email;?>"required>
 							<label>Phone Number:</label>
-							<input type="text" class="form-control" name="phone_number" value="<?php echo $phone_number;?>">
+							<input type="text" class="form-control" name="phone_number" value="<?php echo $phone_number;?>"required>
 							<label>Access Level:</label>
 							<select name="access_level" class="form-control">
 							<?php

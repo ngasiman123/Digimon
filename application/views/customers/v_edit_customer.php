@@ -2,12 +2,12 @@
     <div class="col-lg-12 grid-margin">
         <div class="card">
             <div class="card-body">
-                <form action="" method="post">
+                <form method="POST" action="<?= base_url(); ?>index.php/Customers/Update" >
                     <div class="panel panel-default">
                         <div class="panel-heading"><h3>Edit Customer</h3></div>
                         <div class="panel-body">
                             <label>Customer Code</label>
-                            <input type="text" name="customer_code" value="<?= $customer_code; ?>" class="form-control" autocomplete="off" required disabled>
+                            <input type="text" name="customer_code" value="<?= $customer_code; ?>" class="form-control" autocomplete="off" required>
                             <label>Customer Name</label>
                             <input type="text" name="customer_name" value="<?= $name; ?>" class="form-control" autocomplete="off" required>
                             <label>Address</label>

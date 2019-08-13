@@ -80,6 +80,26 @@ class customers extends CI_Controller
         $this->load->view('v_home', $data);
     }
 
+    public function update()
+	{
+		$cust = $this->m_customer;
+		$res = $cust->update();
+
+		if ($res){
+			$this->session->set_flashdata("msg", "<div class='alert alert-danger' role='alert'>
+			<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+			<strong>Warning!</strong> Failed Updated.
+			</div>");
+			redirect("index.php/customers");
+		}else{
+			$this->session->set_flashdata("msg", "<div class='alert alert-info' role='alert'>
+			<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+			<strong>Information!</strong> Data has been saved. 
+			</div>");
+			redirect("index.php/customers");
+		}
+	}
+
 }
 
 ?>

@@ -40,14 +40,18 @@ class m_customer extends CI_Model
         $this->db->insert($this->_table, $this);
     }
 
-    public function edit(){
+    public function update(){
+        $post = $this->input->post();
 
-    }
-
-    public function delete(){
+        $customer_code = $post["customer_code"];
+        $data['name'] = $post["customer_name"];
+        $data['address'] = $post["address"];
+        $data['email'] = $post["email"];
+        $data['phone_number'] = $post["phone_number"];
         $data['updated_at'] = date('Y-m-d');
-		
-		$this->db->where('customer_code',$customer_code);
+        $data['updated_by'] = 1;
+        
+        $this->db->where('customer_code', $customer_code);
         $this->db->update("customers", $data);
     }
 

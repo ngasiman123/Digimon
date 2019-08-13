@@ -39,12 +39,12 @@ class m_brand extends CI_Model
     {		
         $post = $this->input->post();
         $brand_code = $post["brand_code"];
-        $data['brand_name'] = $post["brand_name"];
+
         $data['brand_name'] = $post["brand_name"];
         $data['updated_at'] = date('Y-m-d');
 		$data['updated_by'] = 6;
 		
-		$this->db->where('brand_code',$brand_code);
+		$this->db->where('brand_code', $brand_code);
         $this->db->update("brands", $data);
 	}
 

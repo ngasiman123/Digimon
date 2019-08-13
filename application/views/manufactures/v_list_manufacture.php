@@ -27,7 +27,7 @@ echo $this->session->flashdata("msg");
                                     <td><?= $row->manufacture_code; ?></td>
                                     <td><?= $row->manufacture_name; ?></td>
                                     <td>
-                                        <a href="<?php echo base_url(); ?>index.php/Manufactures/edit<?php echo $row->manufacture_code; ?>">Edit</a> | 
+                                        <a href="<?php echo base_url(); ?>index.php/Manufactures/edit/<?php echo $row->manufacture_code; ?>">Edit</a> | 
                                         <a href="">Delete</a>
                                     </td>
                                 </tr>

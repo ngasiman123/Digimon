@@ -30,6 +30,19 @@ class m_warehouse extends CI_Model
 
         $this->db->insert($this->_table, $this);
     }
+
+    public function update()
+    {		
+        $post = $this->input->post();
+        $warehouse_code = $post["warehouse_code"];
+
+        $data['warehouse_name'] = $post["warehouse_name"];
+        $data['updated_at'] = date('Y-m-d');
+		$data['updated_by'] = 1;
+		
+		$this->db->where('warehouse_code', $warehouse_code);
+        $this->db->update("warehouses", $data);
+	}
 }
 
 
