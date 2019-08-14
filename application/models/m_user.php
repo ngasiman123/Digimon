@@ -38,8 +38,8 @@ class m_user extends CI_Model{
 		$this->access_level = $post["access_level"];
 		$this->created_at = date('Y-m-d');
 		$this->updated_at = date('Y-m-d');
-		$this->created_by = 1;
-		$this->updated_by = 1;
+		$this->created_by = 8;
+		$this->updated_by = 8;
         $this->db->insert($this->_table, $this);
 	}
 	
@@ -64,10 +64,18 @@ class m_user extends CI_Model{
 	{
 		$post = $this->input->post();
 		$id = $post["id"];
+		$data['user_name'] = $post["user_name"];
+        $data['name'] = $post["name"];
+		$data['email'] = $post["email"];
+		$data['phone_number'] = $post["phone_number"];
+		$data['address'] = $post["address"];
+		$data['access_level'] = $post["access_level"];
 		$data['updated_at'] = date('Y-m-d');
+		$data['deleted_at'] = date('Y-m-d');
 		$data['updated_by'] = 8;
-
-		$this->db->where('id', $id);
-		$this->db->update("users", $data);
+		$data['deleted_by'] = 8;
+		
+		$this->db->where('id',$id);
+        $this->db->update("users", $data);
 	}
 }

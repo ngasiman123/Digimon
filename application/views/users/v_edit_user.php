@@ -20,32 +20,47 @@
 							<label>Access Level:</label>
 							<select name="access_level" class="form-control">
 							<?php
+								$selected_salesAdmin = "";
 								$selected_sales = "";
-								$selected_admin = "";
 								$selected_hos = "";
-								$selected_ahos = "";
-								$selected_enginering = "";
+								$selected_drawing = "";
+								$selected_packaging = "";
+								$selected_bom = "";
+								$selected_hoe = "";
+								$selected_systemAdmin = "";
 								if ($access_level == 1){
-									$selected_sales = "selected";
+									$selected_salesAdmin = "selected";
 								}
 								if ($access_level == 2){
-									$selected_admin = "selected";
+									$selected_sales = "selected";
 								}
 								if ($access_level == 3){
 									$selected_hos = "selected";
 								}
 								if ($access_level == 4){
-									$selected_ahos = "selected";
+									$selected_drawing = "selected";
 								}
 								if ($access_level == 5){
-									$selected_enginering = "selected";
+									$selected_packaging = "selected";
+								}
+								if ($access_level == 6){
+									$selected_bom = "selected";
+								}
+								if ($access_level == 7){
+									$selected_hoe = "selected";
+								}
+								if ($access_level == 8){
+									$selected_systemAdmin = "selected";
 								}
 							?>
-								<option value="1" <?php echo $selected_sales; ?>>Sales</option>
-								<option value="2" <?php echo $selected_admin; ?>>Admin</option>
+								<option value="1" <?php echo $selected_salesAdmin; ?>>Sales Admin</option>
+								<option value="2" <?php echo $selected_sales; ?>>Sales</option>
 								<option value="3" <?php echo $selected_hos; ?>>Head Of Sales</option>
-								<option value="4" <?php echo $selected_ahos; ?>>Assisten Head Of Sales</option>
-								<option value="5" <?php echo $selected_enginering; ?>>Enginering</option>
+								<option value="4" <?php echo $selected_drawing; ?>>Engineering Drawing Spec</option>
+								<option value="5" <?php echo $selected_packaging; ?>>Enginering Packaging</option>
+								<option value="6" <?php echo $selected_bom; ?>>Engineering Bill Of Material</option>
+								<option value="7" <?php echo $selected_hoe; ?>>Head Of Engineering</option>
+								<option value="8" <?php echo $selected_systemAdmin; ?>>System Admin</option>
 							</select>
 							<br/>
 							<button type="submit" class="btn btn-primary">Save</button>

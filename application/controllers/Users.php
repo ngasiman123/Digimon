@@ -90,9 +90,13 @@ class users extends CI_Controller {
 		$res = $user->retrieveUserByID($id);
 
         $data['id'] = $res->id;     
-		$data['user_name'] = $res->user_name;
-		
-		$this->load->view('v_home', $data);
+        $data['user_name'] = $res->user_name;
+		$data['name'] = $res->name;
+		$data['address'] = $res->address;
+		$data['email'] = $res->email;
+		$data['phone_number'] = $res->phone_number;
+		$data['access_level'] = $res->access_level;
+        $this->load->view('v_home', $data);
 	}
 	
 	public function update()
@@ -110,6 +114,26 @@ class users extends CI_Controller {
 			$this->session->set_flashdata("msg", "<div class='alert alert-info' role='alert'>
 			<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
 			<strong>Information!</strong> Data has been saved. 
+			</div>");
+			redirect("index.php/users");
+		}
+	}
+
+	public function deleteProcess()
+	{
+		$user = $this->m_user;
+		$res = $user->delete();
+
+		if ($res){
+			$this->session->set_flashdata("msg", "<div class='alert alert-danger' role='alert'>
+			<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+			<strong>Warning!</strong> Failed Deleted.
+			</div>");
+			redirect("index.php/users");
+		}else{
+			$this->session->set_flashdata("msg", "<div class='alert alert-info' role='alert'>
+			<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+			<strong>Information!</strong> Data has been Deleted. 
 			</div>");
 			redirect("index.php/users");
 		}
