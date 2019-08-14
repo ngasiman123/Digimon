@@ -35,7 +35,7 @@
 										<a href="<?php echo base_url();?>index.php/users/edit/<?php echo $row->id;?>">
 											Edit
 										</a> |
-										<a href="#">
+										<a href="<?php echo base_url();?>index.php/users/delete/<?php echo $row->id;?>">
 											Delete
 										</a>
 									</td>

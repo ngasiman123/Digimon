@@ -6,8 +6,9 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">Update Brand</div>
 						<div class="panel-body">
+							<input type="text" class="form-control" name="brand_code" value="<?php echo $brand_code;?>" hidden>
                             <label>Brand Code:</label>
-							<input type="text" class="form-control" name="brand_code" autocomplete="off" maxlength="3" value="<?php echo $brand_code;?>" required>
+							<input type="text" class="form-control" name="brand_code" autocomplete="off" maxlength="3" value="<?php echo $brand_code;?>" required disabled>
 							<label>Brand Name:</label>
 							<input type="text" class="form-control" name="brand_name" autocomplete="off" value="<?php echo $brand_name;?>" required>
 							<br/>

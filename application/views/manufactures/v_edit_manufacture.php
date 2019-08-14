@@ -6,8 +6,9 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">Update Manufacutre</div>
 						<div class="panel-body">
+							<input type="text" class="form-control" name="manufacture_code" value="<?php echo $manufacture_code;?>" hidden>
 							<label>manufacture Code: <?php echo $manufacture_code;?></label>
-							<input type="text" class="form-control" name="manufacture_code" value="<?php echo $manufacture_code;?>" required>
+							<input type="text" class="form-control"  value="<?php echo $manufacture_code;?>" required disabled>
 							<label>manufacture name:</label>
 							<input type="text" class="form-control" name="manufacture_name" autocomplete="off" maxlength="50" value="<?php echo $manufacture_name;?>" required>
 							<br/>

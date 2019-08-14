@@ -6,8 +6,9 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">Update Warehouses</div>
 						<div class="panel-body">
+							<input type="text" class="form-control" name="warehouse_code" value="<?php echo $warehouse_code;?>" hidden>
                             <label>Warehouse Code:</label>
-							<input type="text" class="form-control" name="warehouse_code" autocomplete="off" maxlength="3" value="<?php echo $warehouse_code;?>" required>
+							<input type="text" class="form-control"  autocomplete="off" maxlength="3" value="<?php echo $warehouse_code;?>" required disabled>
 							<label>Warehouse Name:</label>
 							<input type="text" class="form-control" name="warehouse_name" autocomplete="off" value="<?php echo $warehouse_name;?>" required>
 							<br/>

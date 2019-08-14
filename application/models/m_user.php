@@ -54,9 +54,20 @@ class m_user extends CI_Model{
 		$data['address'] = $post["address"];
 		$data['access_level'] = $post["access_level"];
 		$data['updated_at'] = date('Y-m-d');
-		$data['updated_by'] = 1;
+		$data['updated_by'] = 8;
 		
 		$this->db->where('id',$id);
         $this->db->update("users", $data);
+	}
+
+	public function delete()
+	{
+		$post = $this->input->post();
+		$id = $post["id"];
+		$data['updated_at'] = date('Y-m-d');
+		$data['updated_by'] = 8;
+
+		$this->db->where('id', $id);
+		$this->db->update("users", $data);
 	}
 }

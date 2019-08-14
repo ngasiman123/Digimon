@@ -6,8 +6,9 @@
                     <div class="panel panel-default">
                         <div class="panel-heading"><h3>Edit Customer</h3></div>
                         <div class="panel-body">
+                            <input type="text" class="form-control" name="customer_code" value="<?php echo $customer_code;?>" hidden>
                             <label>Customer Code</label>
-                            <input type="text" name="customer_code" value="<?= $customer_code; ?>" class="form-control" autocomplete="off" required>
+                            <input type="text" value="<?= $customer_code; ?>" class="form-control" autocomplete="off" required disabled>
                             <label>Customer Name</label>
                             <input type="text" name="customer_name" value="<?= $name; ?>" class="form-control" autocomplete="off" required>
                             <label>Address</label>
