@@ -71,6 +71,24 @@ class warehouses extends CI_Controller
         $this->load->view('v_home', $data);
     }
 
+    public function delete(){
+        $data['header'] = "templates/v_header";
+        $data['navbar'] = "templates/v_navbar";
+        $data['sidebar'] = "templates/v_sidebar";
+        $data['footer'] = "templates/v_footer";
+        $data['pluginjs'] = "templates/v_pluginjs";
+        $data['body'] = "warehouses/v_delete_warehouse";
+
+        $warehouse_code = $this->uri->segment(3);
+        $warehouse = $this->m_warehouse;
+        $res = $warehouse->retrieveWarehouseByID($warehouse_code);
+
+        $data['warehouse_code'] = $res->warehouse_code;     
+        $data['warehouse_name'] = $res->warehouse_name;
+
+        $this->load->view('v_home', $data);
+    }
+
     public function update()
     {
     $warehouse = $this->m_warehouse;
@@ -86,6 +104,26 @@ class warehouses extends CI_Controller
             $this->session->set_flashdata("msg", "<div class='alert alert-info' role='alert'>
             <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
             <strong>Information!</strong> Data has been saved. 
+            </div>");
+            redirect("index.php/warehouses");
+        }
+    }
+
+    public function deleteControl()
+    {
+    $warehouse = $this->m_warehouse;
+    $res = $warehouse->delete();
+
+        if ($res){
+            $this->session->set_flashdata("msg", "<div class='alert alert-danger' role='alert'>
+            <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+            <strong>Warning!</strong> Failed deleted.
+            </div>");
+            redirect("index.php/warehouses");
+        }else{
+            $this->session->set_flashdata("msg", "<div class='alert alert-info' role='alert'>
+            <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+            <strong>Information!</strong> Data has been deleted. 
             </div>");
             redirect("index.php/warehouses");
         }

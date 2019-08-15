@@ -55,6 +55,23 @@ class m_customer extends CI_Model
         $this->db->update("customers", $data);
     }
 
+    public function delete(){
+        $post = $this->input->post();
+
+        $customer_code = $post["customer_code"];
+        $data['name'] = $post["name"];
+        $data['address'] = $post["address"];
+        $data['email'] = $post["email"];
+        $data['phone_number'] = $post["phone_number"];
+        $data['updated_at'] = date('Y-m-d');
+		$data['deleted_at'] = date('Y-m-d');
+		$data['updated_by'] = 1;
+		$data['deleted_by'] = 1;
+        
+        $this->db->where('customer_code', $customer_code);
+        $this->db->update("customers", $data);
+    }
+
 }
 
 

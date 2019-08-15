@@ -68,6 +68,24 @@
             $this->load->view('v_home', $data);
         }
 
+        public function delete(){
+            $data['header'] = "templates/v_header";
+            $data['navbar'] = "templates/v_navbar";
+            $data['sidebar'] = "templates/v_sidebar";
+            $data['footer'] = "templates/v_footer";
+            $data['pluginjs'] = "templates/v_pluginjs";
+            $data['body'] = "brands/v_delete_brand";
+
+            $brand_code = $this->uri->segment(3);
+            $brand = $this->m_brand;
+            $res = $brand->retrieveBrandByID($brand_code);
+
+            $data['brand_code'] = $res->brand_code;     
+            $data['brand_name'] = $res->brand_name;
+
+            $this->load->view('v_home', $data);
+        }        
+
         public function update()
 	    {
 		$brand = $this->m_brand;
@@ -76,7 +94,7 @@
             if ($res){
                 $this->session->set_flashdata("msg", "<div class='alert alert-danger' role='alert'>
                 <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-                <strong>Warning!</strong> Failed Updated.
+                <strong>Warning!</strong> Failed updated.
                 </div>");
                 redirect("index.php/brands");
             }else{
@@ -86,7 +104,26 @@
                 </div>");
                 redirect("index.php/brands");
             }
-	    }
+        }
+        
+        public function deleteControl(){
+            $brand = $this->m_brand;
+            $res = $brand->delete();
+
+            if($res){
+                $this->session->set_flashdata("msg", "<div class='alert alert-danger' role='alert'>
+                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <strong>Warning!</strong> Failed deleted.
+                </div>");
+                redirect("index.php/brands");
+            }else{
+                $this->session->set_flashdata("msg", "<div class='alert alert-info' role='alert'>
+                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <strong>Information!</strong> Data has been saved. 
+                </div>");
+                redirect("index.php/brands");
+            }
+        }
 
     }
     

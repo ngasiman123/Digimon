@@ -28,7 +28,7 @@ echo $this->session->flashdata("msg");
                                     <td><?= $row->warehouse_name; ?></td>
                                     <td>
                                         <a href="<?= base_url(); ?>index.php/warehouses/edit/<?= $row->warehouse_code; ?>">Edit</a> | 
-                                        <a href="">Delete</a>
+                                        <a href="<?= base_url(); ?>index.php/warehouses/delete/<?= $row->warehouse_code; ?>">Delete</a>
                                     </td>
                                 </tr>
                                 <?php endforeach; ?>

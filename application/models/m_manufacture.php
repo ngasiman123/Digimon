@@ -47,6 +47,19 @@ class m_manufacture extends CI_Model
         $this->db->update("manufactures", $data);
 	}
 
+    public function delete()
+    {		
+		$post = $this->input->post();
+		$manufacture_code = $post["manufacture_code"];
+		$data['manufacture_name'] = $post["manufacture_name"];
+        $data['updated_at'] = date('Y-m-d');
+        $data['deleted_at'] = date('Y-m-d');
+        $data['updated_by'] = 1;
+        $data['deleted_by'] = 1;
+		
+		$this->db->where('manufacture_code',$manufacture_code);
+        $this->db->update("manufactures", $data);
+	}
 
 }
 

@@ -58,7 +58,7 @@
 				<i class="mdi mdi-account-location text-info icon-lg"></i>
 			</div>
 			<div class="float-right">
-				<p class="mb-0 text-right">Bill Of Material</p>
+				<p class="mb-0 text-right">Packaging</p>
 				<div class="fluid-container">
 				<h3 class="font-weight-medium text-right mb-0">0</h3>
 				</div>
@@ -166,75 +166,6 @@
 						</td>
 						<td>
 						Apr 12, 2015
-						</td>
-					</tr>
-					<tr>
-						<td class="font-weight-medium">
-						4
-						</td>
-						<td>
-						Peter Meggik
-						</td>
-						<td>
-						<div class="progress">
-							<div class="progress-bar bg-primary progress-bar-striped" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-							aria-valuemax="100"></div>
-						</div>
-						</td>
-						<td>
-						$ 77.99
-						</td>
-						<td class="text-danger"> 53.45%
-						<i class="mdi mdi-arrow-down"></i>
-						</td>
-						<td>
-						May 15, 2015
-						</td>
-					</tr>
-					<tr>
-						<td class="font-weight-medium">
-						5
-						</td>
-						<td>
-						Edward
-						</td>
-						<td>
-						<div class="progress">
-							<div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0"
-							aria-valuemax="100"></div>
-						</div>
-						</td>
-						<td>
-						$ 160.25
-						</td>
-						<td class="text-success"> 18.32%
-						<i class="mdi mdi-arrow-up"></i>
-						</td>
-						<td>
-						May 03, 2015
-						</td>
-					</tr>
-					<tr>
-						<td class="font-weight-medium">
-						6
-						</td>
-						<td>
-						Henry Tom
-						</td>
-						<td>
-						<div class="progress">
-							<div class="progress-bar bg-warning progress-bar-striped" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0"
-							aria-valuemax="100"></div>
-						</div>
-						</td>
-						<td>
-						$ 150.00
-						</td>
-						<td class="text-danger"> 24.67%
-						<i class="mdi mdi-arrow-down"></i>
-						</td>
-						<td>
-						June 16, 2015
 						</td>
 					</tr>
 					</tbody>

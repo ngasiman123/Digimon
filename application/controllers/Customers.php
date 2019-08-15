@@ -73,10 +73,23 @@ class customers extends CI_Controller
     }
 
     public function delete(){
-        $customer_code = $this->uri->segment(3);
-		$customer = $this->m_customer;
+        $data['header'] = "templates/v_header";
+        $data['navbar'] = "templates/v_navbar";
+        $data['sidebar'] = "templates/v_sidebar";
+        $data['footer'] = "templates/v_footer";
+        $data['pluginjs'] = "templates/v_pluginjs";
+        $data['body'] = "customers/v_delete_customer";
+
+        $customer_code  = $this->uri->segment(3);
+        $customer = $this->m_customer;
         $res = $customer->retrieveCustomerByID($customer_code);
+
         $data['customer_code'] = $res->customer_code;
+        $data['name'] = $res->name;
+        $data['address'] = $res->address;
+        $data['email'] = $res->email;
+        $data['phone_number'] = $res->phone_number;
+
         $this->load->view('v_home', $data);
     }
 
@@ -98,7 +111,27 @@ class customers extends CI_Controller
 			</div>");
 			redirect("index.php/customers");
 		}
-	}
+    }
+    
+    public function deleteControl(){
+        $cust = $this->m_customer;
+        $res = $cust->delete();
+
+        if ($res){
+            $this->session->set_flashdata("msg","<div class='alert alert-danger' role='alert'>
+            <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+            <strong>Information!</strong> Failed deleted. 
+            </div>");
+            redirect("index.php/customers");
+        }else{
+            $this->session->set_flashdata("msg","<div class='alert alert-info' role='alert'>
+            <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+            <strong>Information!</strong> Data has been deleted. 
+            </div>");
+            redirect("index.php/customers");
+        }
+
+    }
 
 }
 
