@@ -41,23 +41,23 @@
 					<div class="collapse" id="transactions">
 			<ul class="nav flex-column sub-menu">
 			<li class="nav-item">
-				<a class="nav-link" href="#">Item Request</a>
+				<a class="nav-link" href="<?= base_url(); ?>index.php/ItemReq">Item Request</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#">Approve Item Request</a>
+				<a class="nav-link" href="<?= base_url(); ?>index.php/Approves">Approve Item Request</a>
 							</li>
 							<li class="nav-item">
-				<a class="nav-link" href="#">Drawing Spec</a>
+				<a class="nav-link" href="<?= base_url(); ?>index.php/DrawingSpec">Drawing Spec</a>
 							</li>
 							<li class="nav-item">
-				<a class="nav-link" href="#">Packaging</a>
+				<a class="nav-link" href="<?= base_url(); ?>index.php/Packaging">Packaging</a>
 							</li>
 							<li class="nav-item">
-				<a class="nav-link" href="#">Bill Of Material</a>
+				<a class="nav-link" href="<?= base_url(); ?>index.php/BOM">Bill Of Material</a>
 							</li>
 							</li>
 							<li class="nav-item">
-				<a class="nav-link" href="#">Receive Master</a>
+				<a class="nav-link" href="<?= base_url(); ?>index.php/ReceiveMaster">Receive Master</a>
 							</li>
 			</ul>
 		</div>
