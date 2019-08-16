@@ -28,7 +28,10 @@
 							</li>
 							<li class="nav-item">
 				<a class="nav-link" href="<?php echo base_url();?>index.php/manufactures">Manufacture</a>
-			</li>
+							</li>
+							<li class="nav-item">
+				<a class="nav-link" href="<?php echo base_url();?>index.php/zones">Zone</a>
+							</li>
 			</ul>
 		</div>
 		</li>
