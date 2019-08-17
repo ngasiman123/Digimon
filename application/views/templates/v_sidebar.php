@@ -7,6 +7,8 @@
 			<span class="menu-title">Request Monitoring</span>
 		</a>
 		</li>
+
+		<?php $sessionAccess = $this->session->userdata('access'); if ($sessionAccess['Report'][0] === 1) { ?>
 		<li class="nav-item">
 		<a class="nav-link" data-toggle="collapse" href="#master" aria-expanded="false" aria-controls="ui-basic">
 			<i class="menu-icon mdi mdi-content-copy"></i>
@@ -24,6 +26,7 @@
 			</ul>
 		</div>
 		</li>
+		<?php } ?>
 		<li class="nav-item">
 		<a class="nav-link" data-toggle="collapse" href="#transactions">
 			<i class="menu-icon mdi mdi-backup-restore"></i>
@@ -34,7 +37,7 @@
 			<ul class="nav flex-column sub-menu">
 			<?php $sessionAccess = $this->session->userdata('access'); for ($i=0; $i < count($sessionAccess['Transaction']) ; $i++) { ?>
 				<li class="nav-item">
-				<a class="nav-link" href="<?php echo base_url();?>index.php/<?= $sessionAccess['Transaction'][$i]?>"><?= $sessionAccess['Transaction'][$i]?></a>
+				<a class="nav-link" href="<?= base_url();?>index.php/<?= $sessionAccess['Transaction'][$i]?>"><?= $sessionAccess['Transaction'][$i]?></a>
 				</li>
 			<?php } ?>
 			</ul>
@@ -43,7 +46,7 @@
 		
 		
 		<?php $sessionAccess = $this->session->userdata('access'); if ($sessionAccess['Report'][0] === 1) { ?>
-			<li class="nav-item">
+		<li class="nav-item">
 			<a class="nav-link" href="#">
 			<i class="menu-icon mdi mdi-chart-line"></i>
 			<span class="menu-title">Reports</span>
@@ -52,10 +55,12 @@
 		</li>
 		<?php } ?>
 		<li class="nav-item">
-		<a class="nav-link" href="<?php echo base_url();?>index.php/auth/logout">
+		<a class="nav-link" id="logout" href="<?php echo base_url();?>index.php/auth/logout">
 			<i class="menu-icon mdi mdi-out"></i>
 			<span class="menu-title">Logout</span>
 		</a>
 		</li>
 	</ul>
 </nav>
+
+<div class="modal" role=""></div>

@@ -10,7 +10,6 @@ class Auth extends CI_controller
     function index(){
         $data['title'] = 'Login';
         $this->load->view('auth/login');
-        
     }
 
     public function login(){
