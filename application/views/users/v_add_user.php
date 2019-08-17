@@ -30,6 +30,13 @@
 								<option value="7">Head Of Enginering</option>
 								<option value="8">System Admin</option>
 							</select>
+							<label>Zone Code (Sales Only)</label>
+							<select name="zone_code" class="form-control">
+							<option value="0" selected disabled>--Choose--</option>
+								<?php foreach($listZone as $row){ ?>
+								<option><?= $row['zone_code']; ?></option>
+								<?php } ?>
+							</select>
 							<br/>
 							<button type="submit" class="btn btn-primary">Save</button>
 							<a href="<?php echo base_url();?>index.php/users"  class="btn btn-danger">

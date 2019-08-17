@@ -22,6 +22,11 @@ class m_user extends CI_Model{
 		return $query->result();
 	}
 
+	public function retrieveZone(){
+
+		return $this->db->get('zones')->result_array();
+	}
+
 	public function retrieveUserByID($id){
 		return $this->db->get_where($this->_table, ["id" => $id])->row();
 	}

@@ -1,6 +1,6 @@
 <?php
 
-class ItemReq extends CI_Controller
+class Request extends CI_Controller
 {
     public function __construct(){
         parent::__construct();
@@ -13,7 +13,7 @@ class ItemReq extends CI_Controller
         $data['sidebar'] = "templates/v_sidebar";
         $data['footer'] = "templates/v_footer";
         $data['pluginjs'] = "templates/v_pluginjs";
-        $data['body'] = "itemReq/v_list_itemReq";
+        $data['body'] = "Request/v_list_request";
 
         $this->load->view('v_home', $data);
     }
@@ -24,7 +24,7 @@ class ItemReq extends CI_Controller
         $data['sidebar'] = "templates/v_sidebar";
         $data['footer'] = "templates/v_footer";
         $data['pluginjs'] = "templates/v_pluginjs";
-        $data['body'] = "itemReq/v_add_itemReq";
+        $data['body'] = "Request/v_add_request";
 
         $this->load->view('v_home', $data);
     }

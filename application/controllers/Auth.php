@@ -23,12 +23,65 @@ class Auth extends CI_controller
             $arrayAccessAdminSales = [
                 'Masters'=>
                 [
-                    'Customers','Zones'
+                    'Customers','Zones','Users'
                 ],
                 'Transaction'=>
                 [
-                    'Item Request','Receive Master'
+                    'Request','Receive'
                 ],
+                'Report' => [1]
+            ];
+
+            $arrayAccessSales = [
+                'Masters' => [0],
+                'Transaction'=>
+                [
+                    'Approves'
+                ],
+                'Report' => [0]
+            ];
+
+            $arrayAccessSalesHead = [
+                'Masters' => [0],
+                'Transaction' => [0],
+                'Report' => [1]
+            ];
+
+            $arrayAccessEngDrawing = [
+                'Masters' => [0],
+                'Transaction' => ['Drawing'],
+                'Report' => [0]
+            ];
+
+            $arrayAccessEngPackaging = [
+                'Masters' => [0],
+                'Transaction' => ['Packaging'],
+                'Report' => [0]
+            ];
+
+            $arrayAccessEngBom = [
+                'Masters' => [
+                    'Manufactures', 'Brands', 'Warehouses'
+                ],
+                'Transaction' => ['BOM'],
+                'Report' => [0]
+            ];
+
+            $arrayAccessEngHead = [
+                'Masters' => [0],
+                'Transaction' => [0],
+                'Report' => [1]
+            ];
+
+            $arrayAccessSistemAdmin = [
+                'Masters' => [
+                    'Users','Manufacture','Brands','Warehouses','Customers','Zones'
+                ],
+                'Transaction' => [
+                    'Request','Drawing','Packaging','BOM','Receive'
+                ],
+                'Report' => [1]
+
             ];
             
             if ($queryUser['access_level'] == 1) {
@@ -38,8 +91,62 @@ class Auth extends CI_controller
                 ];
                 $this->session->set_userdata($data);
                 redirect('dashboard');
-            }
 
+            }elseif ($queryUser['access_level'] == 2){
+                $data = [
+                    'user' =>$queryUser["user_name"],
+                    'access' => $arrayAccessSales 
+                ];
+                $this->session->set_userdata($data);
+                redirect('dashboard');
+
+            }elseif ($queryUser['access_level'] == 3) {
+                $data = [
+                    'user' =>$queryUser["user_name"],
+                    'access' => $arrayAccessSalesHead 
+                ];
+                $this->session->set_userdata($data);
+                redirect('dashboard');
+
+            }elseif ($queryUser['access_level'] == 4) {
+                $data = [
+                    'user' =>$queryUser["user_name"],
+                    'access' => $arrayAccessEngDrawing 
+                ];
+                $this->session->set_userdata($data);
+                redirect('dashboard');
+
+            }elseif ($queryUser['access_level'] == 5) {
+                $data = [
+                    'user' =>$queryUser["user_name"],
+                    'access' => $arrayAccessEngPackaging 
+                ];
+                $this->session->set_userdata($data);
+                redirect('dashboard');
+
+            }elseif ($queryUser['access_level'] == 6) {
+                $data = [
+                    'user' =>$queryUser["user_name"],
+                    'access' => $arrayAccessEngBom 
+                ];
+                $this->session->set_userdata($data);
+                redirect('dashboard');
+            }elseif ($queryUser['access_level'] == 7) {
+                $data = [
+                    'user' =>$queryUser["user_name"],
+                    'access' => $arrayAccessEngHead
+                ];
+                $this->session->set_userdata($data);
+                redirect('dashboard');
+
+            }elseif ($queryUser['access_level'] == 8) {
+                $data = [
+                    'user' =>$queryUser["user_name"],
+                    'access' => $arrayAccessSistemAdmin
+                ];
+                $this->session->set_userdata($data);
+                redirect('dashboard');
+            }
             
         }else{
             $this->session->set_flashdata("msg","<div class='alert alert-danger' role='alert'>
@@ -56,6 +163,7 @@ class Auth extends CI_controller
         $this->session->unset_userdata('access');
         redirect('auth');
     }
+
 
 }
 

@@ -15,7 +15,7 @@
 		</a>
 		<div class="collapse" id="master">
 			<ul class="nav flex-column sub-menu">
-			<?php $sessionAccess = $this->session->userdata('access'); for ($i=0; $i < count($sessionAccess) ; $i++) { ?>
+			<?php $sessionAccess = $this->session->userdata('access'); for ($i=0; $i < count($sessionAccess['Masters']) ; $i++) { ?>
 				<li class="nav-item">
 				<a class="nav-link" href="<?php echo base_url();?>index.php/<?= $sessionAccess['Masters'][$i]?>"><?= $sessionAccess['Masters'][$i]?></a>
 				</li>
@@ -32,33 +32,30 @@
 					</a>
 					<div class="collapse" id="transactions">
 			<ul class="nav flex-column sub-menu">
-			<li class="nav-item">
-				<a class="nav-link" href="<?= base_url(); ?>index.php/ItemReq">Item Request</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="<?= base_url(); ?>index.php/Approves">Approve Item Request</a>
-							</li>
-							<li class="nav-item">
-				<a class="nav-link" href="<?= base_url(); ?>index.php/DrawingSpec">Drawing Spec</a>
-							</li>
-							<li class="nav-item">
-				<a class="nav-link" href="<?= base_url(); ?>index.php/Packaging">Packaging</a>
-							</li>
-							<li class="nav-item">
-				<a class="nav-link" href="<?= base_url(); ?>index.php/BOM">Bill Of Material</a>
-							</li>
-							</li>
-							<li class="nav-item">
-				<a class="nav-link" href="<?= base_url(); ?>index.php/ReceiveMaster">Receive Master</a>
-							</li>
+			<?php $sessionAccess = $this->session->userdata('access'); for ($i=0; $i < count($sessionAccess['Transaction']) ; $i++) { ?>
+				<li class="nav-item">
+				<a class="nav-link" href="<?php echo base_url();?>index.php/<?= $sessionAccess['Transaction'][$i]?>"><?= $sessionAccess['Transaction'][$i]?></a>
+				</li>
+			<?php } ?>
 			</ul>
 		</div>
 		</li>
-		<li class="nav-item">
-		<a class="nav-link" href="#">
+		
+		
+		<?php $sessionAccess = $this->session->userdata('access'); if ($sessionAccess['Report'][0] === 1) { ?>
+			<li class="nav-item">
+			<a class="nav-link" href="#">
 			<i class="menu-icon mdi mdi-chart-line"></i>
 			<span class="menu-title">Reports</span>
-					</a>
+			<i class="menu-arrow"></i>
+		</a>
+		</li>
+		<?php } ?>
+		<li class="nav-item">
+		<a class="nav-link" href="<?php echo base_url();?>index.php/auth/logout">
+			<i class="menu-icon mdi mdi-out"></i>
+			<span class="menu-title">Logout</span>
+		</a>
 		</li>
 	</ul>
 </nav>

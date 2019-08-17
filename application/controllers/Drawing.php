@@ -1,6 +1,6 @@
 <?php
 
-class DrawingSpec extends CI_Controller
+class Drawing extends CI_Controller
 {
     public function __construct(){
         parent::__construct();
@@ -13,7 +13,7 @@ class DrawingSpec extends CI_Controller
         $data['sidebar'] = "templates/v_sidebar";
         $data['footer'] = "templates/v_footer";
         $data['pluginjs'] = "templates/v_pluginjs";
-        $data['body'] = "drawingSpec/v_list_drawingSpec";
+        $data['body'] = "drawing/v_list_drawing";
 
         $this->load->view('v_home', $data);
     }
