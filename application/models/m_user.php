@@ -41,6 +41,7 @@ class m_user extends CI_Model{
 		$this->phone_number = $post["phone_number"];
 		$this->address = $post["address"];
 		$this->access_level = $post["access_level"];
+		$this->zone_code = $post["zone_code"];
 		$this->created_at = date('Y-m-d');
 		$this->updated_at = date('Y-m-d');
 		$this->created_by = 8;

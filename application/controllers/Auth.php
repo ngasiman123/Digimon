@@ -23,7 +23,7 @@ class Auth extends CI_controller
             $arrayAccessAdminSales = [
                 'Masters'=>
                 [
-                    'Customers','Zones','Users'
+                    'Customers','Zones'
                 ],
                 'Transaction'=>
                 [
