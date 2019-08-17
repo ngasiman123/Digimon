@@ -10,6 +10,7 @@ class dashboard extends CI_Controller {
     }
 
     public function index(){
+    
 		$data['footer'] = "templates/v_footer";
 		$data['header'] = "templates/v_header";
 		$data['navbar'] = "templates/v_navbar";

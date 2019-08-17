@@ -8,6 +8,7 @@ class Bom extends CI_Controller
     }
 
     public function index(){
+        
         $data['header'] = "templates/v_header";
         $data['navbar'] = "templates/v_navbar";
         $data['sidebar'] = "templates/v_sidebar";
