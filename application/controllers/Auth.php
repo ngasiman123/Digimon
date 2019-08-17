@@ -20,13 +20,31 @@ class Auth extends CI_controller
         $queryUser = $this->m_auth->userLogin($user, $pass);
 
         if($queryUser){
-            $data = ['user'=> $queryUser["user_name"]];
-            $this->session->set_userdata($data);
-            redirect('dashboard');
+            $arrayAccessAdminSales = [
+                'Masters'=>
+                [
+                    'Customers','Zones'
+                ],
+                'Transaction'=>
+                [
+                    'Item Request','Receive Master'
+                ],
+            ];
+            
+            if ($queryUser['access_level'] == 1) {
+                $data = [
+                    'user'=> $queryUser["user_name"],
+                    'access' => $arrayAccessAdminSales
+                ];
+                $this->session->set_userdata($data);
+                redirect('dashboard');
+            }
+
+            
         }else{
             $this->session->set_flashdata("msg","<div class='alert alert-danger' role='alert'>
-            <a class='close' href='#'  data-dismiss='alert' aria-label='close'>&times;</a>
-            <b>Failed login !</b><br> Your user & password is wrong, please check
+            <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+            <strong>Login Failed!</strong><br> Check your username & password. 
             </div>");
             redirect('auth');
         }
@@ -35,6 +53,7 @@ class Auth extends CI_controller
 
     public function logout(){
         $this->session->unset_userdata('user');
+        $this->session->unset_userdata('access');
         redirect('auth');
     }
 

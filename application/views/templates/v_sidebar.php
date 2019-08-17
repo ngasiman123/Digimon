@@ -1,4 +1,5 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
+
 	<ul class="nav">
 		<li class="nav-item">
 		<a class="nav-link" href="<?php echo base_url();?>index.php/dashboard">
@@ -14,24 +15,12 @@
 		</a>
 		<div class="collapse" id="master">
 			<ul class="nav flex-column sub-menu">
-			<li class="nav-item">
-				<a class="nav-link" href="<?php echo base_url();?>index.php/users">User</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="<?php echo base_url();?>index.php/customers">Customer</a>
-							</li>
-							<li class="nav-item">
-				<a class="nav-link" href="<?php echo base_url();?>index.php/brands">Brand</a>
-							</li>
-							<li class="nav-item">
-				<a class="nav-link" href="<?php echo base_url();?>index.php/warehouses">Warehouse</a>
-							</li>
-							<li class="nav-item">
-				<a class="nav-link" href="<?php echo base_url();?>index.php/manufactures">Manufacture</a>
-							</li>
-							<li class="nav-item">
-				<a class="nav-link" href="<?php echo base_url();?>index.php/zones">Zone</a>
-							</li>
+			<?php $sessionAccess = $this->session->userdata('access'); for ($i=0; $i < count($sessionAccess) ; $i++) { ?>
+				<li class="nav-item">
+				<a class="nav-link" href="<?php echo base_url();?>index.php/<?= $sessionAccess['Masters'][$i]?>"><?= $sessionAccess['Masters'][$i]?></a>
+				</li>
+			<?php } ?>
+			
 			</ul>
 		</div>
 		</li>
