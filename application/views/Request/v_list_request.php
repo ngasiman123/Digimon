@@ -3,10 +3,10 @@
         <div class="card">
             <div class="card-body">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><h3>Approves Pending </h3></div>
+                    <div class="panel-heading"><h3>Request Pending </h3></div>
                     <div class="panel-body">
-                        <a href="<?php echo base_url();?>index.php/itemReq/add" class="btn btn-info">
-							Add Request
+                        <a href="<?php echo base_url();?>index.php/Request/add" class="btn btn-info">
+							Create
                         </a>
                         <br/><br/>
                         <table class="table table-bordered table-hover">
@@ -16,7 +16,7 @@
                                     <th>Customer Name</th>
                                     <th>Customer PO No</th>
                                     <th>Created By</th>
-                                    <th>Created On</th>
+                                    <th>Created At</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -30,7 +30,7 @@
                                     <td>15 August 2019</td>
                                     <td>Revision</td>
                                     <td>
-                                        <a href="">Edit</a> |
+                                        <a href="<?php echo base_url();?>index.php/Request/edit">Edit</a> |
                                         <a href="">Delete</a>
                                     </td>
                                 </tr>

@@ -28,8 +28,7 @@
                                     <td>15 August 2019</td>
                                     <td>Pending</td>
                                     <td>
-                                        <a href="">Detil</a> |
-                                        <a href="">Reject</a>
+                                        <a href="<?php echo base_url();?>index.php/drawing/detail">Detail</a>
                                     </td>
                                 </tr>
                             </tbody>

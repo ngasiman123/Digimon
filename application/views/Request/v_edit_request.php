@@ -83,9 +83,7 @@
                     </table>
                     <br/>
                     <button class="btn btn-success">Add</button>
-                    <br><br>
-                    <label>Note</label>
-                    <input type="text" class="form-control" name="note" readonly placeholder="Salah Sakura">
+                    <br>
                     <br>
                     <button class="btn btn-danger ml-1" style="float:right;">Cancel</button>
                     <button class="btn btn-warning ml-1" style="float:right;" type="submit">Submit</button>

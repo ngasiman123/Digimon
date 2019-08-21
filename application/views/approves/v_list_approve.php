@@ -12,7 +12,7 @@
                                     <th>Customer Name</th>
                                     <th>Customer PO No</th>
                                     <th>Created By</th>
-                                    <th>Created On</th>
+                                    <th>Created At</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -24,8 +24,7 @@
                                     <td>Nurahman_1</td>
                                     <td>15 August 2019</td>
                                     <td>
-                                        <a href="">Detil</a> |
-                                        <a href="">Reject</a>
+                                        <a href="<?php echo base_url();?>index.php/approves/detail">Detail</a>
                                     </td>
                                 </tr>
                             </tbody>

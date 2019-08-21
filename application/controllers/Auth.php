@@ -74,10 +74,10 @@ class Auth extends CI_controller
 
             $arrayAccessSistemAdmin = [
                 'Masters' => [
-                    'Users','Manufacture','Brands','Warehouses','Customers','Zones'
+                    'Users','Manufactures','Brands','Warehouses','Customers','Zones'
                 ],
                 'Transaction' => [
-                    'Request','Drawing','Packaging','BOM','Receive'
+                    'Request', 'approves','Drawing','Packaging','BOM','Receive'
                 ],
                 'Report' => [1]
 

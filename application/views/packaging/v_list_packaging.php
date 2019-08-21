@@ -19,7 +19,6 @@
                                     <th>Customer Name</th>
                                     <th>Customer PO No</th>
                                     <th>Sales</th>
-                                    <th>Drawing Release</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -29,10 +28,8 @@
                                     <td>Allied (M) Filtration Solution Nc</td>
                                     <td>PO no: A-20190823-125</td>
                                     <td>Lavinia_j</td>
-                                    <td>17 Agustus 2019</td>
                                     <td>
-                                        <a href="">Edit</a> |
-                                        <a href="">Detail</a>
+                                        <a href="<?php echo base_url();?>index.php/Packaging/detail">Detail</a>
                                     </td>
                                 </tr>
                             </tbody>
