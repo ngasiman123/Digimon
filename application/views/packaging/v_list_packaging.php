@@ -8,18 +8,16 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"><h3>Packaging</h3></div>
                     <div class="panel-body">
-                        <a href="<?php echo base_url();?>index.php/Packaging" class="btn btn-info">
-							All items view
-						</a>
-                        <br><br>
                         <table class="table table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>Request No</th>
                                     <th>Customer Name</th>
                                     <th>Customer PO No</th>
+                                    <th>Created By</th>
+                                    <th>Created At</th>
                                     <th>Sales</th>
-                                    <th></th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -27,6 +25,8 @@
                                     <td>RQM000001</td>
                                     <td>Allied (M) Filtration Solution Nc</td>
                                     <td>PO no: A-20190823-125</td>
+                                    <td>Nurahman_1</td>
+                                    <td>25-Aug-2019</td>
                                     <td>Lavinia_j</td>
                                     <td>
                                         <a href="<?php echo base_url();?>index.php/Packaging/detail">Detail</a>

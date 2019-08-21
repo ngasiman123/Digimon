@@ -22,7 +22,7 @@
                         <div class="col-lg-2"></div>
                         <div class="col-lg-2"></div>
                         <div class="col-lg-2"><label>Po No Customer</label></div>
-                        <div class="col-lg-2"><input class="form-control" type="text" name="customer_po_no" autocomplete="off" placeholder="Enter PO No..." ></div>
+                        <div class="col-lg-2"><input class="form-control" type="text" name="customer_po_no" autocomplete="off" placeholder="Enter PO No..." required></div>
                     </div>
                 </div>
             </div>
@@ -84,12 +84,9 @@
                     <br/>
                     <button class="btn btn-success">Add</button>
                     <br><br>
-                    <label>Note</label>
-                    <input type="text" class="form-control" name="note" readonly placeholder="Salah Sakura">
-                    <br>
-                    <button class="btn btn-danger ml-1" style="float:right;">Cancel</button>
-                    <button class="btn btn-warning ml-1" style="float:right;" type="submit">Submit</button>
-                    <button class="btn btn-info" style="float:right;" type="reset">Print</button>
+                    <a href="<?= base_url(); ?>index.php/request" class="btn btn-danger ml-1" style="float:right;">Cancel</a>
+                    <button class="btn btn-info ml-1" style="float:right;" type="submit">Submit</button>
+                    <button class="btn btn-success" style="float:right;">Print</button>
                 </div>
             </div>
         </div>

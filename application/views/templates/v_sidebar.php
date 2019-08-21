@@ -56,7 +56,6 @@
 		<?php } ?>
 		<li class="nav-item">
 		<a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">
-			<i class="menu-icon mdi mdi-backup-restore"></i>
 			<span>Logout</span>
 		</a>
 		</li>

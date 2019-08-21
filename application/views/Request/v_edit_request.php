@@ -85,9 +85,9 @@
                     <button class="btn btn-success">Add</button>
                     <br>
                     <br>
-                    <button class="btn btn-danger ml-1" style="float:right;">Cancel</button>
-                    <button class="btn btn-warning ml-1" style="float:right;" type="submit">Submit</button>
-                    <button class="btn btn-info" style="float:right;" type="reset">Print</button>
+                    <a href="<?= base_url(); ?>index.php/request" class="btn btn-danger ml-1" style="float:right;">Cancel</a>
+                    <button class="btn btn-info ml-1" style="float:right;" type="submit">Submit</button>
+                    <button class="btn btn-warning" style="float:right;" type="reset">Print</button>
                 </div>
             </div>
         </div>

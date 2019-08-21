@@ -1,4 +1,4 @@
-<form action="cek" method="post">
+<form action="#" method="post">
     <div class="row">
         <div class="col-lg-12 grid-margin">
             <div class="card">
@@ -14,7 +14,7 @@
                     </div><br>
                     <div class="row">
                         <div class="col-lg-2"><Label>Customer :</Label></div>
-                        <div class="col-lg-2"><input type="text" readonly class="form-control" value="CX0001"></div>
+                        <div class="col-lg-2"><input type="text" readonly class="form-control" value="Allied M"></div>
                         <div class="col-lg-2"></div>
                         <div class="col-lg-2"></div>
                         <div class="col-lg-2"><label>Po No Customer</label></div>
@@ -36,40 +36,36 @@
                                 <th>No</th>
                                 <th>Customer No Info</th>
                                 <th>Sakura No Version</th>
-                                <th>Drawing Release Date</th>
-                                <th>Release By</th>
-                                <th>Status Packaging</th>
-                                <td>Remark</td>
-                                <th>Action</th>
+                                <th>Brand</th>
+                                <th>Created Master At</th>
+                                <th>Movex Filter Master</th>
+                                <th>SAP Filter Master</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>1</td>
                                 <td>1111.1111</td>
-                                <td>C-1123-V02</td>
-                                <td>25-08-2019</td>
-                                <td>Ade_n</td>
-                                <td>Pending</td>
-                                <td></td><td><a href="">img</a> | <a href="">Update</a></td>
+                                <td>C-1123-V23</td>
+                                <td>CLS</td>
+                                <td>25-Aug-2019</td>
+                                <td>1111.1111   UF</td>
+                                <td>EUF1-CLS1-C-1123-V23</td>
                             </tr>
                             <tr>
                                 <td>2</td>
-                                <td>1111.2222</td>
-                                <td>C-5523-V02</td>
-                                <td>25-08-2019</td>
-                                <td>Ade_n</td>
-                                <td>Pending</td>
-                                <td></td><td><a href="">img</a> | <a href="">Update</a></td>
+                                <td>2222.1111</td>
+                                <td>C-2223-V23A</td>
+                                <td>CLS</td>
+                                <td>25-Aug-2019</td>
+                                <td>2222.1111    TF</td>
+                                <td>EUF1-CLS1-C-2223-V23A</td>
                             </tr>
                         </tbody>
                     </table>
                     <br><br>
-                    <label>Note</label>
-                    <input type="text" class="form-control" name="note" value="Inner Box Menggunakan Cetak Printing" readonly>
-                    <br>
-                    <br>
-                    <button class="btn btn-info ml-1" style="float:right;" type="close">Back</button>
+                    <button class="btn btn-success">Confirm</button>
+                    <a href="<?= base_url(); ?>index.php/receive" class="btn btn-info ml-1" style="float:right;" type="close">Back</a>
                 </div>
             </div>
         </div>

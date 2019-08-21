@@ -14,7 +14,7 @@
                     </div><br>
                     <div class="row">
                         <div class="col-lg-2"><Label>Customer :</Label></div>
-                        <div class="col-lg-2"><input type="text" readonly class="form-control" value="CX0001"></div>
+                        <div class="col-lg-2"><input type="text" readonly class="form-control" value="Allied M"></div>
                         <div class="col-lg-2"></div>
                         <div class="col-lg-2"></div>
                         <div class="col-lg-2"><label>Po No Customer</label></div>
@@ -37,12 +37,9 @@
                                 <th>Customer No Info</th>
                                 <th>Sakura No Ref</th>
                                 <th>Manufacture</th>
-                                <th>Warehouse</th>
                                 <th>Brand</th>
-                                <th>Order Qty</th>
-                                <th>Image Ref</th>
-                                <td>Status Drawing</td>
-                                <td>Remark</td>
+                                <th>Drawing Status</th>
+                                <th>Drawing Remark</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -52,26 +49,20 @@
                                 <td>1111.1111</td>
                                 <td>C-1123</td>
                                 <td>05F3</td>
-                                <td>MTK</td>
                                 <td>CLS</td>
-                                <td>100</td>
-                                <td>a.jpg</td>
                                 <td>Hold</td>
                                 <td>No Good Test</td>
-                                <td><a href="">img</a> | <a href="">Update</a></td>
+                                <td><a href="">image</a> | <a href="">Update</a></td>
                             </tr>
                             <tr>
                                 <td>2</td>
                                 <td>2222.1111</td>
                                 <td>C-2223</td>
                                 <td>05F3</td>
-                                <td>MTK</td>
                                 <td>CLH</td>
-                                <td>100</td>
-                                <td>b.jpg</td>
                                 <td>Pending</td>
                                 <td>T.Test Tresure</td>
-                                <td><a href="">Img</a> | <a href="">Update</a></td>
+                                <td><a href="">Image</a> | <a href="">Update</a></td>
                             </tr>
                         </tbody>
                     </table>
@@ -80,7 +71,7 @@
                     <input type="text" class="form-control" name="note" value="Inner Box Menggunakan Cetak Printing" readonly>
                     <br>
                     <br>
-                    <button class="btn btn-info ml-1" style="float:right;" type="close">Back</button>
+                    <a href="<?= base_url(); ?>index.php/drawing" class="btn btn-info ml-1" style="float:right;" type="close">Back</a>
                 </div>
             </div>
         </div>

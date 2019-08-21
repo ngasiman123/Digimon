@@ -18,4 +18,17 @@ class Bom extends CI_Controller
 
         $this->load->view('v_home', $data);
     }
+
+    public function detail(){
+        
+        $data['header'] = "templates/v_header";
+        $data['navbar'] = "templates/v_navbar";
+        $data['sidebar'] = "templates/v_sidebar";
+        $data['footer'] = "templates/v_footer";
+        $data['pluginjs'] = "templates/v_pluginjs";
+        $data['body'] = "bom/v_detail_bom";
+
+        $this->load->view('v_home', $data);
+    }
+
 }

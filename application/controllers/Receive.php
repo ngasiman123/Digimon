@@ -1,6 +1,6 @@
 <?php
 
-class Packaging extends CI_Controller
+class Receive extends CI_Controller
 {
     public function __construct(){
         parent::__construct();
@@ -13,7 +13,7 @@ class Packaging extends CI_Controller
         $data['sidebar'] = "templates/v_sidebar";
         $data['footer'] = "templates/v_footer";
         $data['pluginjs'] = "templates/v_pluginjs";
-        $data['body'] = "packaging/v_list_packaging";
+        $data['body'] = "receive/v_list_receive";
 
         $this->load->view('v_home', $data);
     }
@@ -24,7 +24,7 @@ class Packaging extends CI_Controller
         $data['sidebar'] = "templates/v_sidebar";
         $data['footer'] = "templates/v_footer";
         $data['pluginjs'] = "templates/v_pluginjs";
-        $data['body'] = "packaging/v_detail_packaging";
+        $data['body'] = "receive/v_detail_receive";
 
         $this->load->view('v_home', $data);
     }

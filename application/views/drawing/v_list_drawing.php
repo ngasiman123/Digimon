@@ -11,10 +11,9 @@
                                     <th>Request No</th>
                                     <th>Customer Name</th>
                                     <th>Created By</th>
-                                    <th>Created On</th>
+                                    <th>Created At</th>
                                     <th>Approved By</th>
-                                    <th>Approved On</th>
-                                    <th>Status</th>
+                                    <th>Approved At</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -26,7 +25,6 @@
                                     <td>15 August 2019</td>
                                     <td>lavinia_j</td>
                                     <td>15 August 2019</td>
-                                    <td>Pending</td>
                                     <td>
                                         <a href="<?php echo base_url();?>index.php/drawing/detail">Detail</a>
                                     </td>

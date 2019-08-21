@@ -14,7 +14,7 @@
                     </div><br>
                     <div class="row">
                         <div class="col-lg-2"><Label>Customer :</Label></div>
-                        <div class="col-lg-2"><input type="text" readonly class="form-control" value="Allied M "></div>
+                        <div class="col-lg-2"><input type="text" readonly class="form-control" value="Allied M"></div>
                         <div class="col-lg-2"></div>
                         <div class="col-lg-2"></div>
                         <div class="col-lg-2"><label>Po No Customer</label></div>
@@ -30,52 +30,51 @@
             <div class="card">
                 <div class="card-heading mt-3 mx-auto"><b>Detail Items</b></div>
                 <div class="card-body">
-                    <table class="table table-bordered table-bordered">
+                <table class="table table-bordered table-bordered">
                         <thead>
                             <tr>
                                 <th>No</th>
                                 <th>Customer No Info</th>
-                                <th>Sakura No Ref</th>
-                                <th>Manufacture</th>
-                                <th>Warehouse</th>
+                                <th>Sakura No Version</th>
                                 <th>Brand</th>
                                 <th>Order Qty</th>
-                                <th>Image Ref</th>
+                                <th>Drawing</th>
+                                <th>Drawing Release</th>
+                                <th>Packaging</th>
+                                <th>Packaging Release</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>1</td>
                                 <td>1111.1111</td>
-                                <td>C-1123</td>
-                                <td>05F3</td>
-                                <td>EUF</td>
-                                <td>CLD</td>
-                                <td>1000</td>
-                                <td><a href="">img</a></td>
+                                <td>C-1123-V23</td>
+                                <td>CLS</td>
+                                <td>850</td>
+                                <td><a href="">image</a></td>
+                                <td>25-Aug-2019</td>
+                                <td><a href="">Inner Box</a> | <a href="">Outter Box</a></td>
+                                <td>25-Aug-2019</td>
+                                <td><a href="">Update</a></td>
                             </tr>
                             <tr>
                                 <td>2</td>
-                                <td>1111.22222</td>
-                                <td>C-5523</td>
-                                <td>05F3</td>
-                                <td>EUF</td>
-                                <td>CLD</td>
-                                <td>1000</td>
-                                <td><a href="">img</a></td>
+                                <td>2222.1111</td>
+                                <td>C-2223-V23A</td>
+                                <td>CLS</td>
+                                <td>1300</td>
+                                <td><a href="">image</a></td>
+                                <td>25-Aug-2019</td>
+                                <td><a href="">Inner Box</a> | <a href="">Outter Box</a></td>
+                                <td>25-Aug-2019</td>
+                                <td><a href="">Update</a></td>
                             </tr>
                         </tbody>
                     </table>
-                    <br><br>
-                    <label>Note</label>
-                    <input type="text" class="form-control" name="note" placeholder="Add Note.......">
                     <br>
                     <br>
-                    <a href="<?= base_url(); ?>index.php/approves" class="btn btn-danger ml-1" style="float:right;">Cancel</a>
-                    <button class="btn btn-info ml-1" style="float:right;" type="submit">Submit</button>
-                    <input type="checkbox" name="approve" >Approve
-                    <input type="checkbox" name="reject" >Reject
-                    <input type="checkbox" name="revision" >Revised
+                    <a href="<?= base_url(); ?>index.php/bom" class="btn btn-info ml-1" style="float:right;" type="close">Back</a>
                 </div>
             </div>
         </div>
