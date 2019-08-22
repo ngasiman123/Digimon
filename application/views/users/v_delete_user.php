@@ -15,6 +15,7 @@
 							<input type="text" class="form-control" name="email" value="<?php echo $email;?>" hidden>
 							<input type="text" class="form-control" name="phone_number" value="<?php echo $phone_number;?>" hidden>
                             <input type="text" class="form-control" name="access_level" value="<?php echo $access_level;?>" hidden>
+							<input type="text" class="form-control" name="zone_code" value="<?php echo $zone_code;?>" hidden>
 							<br/>
 							<button type="submit" class="btn btn-success">Delete</button>
 							<a href="<?php echo base_url();?>index.php/users"  class="btn btn-danger">

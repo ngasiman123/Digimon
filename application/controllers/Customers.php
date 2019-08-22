@@ -28,6 +28,7 @@ class customers extends CI_Controller
         $data['footer'] = "templates/v_footer";
         $data['pluginjs'] = "templates/v_pluginjs";
         $data['body'] = "customers/v_add_customer";
+        $data['listZone'] = $this->m_customer->retrieveZone();
 
         $this->load->view('v_home', $data);
     }
@@ -68,6 +69,7 @@ class customers extends CI_Controller
         $data['address'] = $res->address;
         $data['email'] = $res->email;
         $data['phone_number'] = $res->phone_number;
+        $data['listZone'] = $this->m_customer->retrieveZone();
 
         $this->load->view('v_home', $data);
     }
@@ -89,6 +91,7 @@ class customers extends CI_Controller
         $data['address'] = $res->address;
         $data['email'] = $res->email;
         $data['phone_number'] = $res->phone_number;
+        $data['listZone'] = $this->m_customer->retrieveZone();
 
         $this->load->view('v_home', $data);
     }

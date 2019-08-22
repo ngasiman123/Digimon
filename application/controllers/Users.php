@@ -77,6 +77,7 @@ class users extends CI_Controller {
 		$data['email'] = $res->email;
 		$data['phone_number'] = $res->phone_number;
 		$data['access_level'] = $res->access_level;
+		$data['listZone'] = $this->m_user->retrieveZone();
         $this->load->view('v_home', $data);
 	}
 
@@ -99,6 +100,7 @@ class users extends CI_Controller {
 		$data['email'] = $res->email;
 		$data['phone_number'] = $res->phone_number;
 		$data['access_level'] = $res->access_level;
+		$data['listZone'] = $this->m_user->retrieveZone();
         $this->load->view('v_home', $data);
 	}
 	

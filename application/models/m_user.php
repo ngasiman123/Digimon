@@ -59,6 +59,7 @@ class m_user extends CI_Model{
 		$data['phone_number'] = $post["phone_number"];
 		$data['address'] = $post["address"];
 		$data['access_level'] = $post["access_level"];
+		$data['zone_code'] = $post["zone_code"];
 		$data['updated_at'] = date('Y-m-d');
 		$data['updated_by'] = 8;
 		
@@ -76,6 +77,7 @@ class m_user extends CI_Model{
 		$data['phone_number'] = $post["phone_number"];
 		$data['address'] = $post["address"];
 		$data['access_level'] = $post["access_level"];
+		$data['zone_code'] = $post["zone_code"];
 		$data['updated_at'] = date('Y-m-d');
 		$data['deleted_at'] = date('Y-m-d');
 		$data['updated_by'] = 8;

@@ -18,7 +18,7 @@
 							<label>Phone Number:</label>
 							<input type="text" class="form-control" name="phone_number" value="<?php echo $phone_number;?>"required>
 							<label>Access Level:</label>
-							<select name="access_level" class="form-control">
+							<select id="access_level" name="access_level" class="form-control" onchange="level();">
 							<?php
 								$selected_salesAdmin = "";
 								$selected_sales = "";
@@ -62,6 +62,15 @@
 								<option value="7" <?php echo $selected_hoe; ?>>Head Of Engineering</option>
 								<option value="8" <?php echo $selected_systemAdmin; ?>>System Admin</option>
 							</select>
+							<div id="zone_code">
+								<label>Zone Code (Sales Only)</label>
+								<select name="zone_code" class="form-control">
+								<option value="0" selected disabled>--Choose--</option>
+									<?php foreach($listZone as $row){ ?>
+									<option><?= $row['zone_code']; ?></option>
+									<?php } ?>
+								</select>
+							</div>
 							<br/>
 							<button type="submit" class="btn btn-primary">Save</button>
 							<a href="<?php echo base_url();?>index.php/users"  class="btn btn-danger">
@@ -74,3 +83,19 @@
 		</div>		
 	</div>
 </div>
+
+<script>
+	$(document).ready(function(){
+		$("#zone_code").hide();
+	});
+
+	function level(){
+		var access=$("#access_level").val();
+		if(access==2){
+			$("#zone_code").show();
+		}else{
+			$("#zone_code").hide();
+		}
+	}
+
+</script>

@@ -25,6 +25,11 @@ class m_customer extends CI_Model
         return $this->db->get_where($this->_table, ["customer_code" => $customer_code])->row();
     }
 
+    public function retrieveZone(){
+
+		return $this->db->get('zones')->result_array();
+	}
+
     public function save(){
         $post = $this->input->post();
         $this->customer_code = $post["customer_code"];
@@ -32,6 +37,7 @@ class m_customer extends CI_Model
         $this->address = $post["address"];
         $this->email = $post["email"];
         $this->phone_number = $post["phone_number"];
+        $this->zone_code = $post["zone_code"];
         $this->created_at = date('Y-m-d');
         $this->updated_at = date('Y-m-d');
         $this->created_by = 1;
@@ -48,6 +54,7 @@ class m_customer extends CI_Model
         $data['address'] = $post["address"];
         $data['email'] = $post["email"];
         $data['phone_number'] = $post["phone_number"];
+        $data['zone_code'] = $post["zone_code"];
         $data['updated_at'] = date('Y-m-d');
         $data['updated_by'] = 1;
         
@@ -63,6 +70,7 @@ class m_customer extends CI_Model
         $data['address'] = $post["address"];
         $data['email'] = $post["email"];
         $data['phone_number'] = $post["phone_number"];
+        $data['zone_code'] = $post["zone_code"];
         $data['updated_at'] = date('Y-m-d');
 		$data['deleted_at'] = date('Y-m-d');
 		$data['updated_by'] = 1;
