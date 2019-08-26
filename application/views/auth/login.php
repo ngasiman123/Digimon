@@ -69,7 +69,7 @@
                 <img src="<?php echo base_url(); ?>/assets/images/PTss.jpg" class="img-thumbnail img">
 
                   <?= $this->session->flashdata("msg"); ?>
-                <label for="usr">Username</label>
+                <label for="user_name">Username</label>
                 <input class="form-control" id="user_name" name="user_name" type="text"  maxlength="20" required>
                 <label for="pass">Password</label>
                 <input class="form-control" id="pass" name="pass" type="password" required>
