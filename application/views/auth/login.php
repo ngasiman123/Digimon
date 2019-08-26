@@ -74,7 +74,7 @@
                 <label for="pass">Password</label>
                 <input class="form-control" id="pass" name="pass" type="password" required>
                 <br>
-                <button class="btn btn-success btn-style" type="submit">Login</button><br>
+                <button class="btn btn-success btn-style">Login</button><br>
                 <p></p>
               </div>
             </div>
