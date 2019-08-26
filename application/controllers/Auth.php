@@ -14,7 +14,7 @@ class Auth extends CI_controller
 
     public function login(){
         $user = $this->input->post('user_name');
-		$pass = $this->input->post('password');
+		$pass = $this->input->post('pass');
 		
 		if($user == "" || $pass == ""){
 			$this->session->set_flashdata("msg","<div class='alert alert-danger' role='alert'>
