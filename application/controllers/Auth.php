@@ -16,18 +16,33 @@ class Auth extends CI_controller
         $user = $this->input->post('user_name');
         $pass = $this->input->post('password');
         
+
+        
         $queryUser = $this->m_auth->userLogin($user, $pass);
+        
+        // var_dump($user,$queryUser['name']);
+        // exit();
+
+        $data_session = array(
+                'id' => $queryUser['id'],
+                'user_name' => $user,
+                'name' => $queryUser['name'],
+                'access_level' => $queryUser['access_level'],
+                'status' => "login"
+                );
+ 
+        $this->session->set_userdata($data_session);
 
         if($queryUser){
             $arrayAccessAdminSales = [
                 'Masters'=>
-                [
-                    'Customers','Zones'
-                ],
-                'Transaction'=>
-                [
-                    'Request','Receive'
-                ],
+                    [
+                        'Customers','Zones'
+                    ],
+                    'Transaction'=>
+                    [
+                        'Request','Receive'
+                    ],
                 'Report' => [1]
             ];
 
@@ -160,7 +175,23 @@ class Auth extends CI_controller
     public function logout(){
         $this->session->unset_userdata('user');
         $this->session->unset_userdata('access');
+
+        $this->session->sess_destroy();
+
         redirect('auth');
+    }
+
+    public function updatePassword()
+    {
+        // $newPassword = $this->input->post('new_password');
+        // var_dump($newPassword);
+        // exit;
+
+        $user = $this->m_auth;
+        $res = $user->updatePassword();
+
+        redirect('dashboard');
+
     }
 
 

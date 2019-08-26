@@ -18,6 +18,10 @@ class m_brand extends CI_Model
         return $query->result();
     }
 
+    public function retrieveGetBrand(){
+        return $this->db->get('brands')->result_array();
+    }
+
     public function retrieveBrandByID($brand_code){
         return $this->db->get_where($this->_table, ["brand_code" => $brand_code])->row();
     }

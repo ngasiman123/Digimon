@@ -2,7 +2,7 @@
 
 	<ul class="nav">
 		<li class="nav-item">
-		<a class="nav-link" href="<?php echo base_url();?>index.php/dashboard">
+		<a class="nav-link" href="<?php echo base_url();?>dashboard">
 			<i class="menu-icon mdi mdi-television"></i>
 			<span class="menu-title">Request Monitoring</span>
 		</a>
@@ -19,7 +19,7 @@
 			<ul class="nav flex-column sub-menu">
 			<?php $sessionAccess = $this->session->userdata('access'); for ($i=0; $i < count($sessionAccess['Masters']) ; $i++) { ?>
 				<li class="nav-item">
-				<a class="nav-link" href="<?php echo base_url();?>index.php/<?= $sessionAccess['Masters'][$i]?>"><?= $sessionAccess['Masters'][$i]?></a>
+				<a class="nav-link" href="<?php echo base_url();?><?= $sessionAccess['Masters'][$i]?>"><?= $sessionAccess['Masters'][$i]?></a>
 				</li>
 			<?php } ?>
 			
@@ -37,7 +37,7 @@
 			<ul class="nav flex-column sub-menu">
 			<?php $sessionAccess = $this->session->userdata('access'); for ($i=0; $i < count($sessionAccess['Transaction']) ; $i++) { ?>
 				<li class="nav-item">
-				<a class="nav-link" href="<?= base_url();?>index.php/<?= $sessionAccess['Transaction'][$i]?>"><?= $sessionAccess['Transaction'][$i]?></a>
+				<a class="nav-link" href="<?= base_url();?><?= $sessionAccess['Transaction'][$i]?>"><?= $sessionAccess['Transaction'][$i]?></a>
 				</li>
 			<?php } ?>
 			</ul>

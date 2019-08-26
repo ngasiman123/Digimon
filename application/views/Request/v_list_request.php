@@ -22,6 +22,21 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php
+                                foreach ($listRequest as $row) { ?>
+                                <tr>
+                                    <td><?= $row->request_no ?></td>
+                                    <td><?= $row->name ?></td>
+                                    <td><?= $row->po_number_customer ?></td>
+                                    <td><?= $row->user_name ?></td>
+                                    <td><?= date('d F Y',strtotime($row->created_at)) ?></td>
+                                    <td><?= $row->approve_status ?></td>
+                                    <td>
+                                        <a href="<?php echo base_url();?>index.php/Request/edit">Edit</a> |
+                                        <a href="">Delete</a>
+                                    </td>
+                                </tr>
+                                <?php } ?>
                                 <tr>
                                     <td>RQM000001</td>
                                     <td>Allied (M) Filtration Solution Nc</td>

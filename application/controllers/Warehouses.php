@@ -5,6 +5,10 @@ class warehouses extends CI_Controller
     public function __construct(){
         parent::__construct();
         $this->load->model('m_warehouse');
+
+        if($this->session->userdata('status') != 'login'){
+                redirect('auth');
+        }
     }
 
     public function index(){

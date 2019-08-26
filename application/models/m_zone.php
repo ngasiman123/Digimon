@@ -19,6 +19,11 @@
             return $this->db->get_where($this->_table, ["zone_code"=> $zone_code])->row();
         }
 
+        public function retriveZones()
+        {
+            return $this->db->get('zones')->result_array();
+        }
+
         public function save(){
             $post = $this->input->post();
 

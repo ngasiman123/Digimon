@@ -10,7 +10,7 @@
 						<h3>Users</h3>
 					</div>
 					<div class="panel-body">
-						<a href="<?php echo base_url();?>index.php/users/add" class="btn btn-info">
+						<a href="<?php echo base_url();?>users/add" class="btn btn-info">
 							Add
 						</a>
 						<br /><br/>
@@ -32,10 +32,10 @@
 									<td><?php echo $row->address;?></td>
 									<td><?php echo $row->email;?></td>
 									<td>
-										<a href="<?php echo base_url();?>index.php/users/edit/<?php echo $row->id;?>">
+										<a href="<?php echo base_url();?>users/edit/<?php echo $row->id;?>">
 											Edit
 										</a> |
-										<a href="<?php echo base_url();?>index.php/users/delete/<?php echo $row->id;?>">
+										<a href="<?php echo base_url();?>users/delete/<?php echo $row->id;?>">
 											Delete
 										</a>
 									</td>

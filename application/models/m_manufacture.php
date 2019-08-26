@@ -18,6 +18,11 @@ class m_manufacture extends CI_Model
         return $query->result();
     }
 
+    public function retrieveManufactureGet()
+    {
+        return $this->db->get('manufactures')->result();
+    }
+
     public function retrieveManufactureByID($manufacture_code){
         return $this->db->get_where($this->_table, ["manufacture_code" => $manufacture_code])->row();
     }

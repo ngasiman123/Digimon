@@ -17,6 +17,11 @@ class m_warehouse extends CI_Model
        return $query->result();
     }
 
+    public function retrieveWarehouseGet()
+    {
+      return $this->db->get('warehouses')->result();
+    }
+
     public function retrieveWarehouseByID($id){
         return $this->db->get_where($this->_table, ["warehouse_code" => $id ])->row();
     }

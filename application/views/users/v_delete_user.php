@@ -2,7 +2,7 @@
 	<div class="col-lg-6 grid-margin">
 		<div class="card">
 			<div class="card-body">
-				<form method="post" action="<?php echo base_url();?>index.php/users/deleteProcess">
+				<form method="post" action="<?php echo base_url();?>users/deleteProcess">
 					<div class="panel panel-default">
 						<div class="panel-heading"> <h3 style="color:red;"><strong> Warning</strong></h3></div>
 						<div class="panel-body">
@@ -15,10 +15,10 @@
 							<input type="text" class="form-control" name="email" value="<?php echo $email;?>" hidden>
 							<input type="text" class="form-control" name="phone_number" value="<?php echo $phone_number;?>" hidden>
                             <input type="text" class="form-control" name="access_level" value="<?php echo $access_level;?>" hidden>
-							<input type="text" class="form-control" name="zone_code" value="<?php echo $zone_code;?>" hidden>
+							<!-- <input type="text" class="form-control" name="zone_code" value="<?php echo $zone_code;?>" hidden> -->
 							<br/>
 							<button type="submit" class="btn btn-success">Delete</button>
-							<a href="<?php echo base_url();?>index.php/users"  class="btn btn-danger">
+							<a href="<?php echo base_url();?>users"  class="btn btn-danger">
 								Cancel
 							</a>
 						</div>

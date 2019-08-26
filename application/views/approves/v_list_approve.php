@@ -17,7 +17,20 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php
+                                foreach($listApprove as $row) { ?>
                                 <tr>
+                                    <td><?= $row->request_no ?></td>
+                                    <td><?= $row->name ?></td>
+                                    <td><?= $row->po_number_customer ?></td>
+                                    <td><?= $row->user_name ?></td>
+                                    <td><?=  date('d F Y',strtotime($row->created_at)) ?></td>
+                                    <td>
+                                        <a href="<?php echo base_url();?>approves/detail/<?php echo $row->request_header_id; ?>">Detail</a>
+                                    </td>
+                                </tr>
+                                <?php } ?>
+                                <!-- <tr>
                                     <td>RQM000001</td>
                                     <td>Allied (M) Filtration Solution Nc</td>
                                     <td>PO No: A-20190801-125</td>
@@ -26,7 +39,7 @@
                                     <td>
                                         <a href="<?php echo base_url();?>index.php/approves/detail">Detail</a>
                                     </td>
-                                </tr>
+                                </tr> -->
                             </tbody>
                         </table>
                     </div>

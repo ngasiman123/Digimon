@@ -5,6 +5,9 @@ class customers extends CI_Controller
     public function __construct(){
         parent::__construct();
         $this->load->model('m_customer');
+        if($this->session->userdata('status') != 'login'){
+                redirect('auth');
+        }
     }
 
     public function index(){

@@ -2,7 +2,7 @@
 	<div class="col-lg-12 grid-margin">
 		<div class="card">
 			<div class="card-body">
-				<form method="post" action="<?php echo base_url();?>index.php/users/save">
+				<form method="post" action="<?php echo base_url();?>users/save">
 					<div class="panel panel-default">
 						<div class="panel-heading">Add User</div>
 						<div class="panel-body">

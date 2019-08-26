@@ -14,6 +14,14 @@ class m_auth extends CI_Model
         return $this->db->get()->row_array();
 
     }
+    public function updatePassword()
+    {       
+        $post = $this->input->post();
+        $id = $post["id"];
+        $data['password'] = md5($post["new_password"]);
+        $this->db->where('id',$id);
+        $this->db->update("users", $data);
+    }
 }
 
 

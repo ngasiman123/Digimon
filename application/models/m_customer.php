@@ -25,6 +25,11 @@ class m_customer extends CI_Model
         return $this->db->get_where($this->_table, ["customer_code" => $customer_code])->row();
     }
 
+    public function retrieveCustomerGet()
+    {
+        return $this->db->get('customers')->result();
+    }
+
     public function retrieveZone(){
 
 		return $this->db->get('zones')->result_array();

@@ -1,4 +1,4 @@
-<form action="cek" method="post">
+<form action="<?= base_url();?>request/save" method="post" enctype="multipart/form-data">
     <div class="row">
         <div class="col-lg-12 grid-margin">
             <div class="card">
@@ -6,18 +6,20 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-2"><label>Request No :</label></div>
-                        <div class="col-lg-2"><input type="text" readonly class="form-control" value="<?= time();  ?>"></div>
+                        <div class="col-lg-2"><input type="text" readonly name="request_no" class="form-control" value="<?= time();  ?>"></div>
                         <div class="col-lg-2"></div>
                         <div class="col-lg-2"></div>
                         <div class="col-lg-2"><label>Request Date :</label></div>
-                        <div class="col-lg-2"><input type="text" readonly class="form-control" value="<?= date('d-M-Y');  ?>"></div>
+                        <div class="col-lg-2"><input type="text" name="request_date" readonly class="form-control" value="<?= date('d-M-Y');  ?>"></div>
                     </div><br>
                     <div class="row">
                         <div class="col-lg-2"><Label>Customer :</Label></div>
                         <div class="col-lg-2">
-                            <Select class="form-control" name="customer_code">
+                            <Select class="form-control" name="customer_code" required>
                                 <option value="" disabled selected>-Choose-</option>
-                                <option value="CX0001">CX0001</option>
+                                <?php foreach($listCustomer as $row){ ?>
+                                    <option value="<?= $row->customer_code ?>"><?= $row->customer_code ?></option>
+                                    <?php } ?>
                             </Select></div>
                         <div class="col-lg-2"></div>
                         <div class="col-lg-2"></div>
@@ -47,42 +49,43 @@
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td><input name="customer_no_info" class="form-control" type="text" value="23.100.3344"></td>
-                                <td><input name="sakura_no_ref" class="form-control" type="text" value="C-1123"></td>
+                        <tbody id="tambahform">
+                            <tr id="item">
+                                <td><input name="customer_no_info[]" class="form-control name_list" type="text" value="23.100.3344"></td>
+                                <td><input name="sakura_no_ref[]" class="form-control name_list" type="text" value="C-1123"></td>
                                 <td>
-                                    <select class="form-control" name="manufacture">
+                                    <select class="form-control name_list" name="manufacture[]">
                                         <option value="" selected disabled>Choose</option>
-                                        <option value="">02</option>
-                                        <option value="">07</option>
-                                        <option value="">04</option>
+                                        <?php foreach ($listManufacture as $row) { ?>
+                                           <option value="<?= $row->manufacture_code ?>"><?= $row->manufacture_code ?></option>
+                                        <?php } ?>
                                     </select>
                                 </td>
                                 <td>
-                                    <select class="form-control" name="warehouse">
+                                    <select class="form-control name_list" name="warehouse[]">
                                         <option value="" selected disabled>Choose</option>
-                                        <option value="">EUF</option>
-                                        <option value="">MTK</option>
-                                        <option value="">MTS</option>
+                                        <?php foreach ($listWarehouse as $row) { ?>
+                                           <option value="<?= $row->warehouse_code ?>"><?= $row->warehouse_code ?></option>
+                                        <?php } ?>
                                     </select>
                                 </td>
                                 <td>
-                                    <select class="form-control" name="brand">
+                                    <select class="form-control name_list" name="brand[]">
                                         <option value="" selected disabled>Choose</option>
-                                        <option value="">CLS</option>
-                                        <option value="">CLD</option>
-                                        <option value="">SHG</option>
+                                        <?php foreach ($listBrand as $row) { ?>
+                                           <option value="<?= $row->brand_code ?>"><?= $row->brand_code ?></option>
+                                        <?php } ?>
                                     </select>
                                 </td>
-                                <td><input class="form-control" type="number" value="1200"></td>
-                                <td><input class="form-control" type="file"></td>
-                                <td><button class="btn btn-danger">-</button></td>
+                                <td><input class="form-control name_list" type="number" name="order_qty[]" value=""></td>
+                                <td><input class="form-control name_list" type="file" name="image_ref[]"></td>
+                                <td><button class="btn btn-danger" id="remove-form">-</button></td>
                             </tr>
+                            <tr id="items"></tr>
                         </tbody>
                     </table>
                     <br/>
-                    <button class="btn btn-success">Add</button>
+                    <button type="button" class="btn btn-success" id="tambahdata">Add</button>
                     <br><br>
                     <a href="<?= base_url(); ?>index.php/request" class="btn btn-danger ml-1" style="float:right;">Cancel</a>
                     <button class="btn btn-info ml-1" style="float:right;" type="submit">Submit</button>
@@ -92,3 +95,58 @@
         </div>
     </div>
 </form>
+<script type="text/javascript">
+
+    // $('#tambahdata').click(function() {
+    //     $.ajax({
+    //        url: '<?php echo base_url(); ?>Request/append',
+    //        success: function(html) {
+    //           $("#tambahform").append(html);
+    //        } 
+    //     });
+    // });
+
+    $(document).ready(function(){  
+      var i=1;  
+      $('#tambahdata').click(function(){  
+           i++;  
+           $('#tambahform').append('<tr id="row'+i+'">'
+           	+'<td><input name="customer_no_info[]" class="form-control name_list" type="text" value="23.100.3344"></td>'
+           	+'<td><input name="sakura_no_ref[]" class="form-control name_list" type="text" value="C-1123"></td>'
+           	+'<td>'
+                +'<select class="form-control name_list" name="manufacture[]">'
+                    +'<option value="" selected disabled>Choose</option>'
+                    +'<?php foreach ($listManufacture as $row) { ?>'
+                       +'<option value="<?= $row->manufacture_code ?>"><?= $row->manufacture_code ?></option>'
+                    +'<?php } ?>'
+                +'</select>'
+            +'</td>'
+            +' <td>'
+                +'<select class="form-control name_list" name="warehouse[]">'
+                    +'<option value="" selected disabled>Choose</option>'
+                    +'<?php foreach ($listWarehouse as $row) { ?>'
+                       +'<option value="<?= $row->warehouse_code ?>"><?= $row->warehouse_code ?></option>'
+                    +'<?php } ?>'
+                +'</select>'
+            +'</td>'
+            +'<td>'
+                +'<select class="form-control name_list" name="brand[]">'
+                    +'<option value="" selected disabled>Choose</option>'
+                    +'<?php foreach ($listBrand as $row) { ?>'
+                       +'<option value="<?= $row->brand_code ?>"><?= $row->brand_code ?></option>'
+                    +'<?php } ?>'
+                +'</select>'
+            +'</td>'
+            +'<td><input class="form-control name_list" type="number" name="order_qty[]" value=""></td>'
+            +'<td><input class="form-control name_list" type="file" name="image_ref[]"></td>'
+           	+'<td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">-</button></td></tr>');  
+      });  
+      $(document).on('click', '.btn_remove', function(){  
+           var button_id = $(this).attr("id");   
+           $('#row'+button_id+'').remove();  
+      });
+ });  
+
+
+    
+</script>

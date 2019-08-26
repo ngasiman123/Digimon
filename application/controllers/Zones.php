@@ -4,6 +4,10 @@
         public function __construct(){
             parent::__construct();
             $this->load->model('m_zone');
+
+            if($this->session->userdata('status') != 'login'){
+                redirect('auth');
+        }
         }
 
         public function index(){
@@ -14,7 +18,6 @@
             $data['pluginjs'] = "templates/v_pluginjs";
             $data['body'] = "zones/v_list_zone";
 
-            $getData = $this->m_zone->retrieveZone();
             $data['listZone'] =  $getData;
 
             $this->load->view('v_home', $data);

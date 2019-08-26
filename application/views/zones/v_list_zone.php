@@ -11,7 +11,7 @@ echo $this->session->flashdata("msg");
                         <h3>Zones</h3>
                     </div>
                     <div class="panel-body">
-                        <a href="<?= base_url(); ?>index.php/zones/add" class="btn btn-info">ADD</a>
+                        <a href="<?= base_url(); ?>zones/add" class="btn btn-info">ADD</a>
                         <br><br>
                         <table id="dtzones" class="table table-bordered table-hover">
                             <thead>
@@ -27,8 +27,8 @@ echo $this->session->flashdata("msg");
                                     <td><?= $row->zone_code; ?></td>
                                     <td><?= $row->zone_name; ?></td>
                                     <td>
-                                        <a href="<?= base_url(); ?>index.php/zones/edit/<?= $row->zone_code; ?>">Edit</a> | 
-                                        <a href="<?= base_url(); ?>index.php/zones/delete/<?= $row->zone_code; ?>">Delete</a>
+                                        <a href="<?= base_url(); ?>zones/edit/<?= $row->zone_code; ?>">Edit</a> | 
+                                        <a href="<?= base_url(); ?>zones/delete/<?= $row->zone_code; ?>">Delete</a>
                                     </td>
                                 </tr>
                                 <?php endforeach; ?>

@@ -4,6 +4,10 @@
         public function __construct(){
             parent::__construct();
             $this->load->model('m_brand');
+
+            if($this->session->userdata('status') != 'login'){
+                redirect('auth');
+        }
         }
 
         public function index(){
