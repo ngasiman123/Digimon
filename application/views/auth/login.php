@@ -68,7 +68,7 @@
                 <div class="panel-body">
                 <img src="<?php echo base_url(); ?>/assets/images/PTss.jpg" class="img-thumbnail img">
 
-                  <?= $this->session->flashdata("msg"); ?>
+                <?php $this->session->flashdata("msg"); ?>
                 <label for="user_name">Username</label>
                 <input class="form-control" id="user_name" name="user_name" type="text"  maxlength="20" required>
                 <label for="pass">Password</label>
