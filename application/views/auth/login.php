@@ -68,13 +68,13 @@
                 <div class="panel-body">
                 <img src="<?php echo base_url(); ?>/assets/images/PTss.jpg" class="img-thumbnail img">
 
-                <?php echo $this->session->flashdata("msg"); ?>
+                  <?= $this->session->flashdata("msg"); ?>
                 <label for="user_name">Username</label>
-                <input class="form-control" id="user_name" name="user_name" type="text"  maxlength="20" required>
+                <input class="form-control" id="user_name" name="user_name" type="text" autocomplete="off" maxlength="20" required>
                 <label for="pass">Password</label>
                 <input class="form-control" id="pass" name="pass" type="password" required>
                 <br>
-                <button class="btn btn-success btn-style">Login</button><br>
+                <button class="btn btn-success btn-style" type="submit">Login</button><br>
                 <p></p>
               </div>
             </div>
