@@ -58,7 +58,7 @@
 </head>
 <body class="bg-login">
   <div class="container-fluid">
-    <form action="<?= base_url(); ?>auth/login" method="post">
+    <form action="<?= base_url(); ?>auth/login" method="POST">
     <div class="row">
       <div class="col-lg-4 grid-margin mx-auto">
         <div class="mx-auto pt-2 mt-5 my-auto">
@@ -72,7 +72,7 @@
                 <label for="usr">Username</label>
                 <input class="form-control" id="user_name" name="user_name" type="text" autocomplete="off" maxlength="20" required>
                 <label for="pass">Password</label>
-                <input class="form-control" id="password" name="password" type="password" required>
+                <input class="form-control" id="pass" name="pass" type="password" required>
                 <br>
                 <button class="btn btn-success btn-style" type="submit">Login</button><br>
                 <p></p>
