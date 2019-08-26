@@ -70,7 +70,7 @@
 
                   <?= $this->session->flashdata("msg"); ?>
                 <label for="usr">Username</label>
-                <input class="form-control" id="user_name" name="user_name" type="text" autocomplete="off" maxlength="20" required>
+                <input class="form-control" id="user_name" name="user_name" type="text"  maxlength="20" required>
                 <label for="pass">Password</label>
                 <input class="form-control" id="pass" name="pass" type="password" required>
                 <br>
