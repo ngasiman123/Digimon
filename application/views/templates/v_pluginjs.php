@@ -1,3 +1,7 @@
+
+ 
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
+
 <!-- plugins:js -->
 <script src="<?php echo base_url();?>/assets/vendors/js/vendor.bundle.base.js"></script>
 <script src="<?php echo base_url();?>/assets/vendors/js/vendor.bundle.addons.js"></script>

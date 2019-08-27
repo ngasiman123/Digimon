@@ -21,6 +21,21 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php foreach ($listRequest as $row) { ?>
+                                <tr>
+                                    <td><?= $row->request_no  ?></td>
+                                    <td><?= $row->name  ?></td>
+                                    <td><?= $row->po_number_customer  ?></td>
+                                    <td><?= $row->sales  ?></td>
+                                    <td><?= $row->user_name  ?></td>
+                                    <td><?= date('d-M-Y',strtotime($row->created_at))  ?>
+                                        <td>
+                                        <a href="<?php echo base_url();?>receive/detail/<?= $row->request_header_id ?>">Detail</a>
+                                    </td>
+                                    </td>
+
+                                </tr>
+                                <?php } ?>
                                 <tr>
                                     <td>RQM000001</td>
                                     <td>Allied (M) Filtration Solution Nc</td>

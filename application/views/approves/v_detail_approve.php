@@ -1,4 +1,4 @@
-<form action="cek" method="post">
+<form action="<?= base_url() ?>approves/cek" method="post">
     <div class="row">
         <div class="col-lg-12 grid-margin">
             <div class="card">
@@ -19,6 +19,7 @@
                         <div class="col-lg-2"></div>
                         <div class="col-lg-2"><label>Po No Customer</label></div>
                         <div class="col-lg-2"><input class="form-control" type="text" name="customer_po_no" readonly value="<?= $ress->po_number_customer ?>" ></div>
+                        <input class="form-control" type="hidden" name="request_approve_id" readonly value="<?= $ressApprove->request_approve_id ?>" >
                     </div>
                 </div>
             </div>
@@ -86,11 +87,12 @@
                     <input type="text" class="form-control" name="note" placeholder="Add Note.......">
                     <br>
                     <br>
-                    <a href="<?= base_url(); ?>index.php/approves" class="btn btn-danger ml-1" style="float:right;">Cancel</a>
+                    
+                    <input type="radio" name="cek" value="3" required>Approve
+                    <input type="radio" name="cek" value="0" required>Reject
+                    <input type="radio" name="cek" value="2" required>Revised
+                    <a href="<?= base_url(); ?>approves" class="btn btn-danger ml-1" style="float:right;">Cancel</a>
                     <button class="btn btn-info ml-1" style="float:right;" type="submit">Submit</button>
-                    <input type="checkbox" name="approve" >Approve
-                    <input type="checkbox" name="reject" >Reject
-                    <input type="checkbox" name="revision" >Revised
                 </div>
             </div>
         </div>

@@ -1,3 +1,6 @@
+<?php 
+echo $this->session->flashdata("msg");
+?>
 <div class="row">
     <div class="col-lg-12 grid-margin">
         <div class="card">
@@ -5,11 +8,11 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"><h3>Request Pending </h3></div>
                     <div class="panel-body">
-                        <a href="<?php echo base_url();?>index.php/Request/add" class="btn btn-info">
+                        <a href="<?php echo base_url();?>Request/add" class="btn btn-info">
 							Create
                         </a>
                         <br/><br/>
-                        <table class="table table-bordered table-hover">
+                        <table id="datatable" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>Request No</th>
@@ -23,21 +26,39 @@
                             </thead>
                             <tbody>
                                 <?php
-                                foreach ($listRequest as $row) { ?>
-                                <tr>
-                                    <td><?= $row->request_no ?></td>
-                                    <td><?= $row->name ?></td>
-                                    <td><?= $row->po_number_customer ?></td>
-                                    <td><?= $row->user_name ?></td>
-                                    <td><?= date('d F Y',strtotime($row->created_at)) ?></td>
-                                    <td><?= $row->approve_status ?></td>
-                                    <td>
-                                        <a href="<?php echo base_url();?>index.php/Request/edit">Edit</a> |
-                                        <a href="">Delete</a>
-                                    </td>
-                                </tr>
-                                <?php } ?>
-                                <tr>
+                                foreach ($listRequest as $row) { 
+                                    if (empty($row->deleted_by)) { ?>
+                                        
+                                    <tr>
+                                        <td><?= $row->request_no ?></td>
+                                        <td><?= $row->name ?></td>
+                                        <td><?= $row->po_number_customer ?></td>
+                                        <td><?= $row->user_name ?></td>
+                                        <td><?= date('d F Y',strtotime($row->created_at)) ?></td>
+                                        <td>
+                                        <?php if ($row->approve_status ==0) { 
+                                            echo "Reject";
+                                        }else if($row->approve_status ==1){
+                                            echo "Waiting";
+                                        }else if( $row->approve_status ==2){
+                                            echo "Revision";
+                                        }else if($row->approve_status==3){
+                                            echo "Approve";
+                                        } ?>
+                                        
+                                        </td>
+                                        <td>
+                                        <?php if ($row->approve_status ==1) { ?>
+                                            <a href="<?php echo base_url();?>Request/edit/<?= $row->request_header_id ?>">Edit</a> |
+                                            <a href="<?php echo base_url();?>Request/delete/<?= $row->request_header_id ?>">Delete</a>
+                                        <?php }elseif($row->approve_status ==2){ ?>
+                                            <a href="<?php echo base_url();?>Request/edit/<?= $row->request_header_id ?>">Edit</a> |
+                                            <a href="<?php echo base_url();?>Request/delete/<?= $row->request_header_id ?>">Delete</a>
+                                        <?php } ?>   
+                                        </td>
+                                    </tr>
+                                <?php } } ?>
+                               <!--  <tr>
                                     <td>RQM000001</td>
                                     <td>Allied (M) Filtration Solution Nc</td>
                                     <td>PO no: A-20190823-125</td>
@@ -45,10 +66,10 @@
                                     <td>15 August 2019</td>
                                     <td>Revision</td>
                                     <td>
-                                        <a href="<?php echo base_url();?>index.php/Request/edit">Edit</a> |
+                                        <a href="<?php echo base_url();?>Request/delete/">Edit</a> |
                                         <a href="">Delete</a>
                                     </td>
-                                </tr>
+                                </tr> -->
                             </tbody>
                         </table>
                     </div>
@@ -57,3 +78,9 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#datatable").Datatable();
+    })
+</script>

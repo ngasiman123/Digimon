@@ -4,6 +4,9 @@ class Receive extends CI_Controller
 {
     public function __construct(){
         parent::__construct();
+        $this->load->model('m_request_header');
+        $this->load->model('m_request_detail');
+
 
         if($this->session->userdata('status') != 'login'){
                 redirect('auth');
@@ -19,6 +22,8 @@ class Receive extends CI_Controller
         $data['pluginjs'] = "templates/v_pluginjs";
         $data['body'] = "receive/v_list_receive";
 
+        $data['listRequest'] = $this->m_request_header->retrieveRequestPackaging();
+
         $this->load->view('v_home', $data);
     }
 
@@ -29,6 +34,11 @@ class Receive extends CI_Controller
         $data['footer'] = "templates/v_footer";
         $data['pluginjs'] = "templates/v_pluginjs";
         $data['body'] = "receive/v_detail_receive";
+        $data['no'] =1;
+        $id = $this->uri->segment(3);
+        $data['res'] = $this->m_request_header->retrieveRequestHeaderJoin($id);
+        $data['listDetail'] = $this->m_request_detail->retrieveRequestDetailId($id);
+
 
         $this->load->view('v_home', $data);
     }

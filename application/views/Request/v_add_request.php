@@ -1,4 +1,6 @@
-<form action="<?= base_url();?>request/save" method="post" enctype="multipart/form-data">
+ <?php
+        echo form_open_multipart('Request/save');
+        ?>
     <div class="row">
         <div class="col-lg-12 grid-margin">
             <div class="card">
@@ -49,10 +51,10 @@
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody id="tambahform">
-                            <tr id="item">
-                                <td><input name="customer_no_info[]" class="form-control name_list" type="text" value="23.100.3344"></td>
-                                <td><input name="sakura_no_ref[]" class="form-control name_list" type="text" value="C-1123"></td>
+	                        <tbody id="tambahform">
+	                            <tr id="item">
+                                <td><input name="customer_no_info[]" class="form-control name_list" type="text" value=""></td>
+                                <td><input name="sakura_no_ref[]" class="form-control name_list" type="text" value=""></td>
                                 <td>
                                     <select class="form-control name_list" name="manufacture[]">
                                         <option value="" selected disabled>Choose</option>
@@ -94,7 +96,7 @@
             </div>
         </div>
     </div>
-</form>
+<?php echo form_close(); ?>
 <script type="text/javascript">
 
     // $('#tambahdata').click(function() {
@@ -106,46 +108,46 @@
     //     });
     // });
 
-    $(document).ready(function(){  
-      var i=1;  
-      $('#tambahdata').click(function(){  
-           i++;  
-           $('#tambahform').append('<tr id="row'+i+'">'
-           	+'<td><input name="customer_no_info[]" class="form-control name_list" type="text" value="23.100.3344"></td>'
-           	+'<td><input name="sakura_no_ref[]" class="form-control name_list" type="text" value="C-1123"></td>'
-           	+'<td>'
-                +'<select class="form-control name_list" name="manufacture[]">'
-                    +'<option value="" selected disabled>Choose</option>'
-                    +'<?php foreach ($listManufacture as $row) { ?>'
-                       +'<option value="<?= $row->manufacture_code ?>"><?= $row->manufacture_code ?></option>'
-                    +'<?php } ?>'
-                +'</select>'
-            +'</td>'
-            +' <td>'
-                +'<select class="form-control name_list" name="warehouse[]">'
-                    +'<option value="" selected disabled>Choose</option>'
-                    +'<?php foreach ($listWarehouse as $row) { ?>'
-                       +'<option value="<?= $row->warehouse_code ?>"><?= $row->warehouse_code ?></option>'
-                    +'<?php } ?>'
-                +'</select>'
-            +'</td>'
-            +'<td>'
-                +'<select class="form-control name_list" name="brand[]">'
-                    +'<option value="" selected disabled>Choose</option>'
-                    +'<?php foreach ($listBrand as $row) { ?>'
-                       +'<option value="<?= $row->brand_code ?>"><?= $row->brand_code ?></option>'
-                    +'<?php } ?>'
-                +'</select>'
-            +'</td>'
-            +'<td><input class="form-control name_list" type="number" name="order_qty[]" value=""></td>'
-            +'<td><input class="form-control name_list" type="file" name="image_ref[]"></td>'
-           	+'<td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">-</button></td></tr>');  
-      });  
-      $(document).on('click', '.btn_remove', function(){  
-           var button_id = $(this).attr("id");   
-           $('#row'+button_id+'').remove();  
-      });
- });  
+$(document).ready(function(){  
+  var i=1;  
+  $('#tambahdata').click(function(){  
+       i++;  
+       $('#tambahform').append('<tr id="row'+i+'">'
+       	+'<td><input name="customer_no_info[]" class="form-control name_list" type="text" value=""></td>'
+       	+'<td><input name="sakura_no_ref[]" class="form-control name_list" type="text" value=""></td>'
+       	+'<td>'
+            +'<select class="form-control name_list" name="manufacture[]">'
+                +'<option value="" selected disabled>Choose</option>'
+                +'<?php foreach ($listManufacture as $row) { ?>'
+                   +'<option value="<?= $row->manufacture_code ?>"><?= $row->manufacture_code ?></option>'
+                +'<?php } ?>'
+            +'</select>'
+        +'</td>'
+        +' <td>'
+            +'<select class="form-control name_list" name="warehouse[]">'
+                +'<option value="" selected disabled>Choose</option>'
+                +'<?php foreach ($listWarehouse as $row) { ?>'
+                   +'<option value="<?= $row->warehouse_code ?>"><?= $row->warehouse_code ?></option>'
+                +'<?php } ?>'
+            +'</select>'
+        +'</td>'
+        +'<td>'
+            +'<select class="form-control name_list" name="brand[]">'
+                +'<option value="" selected disabled>Choose</option>'
+                +'<?php foreach ($listBrand as $row) { ?>'
+                   +'<option value="<?= $row->brand_code ?>"><?= $row->brand_code ?></option>'
+                +'<?php } ?>'
+            +'</select>'
+        +'</td>'
+        +'<td><input class="form-control name_list" type="number" name="order_qty[]" value=""></td>'
+        +'<td><input class="form-control name_list" type="file" name="image_ref[]"></td>'
+       	+'<td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">-</button></td></tr>');  
+  });  
+  $(document).on('click', '.btn_remove', function(){  
+       var button_id = $(this).attr("id");   
+       $('#row'+button_id+'').remove();  
+  });
+});  
 
 
     

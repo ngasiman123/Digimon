@@ -21,7 +21,22 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php foreach ($listRequest as $row) { ?>
                                 <tr>
+                                    <td><?= $row->request_no  ?></td>
+                                    <td><?= $row->name  ?></td>
+                                    <td><?= $row->po_number_customer  ?></td>
+                                    <td><?= $row->user_name  ?></td>
+                                    <td><?= $row->created_at  ?></td>
+                                    <td><?= $row->sales  ?>
+                                        <td>
+                                        <a href="<?php echo base_url();?>Packaging/detail/<?= $row->request_header_id ?>">Detail</a>
+                                    </td>
+                                    </td>
+
+                                </tr>
+                                <?php } ?>
+                                <!-- <tr>
                                     <td>RQM000001</td>
                                     <td>Allied (M) Filtration Solution Nc</td>
                                     <td>PO no: A-20190823-125</td>
@@ -31,7 +46,7 @@
                                     <td>
                                         <a href="<?php echo base_url();?>index.php/Packaging/detail">Detail</a>
                                     </td>
-                                </tr>
+                                </tr> -->
                             </tbody>
                         </table>
                     </div>

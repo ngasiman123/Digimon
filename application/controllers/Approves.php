@@ -33,7 +33,37 @@ class Approves extends CI_Controller
         $request_header = $this->m_request_header;
         $data['ress'] = $request_header->retrieveRequestHeaderJoin($request_header_id);
         $data['lisRequestDetail'] = $this->m_request_detail->retrieveRequestDetailId($request_header_id);
+
+        $approve = $this->m_approve;
+        $data['ressApprove'] = $approve->retrieveCekApprove($request_header_id);
         $data['no']=1;
+
         $this->load->view('v_home', $data);
+    }
+    public function cek(){
+
+        $request = $this->m_approve;
+        $ress = $request->cekApprove();
+
+        if ($this->input->post('cek')==3){
+            $this->session->set_flashdata("msg", "<div class='alert alert-success' role='alert'>
+            <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+            <strong>Warning!</strong> Data has been Approved.
+            </div>");
+            redirect("approves");
+        }else if($this->input->post('cek')==2){
+            $this->session->set_flashdata("msg", "<div class='alert alert-info' role='alert'>
+            <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+            <strong>Information!</strong> Data has been Revised. 
+            </div>");
+            redirect("approves");
+        }else if($this->input->post('cek')==0){
+            $this->session->set_flashdata("msg", "<div class='alert alert-danger' role='alert'>
+            <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+            <strong>Information!</strong> Data has been Rejected. 
+            </div>");
+            redirect("approves");
+        }
+
     }
 }

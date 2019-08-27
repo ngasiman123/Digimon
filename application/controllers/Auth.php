@@ -13,24 +13,15 @@ class Auth extends CI_controller
     }
 
     public function login(){
+
+        echo "string";
         $user = $this->input->post('user_name');
-		$pass = $this->input->post('pass');
-		
-		if($user == "" || $pass == ""){
-			$this->session->set_flashdata("msg","<div class='alert alert-danger' role='alert'>
-            <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-            <strong>Login Failed!</strong><br> Username & password cant empty. 
-            </div>");
-            redirect('auth');
-		}
+        $pass = $this->input->post('password');
         
 
         
         $queryUser = $this->m_auth->userLogin($user, $pass);
         
-        // var_dump($user,$queryUser['name']);
-        // exit();
-
         $data_session = array(
                 'id' => $queryUser['id'],
                 'user_name' => $user,

@@ -6,19 +6,19 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-2"><label>Request No :</label></div>
-                        <div class="col-lg-2"><input type="text" readonly class="form-control" value="<?= time();  ?>"></div>
+                        <div class="col-lg-2"><input type="text" readonly class="form-control" value="<?= $res->request_no  ?>"></div>
                         <div class="col-lg-2"></div>
                         <div class="col-lg-2"></div>
                         <div class="col-lg-2"><label>Request Date :</label></div>
-                        <div class="col-lg-2"><input type="text" readonly class="form-control" value="<?= date('d-M-Y');  ?>"></div>
+                        <div class="col-lg-2"><input type="text" readonly class="form-control" value="<?= date('d-M-Y',strtotime($res->request_date));  ?>"></div>
                     </div><br>
                     <div class="row">
                         <div class="col-lg-2"><Label>Customer :</Label></div>
-                        <div class="col-lg-2"><input type="text" readonly class="form-control" value="Allied M"></div>
+                        <div class="col-lg-2"><input type="text" readonly class="form-control" value="<?= $res->customer_code ?>"></div>
                         <div class="col-lg-2"></div>
                         <div class="col-lg-2"></div>
                         <div class="col-lg-2"><label>Po No Customer</label></div>
-                        <div class="col-lg-2"><input class="form-control" type="text" name="customer_po_no" readonly value="PO-12345-PO" ></div>
+                        <div class="col-lg-2"><input class="form-control" type="text" name="customer_po_no" readonly value="<?= $res->po_number_customer ?>" ></div>
                     </div>
                 </div>
             </div>
@@ -43,6 +43,17 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php foreach ($listDetail as $row) { ?>
+                            <tr>
+                                <td><?= $no++ ?></td>
+                                <td><?= $row->customer_info_no ?></td>
+                                <td><?= $row->sakura_ref_no ?></td>
+                                <td><?= $row->brand_code ?></td>
+                                <td></td>
+                                <td><?= $row->item_images ?></td>
+                                <td></td>
+                            </tr>
+                            <?php } ?>
                             <tr>
                                 <td>1</td>
                                 <td>1111.1111</td>
