@@ -3,7 +3,7 @@
         <div class="col-lg-12 grid-margin">
             <div class="card">
                 <div class="card-heading mt-3 mx-auto"><b> Request Header</b></div>
-                <div class="card-body">
+                <!-- <div class="card-body">
                     <div class="row">
                         <div class="col-lg-2"><label>Request No :</label></div>
                         <div class="col-lg-2"><input type="text" readonly class="form-control" value="<?= $res->request_no  ?>"></div>
@@ -20,7 +20,7 @@
                         <div class="col-lg-2"><label>Po No Customer</label></div>
                         <div class="col-lg-2"><input class="form-control" type="text" name="customer_po_no" readonly value="<?= $res->po_number_customer  ?>" ></div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -29,7 +29,7 @@
         <div class="col-lg-12 grid-margin">
             <div class="card">
                 <div class="card-heading mt-3 mx-auto"><b>Detail Items</b></div>
-                <div class="card-body">
+                <div class="card-body table-responsive">
                 <table class="table table-bordered table-bordered">
                         <thead>
                             <tr>
@@ -46,7 +46,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($listDetail as $row) { ?>
+                            <!-- <?php foreach ($listDetail as $row) { ?>
                             <tr>
                                 <td><?= $no++ ?></td>
                                 <td><?= $row->customer_info_no ?></td>
@@ -59,7 +59,7 @@
                                 <td></td>
                                 <td><a href="">Update</a></td>
                             </tr>
-                            <?php } ?>
+                            <?php } ?> -->
                             <tr>
                                 <td>1</td>
                                 <td>1111.1111</td>

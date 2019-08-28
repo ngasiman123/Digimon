@@ -20,7 +20,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($listRequest as $row) { ?>
+                                <!-- <?php foreach ($listRequest as $row) { ?>
                                 <tr>
                                     <td><?= $row->request_no  ?></td>
                                     <td><?= $row->name  ?></td>
@@ -33,7 +33,7 @@
                                     </td>
 
                                 </tr>
-                                <?php } ?>
+                                <?php } ?> -->
                                 <tr>
                                     <td>RQM000001</td>
                                     <td>Allied (M) Filtration Solution Nc</td>

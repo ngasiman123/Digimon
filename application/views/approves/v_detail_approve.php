@@ -14,7 +14,7 @@
                     </div><br>
                     <div class="row">
                         <div class="col-lg-2"><Label>Customer :</Label></div>
-                        <div class="col-lg-2"><input type="text" readonly class="form-control" value="<?= $ress->name  ?> "></div>
+                        <div class="col-lg-2"><input type="text" readonly class="form-control" value="<?= $ress->customer_code  ?> "></div>
                         <div class="col-lg-2"></div>
                         <div class="col-lg-2"></div>
                         <div class="col-lg-2"><label>Po No Customer</label></div>
@@ -56,7 +56,8 @@
                                 <td><?= $row->brand_code ?></td>
                                 <td><?= $row->order_qty ?></td>
                                 <td>
-                                    <a href="">img</a>
+                                    <a href="#" data-toggle="modal" data-target="#imgApModal">img</a>
+
                                 </td>
                             </tr>
                             <?php } ?>
@@ -98,3 +99,22 @@
         </div>
     </div>
 </form>
+
+<div id="imgApModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header modal-primary">
+            <h3 class="modal-title">Image Ref
+            </h3>
+            <button class="close" data-dismiss="modal" type="close">&times;</button>
+          </div>
+          <div class="modal-body">
+            <h5><img src="<?= base_url(); ?>assets/images/sample.jpg" class="img img-responsive img-thumbnail"></h5>
+          </div>
+          <div class="modal-footer">
+            <!-- <a href="<?php echo base_url();?>auth/logout" class="btn btn-success">Logout</a> -->
+            <button class="btn btn-danger" type="button" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>

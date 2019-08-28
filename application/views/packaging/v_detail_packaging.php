@@ -10,7 +10,7 @@
                         <div class="col-lg-2"></div>
                         <div class="col-lg-2"></div>
                         <div class="col-lg-2"><label>Request Date :</label></div>
-                        <div class="col-lg-2"><input type="text" readonly class="form-control" value="<?= date('d-M-Y',strtotime($res->request_date));  ?>"></div>
+                        <div class="col-lg-2"><input type="text" readonly class="form-control" value="<?= date('d-M-Y',strtotime($res->request_date))  ?>"></div>
                     </div><br>
                     <div class="row">
                         <div class="col-lg-2"><Label>Customer :</Label></div>
@@ -18,7 +18,7 @@
                         <div class="col-lg-2"></div>
                         <div class="col-lg-2"></div>
                         <div class="col-lg-2"><label>Po No Customer</label></div>
-                        <div class="col-lg-2"><input class="form-control" type="text" name="" readonly value="<?= $res->po_number_customer ?>" ></div>
+                        <div class="col-lg-2"><input class="form-control" type="text" name="customer_po_no" readonly value="<?= $res->po_number_customer ?>" ></div>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@
         <div class="col-lg-12 grid-margin">
             <div class="card">
                 <div class="card-heading mt-3 mx-auto"><b>Detail Items</b></div>
-                <div class="card-body">
+                <div class="card-body table-responsive">
                 <table class="table table-bordered table-bordered">
                         <thead>
                             <tr>
@@ -50,14 +50,28 @@
                             <tr>
                                 <td><?= $no++ ?></td>
                                 <td><?= $row->customer_info_no ?></td>
-                                <td><?= $row->sakura_ref_no ?></td>
+                                <td><?= $row->sakura_version_no ?></td>
                                 <td><?= $row->brand_code ?></td>
                                 <td><?= $row->order_qty ?></td>
-                                <td><?= $row->item_images ?></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td><a href="">Update</a></td>
+                                <td>Img</td>
+                                <td><?= date('d-M-Y',strtotime($row->ds_create)) ?></td>
+                                <td>
+                                <?php if (empty($row->status)) {
+                                    
+                                }else{
+                                    if ($row->status ==1) {
+                                        echo "Ok";
+                                    }else if($row->status==0){
+                                        echo "Pending";
+                                    }
+                                } ?>
+                                </td>
+                                <td><?= $row->pac_remark ?></td>
+                                <td>
+                                <?php if (empty($row->status)) { ?>
+                                    <a href="#" data-toggle="modal" data-target="#modalUpdate<?= $row->request_detail_id ?>">Update</a>
+                                <?php } ?>
+                                </td>
                             </tr>
                             <?php } ?>
                             <tr>
@@ -70,9 +84,9 @@
                                 <td>25-Aug-2019</td>
                                 <td>Pending</td>
                                 <td>Approval Cust</td>
-                                <td><a href="">Update</a></td>
+                                <td></td>
                             </tr>
-                            <tr>
+                            <!-- <tr>
                                 <td>2</td>
                                 <td>2222.1111</td>
                                 <td>C-2223-V23A</td>
@@ -83,7 +97,7 @@
                                 <td>Pending</td>
                                 <td>Approval Desain</td>
                                 <td><a href="">Update</a></td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                     <br><br>
@@ -97,3 +111,47 @@
         </div>
     </div>
 </form>
+
+<?php
+foreach ($listDetail as $row) { ?>
+    <div id="modalUpdate<?= $row->request_detail_id ?>" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header modal-primary">
+        <button class="close" data-dismiss="modal" type="close">&times;</button>
+      </div>
+      <form action="<?php echo base_url(); ?>Packaging/updaterow" method="POST">
+      <div class="modal-body">
+          <label class="h5">Packaging Status</label>
+          <input type="hidden" name="drawing_spec_id" value="<?= $row->draw_id ?>">
+          <select name="packaging_status" class="form-control" required>
+            <?php
+            if (empty($row->pac_status)) { ?>
+            <option value="">-pilih--</option>
+            <option value="0">Pending</option>
+            <option value="1">Ok</option>
+            <?php }else{ 
+                if ($row->pac_status ==0) { ?>
+                <option value="0">Pending</option>
+                <option value="1">Ok</option>
+                <?php }elseif($row->pac_status==1){ ?>
+                <option value="1">Ok</option>
+                <option value="0">Pending</option>
+                <?php }
+            } ?>
+          </select>
+          <div class="">
+            <label class="h5">Packaging Remark</label>
+          <input type="text" name="packaging_remark" value="<?= $row->pac_remark ?>" class="form-control">
+          </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-success">Save</button>
+        <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+<?php } ?>

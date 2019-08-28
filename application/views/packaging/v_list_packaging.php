@@ -27,7 +27,7 @@
                                     <td><?= $row->name  ?></td>
                                     <td><?= $row->po_number_customer  ?></td>
                                     <td><?= $row->user_name  ?></td>
-                                    <td><?= $row->created_at  ?></td>
+                                    <td><?= date('d-M-Y',strtotime($row->created_at))?></td>
                                     <td><?= $row->sales  ?>
                                         <td>
                                         <a href="<?php echo base_url();?>Packaging/detail/<?= $row->request_header_id ?>">Detail</a>

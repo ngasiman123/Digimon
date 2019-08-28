@@ -22,7 +22,7 @@ class Bom extends CI_Controller
         $data['footer'] = "templates/v_footer";
         $data['pluginjs'] = "templates/v_pluginjs";
         $data['body'] = "bom/v_list_bom";
-        $data['listRequest'] = $this->m_request_header->retrieveRequestPackaging();
+        // $data['listRequest'] = $this->m_request_header->retrieveRequestPackaging();
 
         $this->load->view('v_home', $data);
     }
@@ -36,9 +36,9 @@ class Bom extends CI_Controller
         $data['pluginjs'] = "templates/v_pluginjs";
         $data['body'] = "bom/v_detail_bom";
         $data['no']=1;
-        $id = $this->uri->segment(3);
-        $data['res'] = $this->m_request_header->retrieveRequestId($id);
-        $data['listDetail'] = $this->m_request_detail->retrieveRequestDetailId($id);
+        // $id = $this->uri->segment(3);
+        // $data['res'] = $this->m_request_header->retrieveRequestId($id);
+        // $data['listDetail'] = $this->m_request_detail->retrieveRequestDetailId($id);
 
         $this->load->view('v_home', $data);
     }
