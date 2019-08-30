@@ -31,8 +31,8 @@
             $this->zone_name = $post["zone_name"];
             $this->created_at = date('Y-m-d');
             $this->updated_at = date('Y-m-d');
-            $this->created_by = 1;
-            $this->updated_by = 1;
+            $this->created_by = $this->session->userdata('id');
+            $this->updated_by = $this->session->userdata('id');
 
             $this->db->insert($this->_table, $this);
         }
@@ -43,7 +43,7 @@
 
             $data['zone_name'] = $post["zone_name"];
             $data['updated_at'] = date('Y-m-d');
-            $data['updated_by'] = 1;
+            $data['updated_by'] = $this->session->userdata('id');
             
             $this->db->where('zone_code', $zone_code);
             $this->db->update("zones", $data);
@@ -55,10 +55,8 @@
             $zone_code = $post["zone_code"];
 
             $data['zone_name'] = $post["zone_name"];
-            $data['updated_at'] = date('Y-m-d');
             $data['deleted_at'] = date('Y-m-d');
-            $data['updated_by'] = 1;
-            $data['deleted_by'] = 1;
+            $data['deleted_by'] = $this->session->userdata('id');
             
             $this->db->where('zone_code', $zone_code);
             $this->db->update("zones", $data);

@@ -43,7 +43,7 @@ class m_warehouse extends CI_Model
 
         $data['warehouse_name'] = $post["warehouse_name"];
         $data['updated_at'] = date('Y-m-d');
-		$data['updated_by'] = 1;
+		$data['updated_by'] = $this->session->userdata('id');
 		
 		$this->db->where('warehouse_code', $warehouse_code);
         $this->db->update("warehouses", $data);
@@ -55,10 +55,8 @@ class m_warehouse extends CI_Model
         $warehouse_code = $post["warehouse_code"];
 
         $data['warehouse_name'] = $post["warehouse_name"];
-        $data['updated_at'] = date('Y-m-d');
         $data['deleted_at'] = date('Y-m-d');
-        $data['updated_by'] = 1;
-        $data['deleted_by'] = 1;
+        $data['deleted_by'] = $this->session->userdata('id');
 		
 		$this->db->where('warehouse_code', $warehouse_code);
         $this->db->update("warehouses", $data);

@@ -44,8 +44,8 @@ class m_user extends CI_Model{
 		$this->zone_code = $post["zone_code"];
 		$this->created_at = date('Y-m-d');
 		$this->updated_at = date('Y-m-d');
-		$this->created_by = 8;
-		$this->updated_by = 8;
+		$this->created_by = $this->session->userdata('id');
+		$this->updated_by = $this->session->userdata('id');
         $this->db->insert($this->_table, $this);
 	}
 	
@@ -61,7 +61,7 @@ class m_user extends CI_Model{
 		$data['access_level'] = $post["access_level"];
 		$data['zone_code'] = $post["zone_code"];
 		$data['updated_at'] = date('Y-m-d');
-		$data['updated_by'] = 8;
+		$data['updated_by'] = $this->session->userdata('id');
 		
 		$this->db->where('id',$id);
         $this->db->update("users", $data);
@@ -78,10 +78,8 @@ class m_user extends CI_Model{
 		$data['address'] = $post["address"];
 		$data['access_level'] = $post["access_level"];
 		$data['zone_code'] = $post["zone_code"];
-		$data['updated_at'] = date('Y-m-d');
 		$data['deleted_at'] = date('Y-m-d');
-		$data['updated_by'] = 8;
-		$data['deleted_by'] = 8;
+		$data['deleted_by'] = $this->session->userdata('id');
 		
 		$this->db->where('id',$id);
         $this->db->update("users", $data);

@@ -33,8 +33,8 @@ class m_manufacture extends CI_Model
         $this->manufacture_name = $post["manufacture_name"];
         $this->created_at = date('Y-m-d');
         $this->updated_at = date('Y-m-d');
-        $this->created_by = 6;
-        $this->updated_by = 6;
+        $this->created_by = $this->session->userdata('id');
+        $this->updated_by = $this->session->userdata('id');
 
         $this->db->insert($this->_table, $this);
 
@@ -46,7 +46,7 @@ class m_manufacture extends CI_Model
 		$manufacture_code = $post["manufacture_code"];
 		$data['manufacture_name'] = $post["manufacture_name"];
         $data['updated_at'] = date('Y-m-d');
-		$data['updated_by'] = 1;
+		$data['updated_by'] = $this->session->userdata('id');
 		
 		$this->db->where('manufacture_code',$manufacture_code);
         $this->db->update("manufactures", $data);
@@ -57,10 +57,8 @@ class m_manufacture extends CI_Model
 		$post = $this->input->post();
 		$manufacture_code = $post["manufacture_code"];
 		$data['manufacture_name'] = $post["manufacture_name"];
-        $data['updated_at'] = date('Y-m-d');
         $data['deleted_at'] = date('Y-m-d');
-        $data['updated_by'] = 1;
-        $data['deleted_by'] = 1;
+        $data['deleted_by'] = $this->session->userdata('id');
 		
 		$this->db->where('manufacture_code',$manufacture_code);
         $this->db->update("manufactures", $data);

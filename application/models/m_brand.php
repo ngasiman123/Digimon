@@ -32,8 +32,8 @@ class m_brand extends CI_Model
         $this->brand_name = $post["brand_name"];
         $this->created_at = date('Y-m-d');
         $this->updated_at = date('Y-m-d');
-        $this->created_by = 6;
-        $this->updated_by = 6;
+        $this->created_by = $this->session->userdata('id');
+        $this->updated_by = $this->session->userdata('id');
 
         $this->db->insert($this->_table, $this);
 
@@ -46,7 +46,7 @@ class m_brand extends CI_Model
 
         $data['brand_name'] = $post["brand_name"];
         $data['updated_at'] = date('Y-m-d');
-		$data['updated_by'] = 6;
+		$data['updated_by'] =  $this->session->userdata('id');
 		
 		$this->db->where('brand_code', $brand_code);
         $this->db->update("brands", $data);
@@ -57,10 +57,8 @@ class m_brand extends CI_Model
         $brand_code = $post["brand_code"];
 
         $data['brand_name'] = $post["brand_name"];
-        $data['updated_at'] = date('Y-m-d');
         $data['deleted_at'] = date('Y-m-d');
-        $data['updated_by'] = 6;
-        $data['deleted_by'] = 6;
+        $data['deleted_by'] = $this->session->userdata('id');
 		
 		$this->db->where('brand_code', $brand_code);
         $this->db->update("brands", $data);
