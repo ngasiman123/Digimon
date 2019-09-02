@@ -13,7 +13,7 @@ class Request extends CI_Controller
         $this->load->model('m_approve');
 
 
-        $this->load->helper(array('form', 'url'));
+        $this->load->helper(array('form', 'url','file'));
 
         if($this->session->userdata('status') != 'login'){
                 redirect('auth');
@@ -37,7 +37,32 @@ class Request extends CI_Controller
         $this->load->view('v_home', $data);
     }
     public function save()
-    {
+    {    
+        $a = count($this->input->post('customer_no_info'));
+        
+        for ($i=0; $i < $a ; $i++) { 
+            
+            // $config['upload_path']          = './gambar/';
+            // $config['allowed_types']        = 'gif|jpg|png';
+            // $config['max_size']             = '0';
+
+            // $this->load->library('upload');
+            // $this->upload->initialize($config);
+            // $image = 'image_ref'[$i];
+            // $this->upload->do_upload($image);
+            
+            // $image_data = $this->upload->data();
+            // $file_path = $image_data[full_path];
+
+            $namafile = $_FILES['image_ref']['name'][$i];
+            $tmp = $_FILES['image_ref']['tmp_name'][$i];
+            $type = $_FILES['image_ref']['type'][$i];
+            $error = $_FILES['image_ref']['error'][$i];
+            $size = $_FILES['image_ref']['size'][$i];
+
+            move_uploaded_file($tmp, 'uploads/'.$namafile);
+        }
+
         $request_header = $this->m_request_header;
         $request_detail = $this->m_request_detail;
         $request_approve = $this->m_approve;
@@ -104,9 +129,10 @@ class Request extends CI_Controller
     public function update(){
         $request_header = $this->m_request_header;
         $request_detail = $this->m_request_detail;
-
+        $request_approve = $this->m_approve;
         $ress_header = $request_header->updateHeader();
         $ress_detail = $request_detail->updateDetail();
+        $ress_approve = $request_approve->revisied();
 
         if ($ress_detail){
             $this->session->set_flashdata("msg", "<div class='alert alert-danger' role='alert'>

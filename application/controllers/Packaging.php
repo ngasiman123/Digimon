@@ -55,6 +55,23 @@ class Packaging extends CI_Controller
     }
     public function updaterow(){
 
+
+        $inner_box = $_FILES['inner_box']['name'];
+        $tmp = $_FILES['inner_box']['tmp_name'];
+        $type = $_FILES['inner_box']['type'];
+        $error = $_FILES['inner_box']['error'];
+        $size = $_FILES['inner_box']['size'];
+
+        $outter_box = $_FILES['outter_box']['name'];
+        $tmp_outter = $_FILES['outter_box']['tmp_name'];
+        $type_outter = $_FILES['outter_box']['type'];
+        $error_outter = $_FILES['outter_box']['error'];
+        $size_outter = $_FILES['outter_box']['size'];
+
+        move_uploaded_file($tmp, 'uploads/'.str_replace(" ","_",$inner_box));
+        move_uploaded_file($tmp_outter, 'uploads/'.str_replace(" ","_",$outter_box));
+
+
         $packaging = $this->m_packaging;
         $res = $packaging->updaterow();
 

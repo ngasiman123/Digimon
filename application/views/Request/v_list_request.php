@@ -53,6 +53,8 @@ echo $this->session->flashdata("msg");
                                             <!-- <a href="<?php echo base_url();?>Request/delete/<?= $row->request_header_id ?>">Delete</a> -->
                                         <?php }elseif($row->approve_status ==2){ ?>
                                             <a href="<?php echo base_url();?>Request/edit/<?= $row->request_header_id ?>">Edit</a> |
+                                            <!-- <a href="<?php echo base_url();?>Request/delete/<?= $row->request_header_id ?>">Delete</a> -->
+                                        <?php }elseif($row->approve_status ==0){ ?>
                                             <a href="<?php echo base_url();?>Request/delete/<?= $row->request_header_id ?>">Delete</a>
                                         <?php } ?>   
                                         </td>

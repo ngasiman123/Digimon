@@ -1,4 +1,4 @@
-<form action="#" method="post">
+<form action="<?= base_url() ?>/Receive/confirm" method="POST">
     <div class="row">
         <div class="col-lg-12 grid-margin">
             <div class="card">
@@ -47,14 +47,14 @@
                             <tr>
                                 <td><?= $no++ ?></td>
                                 <td><?= $row->customer_info_no ?></td>
-                                <td><?= $row->sakura_ref_no ?></td>
+                                <td><?= $row->sakura_version_no ?></td>
                                 <td><?= $row->brand_code ?></td>
-                                <td></td>
-                                <td><?= $row->item_images ?></td>
-                                <td></td>
+                                <td><?= date('d-M-Y',strtotime($row->bom_created_at)) ?></td>
+                                <td><?= $row->movex_filter_master ?></td>
+                                <td><?= $row->sap_filter_master ?></td>
                             </tr>
                             <?php } ?>
-                            <tr>
+                            <!-- <tr>
                                 <td>1</td>
                                 <td>1111.1111</td>
                                 <td>C-1123-V23</td>
@@ -71,11 +71,15 @@
                                 <td>25-Aug-2019</td>
                                 <td>2222.1111    TF</td>
                                 <td>EUF1-CLS1-C-2223-V23A</td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                     <br><br>
-                    <button class="btn btn-success">Confirm</button>
+                        <?php foreach ($listDetail as $row): ?>
+                            <input type="hidden" name="bom_id[]" value="<?= $row->bom_id ?>">    
+                        <?php endforeach ?>
+                        <button  type="submit" class="btn btn-success">Confirm</button>
+                    
                     <a href="<?= base_url(); ?>index.php/receive" class="btn btn-info ml-1" style="float:right;" type="close">Back</a>
                 </div>
             </div>

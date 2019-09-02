@@ -39,7 +39,7 @@ class m_packaging extends CI_Model
 
     public function retrievePackagingDetail($id){
 
-        $query = $this->db->query("SELECT rh.*,c.name,u.user_name,ra.approve_note,ra.approve_status,s.user_name as sales,ds.status,ds.image,ds.remark,ds.sakura_version_no,ds.created_at as ds_create,ds.drawing_spec_id as draw_id,rd.*,pac.*,pac.status as pac_status,pac.remark as pac_remark
+        $query = $this->db->query("SELECT rh.*,c.name,u.user_name,ra.approve_note,ra.approve_status,s.user_name as sales,ds.status,ds.image,ds.remark,ds.sakura_version_no,ds.created_at as ds_create,ds.drawing_spec_id as draw_id,ds.image as ds_img,rd.*,pac.*,pac.status as pac_status,pac.remark as pac_remark
                 FROM request_headers as rh
                 LEFT JOIN customers as c
                 ON rh.customer_code = c.customer_code
@@ -55,10 +55,11 @@ class m_packaging extends CI_Model
                 ON  ds.request_detail_id = rd.request_detail_id
                 LEFT JOIN packagings as pac
                 ON pac.drawing_spec_id = ds.drawing_spec_id
-                WHERE ra.approve_status = 3
+                WHERE ra.approve_status = 3 AND rh.request_header_id=$id
                 
             ");
         return  $query->result();
+
     }
     public function retrievePackagingHeader($id){
 
@@ -78,12 +79,14 @@ class m_packaging extends CI_Model
    {    
         $post = $this->input->post();
 
-        $query = $this->db->get_where($this->_table,['drawing_spec_id',$post['drawing_spec_id']])->row();
+        $query = $this->db->get_where($this->_table,['packaging_id'=>$post['packaging_id']])->row();
 
         if (empty($query)) {
             $this->drawing_spec_id = $post['drawing_spec_id'];
             $this->status = $post['packaging_status'];
             $this->remark = $post['packaging_remark'];
+            $this->inner_box_spec = str_replace(" ", "_",$_FILES['inner_box']['name']);
+            $this->outter_box_spec = str_replace(" ", "_",$_FILES['outter_box']['name']);
             $this->created_at = date('Y-m-d');
             $this->created_by = $this->session->userdata('id');
             $this->db->insert($this->_table,$this);
@@ -92,6 +95,8 @@ class m_packaging extends CI_Model
             $packaging_id = $query->packaging_id;
             $data['status'] = $post['packaging_status'];
             $data['remark'] = $post['packaging_remark'];
+            $data['inner_box_spec'] = str_replace(" ", "_",$_FILES['inner_box']['name']);
+            $data['outter_box_spec'] = str_replace(" ", "_",$_FILES['outter_box']['name']);
             $data['updated_at'] = date('Y-m-d');
             $data['updated_by'] = $this->session->userdata('id');
 

@@ -24,19 +24,19 @@
                                 <?php foreach ($listRequest as $row) { ?>
                                 <tr>
                                     <td><?= $row->request_no  ?></td>
-                                    <td><?= $row->name  ?></td>
-                                    <td><?= $row->po_number_customer  ?></td>
-                                    <td><?= $row->sales  ?></td>
-                                    <td><?= $row->user_name  ?></td>
-                                    <td><?= date('d-M-Y',strtotime($row->created_at))  ?>
-                                        <td>
-                                        <a href="<?php echo base_url();?>receive/detail/<?= $row->request_header_id ?>">Detail</a>
+                                    <td><?= $row->name ?></td>
+                                    <td><?= $row->po_number_customer ?></td>
+                                    <td><?= $row->user_name ?></td>
+                                    <td><?= $row->po_create ?></td>
+                                    <td>
+                                        <?= date('d-M-Y',strtotime($row->created_at)) ?>
                                     </td>
+                                    <td>
+                                        <a href="<?php echo base_url();?>Receive/detail/<?= $row->request_header_id ?>">Detail</a>
                                     </td>
-
                                 </tr>
                                 <?php } ?>
-                                <tr>
+                                <!-- <tr>
                                     <td>RQM000001</td>
                                     <td>Allied (M) Filtration Solution Nc</td>
                                     <td>PO no: A-20190823-125</td>
@@ -46,7 +46,7 @@
                                     <td>
                                         <a href="<?php echo base_url();?>index.php/Receive/detail">Detail</a>
                                     </td>
-                                </tr>
+                                </tr> -->
                             </tbody>
                         </table>
                     </div>

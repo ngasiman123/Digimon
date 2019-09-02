@@ -1,3 +1,6 @@
+<?php 
+echo $this->session->flashdata("msg");
+?>
 <form action="cek" method="post">
     <div class="row">
         <div class="col-lg-12 grid-margin">
@@ -53,15 +56,18 @@
                                 <td><?= $row->sakura_version_no ?></td>
                                 <td><?= $row->brand_code ?></td>
                                 <td><?= $row->order_qty ?></td>
-                                <td>Img</td>
+                                <td>
+                                    <?php $str = str_replace(".","",$row->ds_img); ?>
+                                    <a href="#" data-toggle="modal" data-target="#dw_image<?= $str ?>">image</a>
+                                </td>
                                 <td><?= date('d-M-Y',strtotime($row->ds_create)) ?></td>
                                 <td>
-                                <?php if (empty($row->status)) {
+                                <?php if ($row->status=='') {
                                     
                                 }else{
                                     if ($row->status ==1) {
                                         echo "Ok";
-                                    }else if($row->status==0){
+                                    }elseif($row->status==0){
                                         echo "Pending";
                                     }
                                 } ?>
@@ -74,18 +80,21 @@
                                 </td>
                             </tr>
                             <?php } ?>
-                            <tr>
+                            <!-- <tr>
                                 <td>1</td>
                                 <td>1111.1111</td>
                                 <td>C-1123-V23</td>
                                 <td>CLS</td>
                                 <td>850</td>
-                                <td><a href="">image</a></td>
+                                <td>
+                                    <?php $str = str_replace(".","",$row->item_images); ?>
+                                    <a href="#" data-toggle="modal" data-target="#dw_image<?= $str ?>">image</a>
+                                </td>
                                 <td>25-Aug-2019</td>
                                 <td>Pending</td>
                                 <td>Approval Cust</td>
                                 <td></td>
-                            </tr>
+                            </tr> -->
                             <!-- <tr>
                                 <td>2</td>
                                 <td>2222.1111</td>
@@ -120,13 +129,15 @@ foreach ($listDetail as $row) { ?>
       <div class="modal-header modal-primary">
         <button class="close" data-dismiss="modal" type="close">&times;</button>
       </div>
-      <form action="<?php echo base_url(); ?>Packaging/updaterow" method="POST">
+      <form action="<?php echo base_url(); ?>Packaging/updaterow" method="POST" enctype="multipart/form-data">
       <div class="modal-body">
+            <input type="hidden" name="drawing_spec_id" value="<?= $row->draw_id ?>">
           <label class="h5">Packaging Status</label>
-          <input type="hidden" name="drawing_spec_id" value="<?= $row->draw_id ?>">
-          <select name="packaging_status" class="form-control" required>
+          <input type="hidden" name="packaging_id" value="<?= $row->packaging_id ?>">
+
+          <select id="status" onchange="status_(this);" name="packaging_status" class="form-control" required>
             <?php
-            if (empty($row->pac_status)) { ?>
+            if ($row->pac_status=='') { ?>
             <option value="">-pilih--</option>
             <option value="0">Pending</option>
             <option value="1">Ok</option>
@@ -140,6 +151,12 @@ foreach ($listDetail as $row) { ?>
                 <?php }
             } ?>
           </select>
+          <div id="img">
+               <label class="h5">Inner BOX Spec</label>
+              <input type="file" name="inner_box" value="" class="form-control">
+              <label class="h5">Outter BOX Spec</label>
+              <input type="file" name="outter_box" value="" class="form-control">
+          </div>
           <div class="">
             <label class="h5">Packaging Remark</label>
           <input type="text" name="packaging_remark" value="<?= $row->pac_remark ?>" class="form-control">
@@ -154,4 +171,39 @@ foreach ($listDetail as $row) { ?>
     </div>
   </div>
 </div>
+
+<?php $str = str_replace(".","",$row->ds_img); ?>
+<div id="dw_image<?= $str ?>" class="modal fade " role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header modal-primary">
+        <h3 class="modal-title">Image Ref
+        </h3>
+        <button class="close" data-dismiss="modal" type="close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <h5><img src="<?= base_url(); ?>uploads/<?= $row->ds_img ?>" class="img img-responsive img-thumbnail"></h5>
+      </div>
+      <div class="modal-footer">
+        <!-- <a href="<?php echo base_url();?>auth/logout" class="btn btn-success">Logout</a> -->
+        <button class="btn btn-danger" type="button" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 <?php } ?>
+<script>
+    $(document).ready(function(){
+        $("#img").hide();
+    });
+
+    function status_(){
+        var val=$("#status").val();
+        if(val==1){
+           $("#img").show();
+        }else{
+            $("#img").hide();
+        }
+    }
+
+</script>

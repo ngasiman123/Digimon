@@ -44,7 +44,7 @@ class m_request_detail extends CI_Model
 		        $this->warehouse_code = $post["warehouse"][$i];
 		        $this->manufacture_code = $post["manufacture"][$i];
 		        $this->order_qty = $post["order_qty"][$i];
-		        $this->item_images = $_FILES['image_ref']['name'][$i];
+		        $this->item_images = str_replace(" ","_",$_FILES['image_ref']['name'][$i]);
 
 		        $this->db->insert($this->_table,$this);
 		        

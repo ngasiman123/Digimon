@@ -21,7 +21,7 @@ class m_approve extends CI_Model
                 ON u.id = rh.created_by
                 LEFT JOIN request_approves as ra
                 ON rh.request_header_id = ra.request_header_id
-                WHERE approve_status <> 3
+                WHERE ra.approve_status =1
             ");
         return  $query->result();
     }
@@ -57,9 +57,23 @@ class m_approve extends CI_Model
     	$this->db->where('request_approve_id',$id);
     	$this->db->update('request_approves',$data);
     }
+    public function revisied()
+    {
+        $post = $this->input->post();
+        $request_header_id = $post['request_header_id'];
+        $data['approve_status'] =1;
+
+        $this->db->where('request_header_id',$request_header_id);
+        $this->db->update('request_approves',$data);
+    }
     // public function delete($id){
 
     //     $this->db->where('request_header_id',$id);
     //     $this->db->delete('request_approves');
     // }
+
+    public function note($id){
+        $post = $this->input->post();
+        return $query = $this->db->get_where($this->_table,['request_header_id'=>$id])->row();
+    }
 }
