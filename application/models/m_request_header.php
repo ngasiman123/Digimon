@@ -1,6 +1,6 @@
 <?php
 
-class m_request_header extends CI_Model
+class M_request_header extends CI_Model
 {
     
     private $_table = "request_headers";

@@ -1,5 +1,5 @@
 <?php 
-    class m_zone extends CI_Model{
+    class M_zone extends CI_Model{
         protected $_table = "zones";
         public $zone_code;
         public $zone_name;

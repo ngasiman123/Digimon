@@ -1,6 +1,6 @@
 <?php
 
-class m_user extends CI_Model{
+class M_user extends CI_Model{
 	private $_table = "users";
 	public $id;
 	public $user_name;

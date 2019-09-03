@@ -1,6 +1,6 @@
 <?php
 
-class m_drawing extends CI_Model
+class M_drawing extends CI_Model
 {
     
     private $_table = "drawing_specs";

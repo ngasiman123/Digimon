@@ -1,6 +1,6 @@
 <?php
 
-class m_approve extends CI_Model
+class M_approve extends CI_Model
 {
     protected $_table = "request_approves";
     public $request_approve_id;

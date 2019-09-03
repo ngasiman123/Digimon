@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '127.0.0.1',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'db_digimon',
+	'hostname' => 'localhost',
+	'username' => 'shareitc_admin',
+	'password' => 'nawaitu11@',
+	'database' => 'shareitc_digimon',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

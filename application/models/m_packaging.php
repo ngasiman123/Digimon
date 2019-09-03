@@ -1,6 +1,6 @@
 <?php
 
-class m_packaging extends CI_Model
+class M_packaging extends CI_Model
 {
     
     private $_table = "packagings";

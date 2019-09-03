@@ -1,6 +1,6 @@
 <?php
 
-class m_receive extends CI_Model
+class M_receive extends CI_Model
 {
     protected $_table = "receives";
     public $receive_id;

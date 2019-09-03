@@ -1,6 +1,6 @@
 <?php
 
-class m_brand extends CI_Model
+class M_brand extends CI_Model
 {
     
     private $_table = "brands";

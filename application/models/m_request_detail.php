@@ -1,6 +1,6 @@
 <?php
 
-class m_request_detail extends CI_Model
+class M_request_detail extends CI_Model
 {
     
     private $_table = "request_details";

@@ -1,6 +1,6 @@
 <?php
 
-class m_bom extends CI_Model
+class M_bom extends CI_Model
 {
     protected $_table = "bill_of_materials";
     public $bom_id;

@@ -195,6 +195,7 @@ class Request extends CI_Controller
 
     }
 
+    /*
     public function print(){
 
         $data['header'] = "templates/v_header";
@@ -216,6 +217,7 @@ class Request extends CI_Controller
         $this->load->view('print/p_request', $data);
 
     }
+    */
 
 
 }
