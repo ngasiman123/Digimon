@@ -56,6 +56,12 @@ class M_request_header extends CI_Model
         return $query->row();
 
     }
+
+    public function headerDrawingJoin($header_id){
+        
+        return $query = $this->db->get_where($this->_table,['request_header_id'=>$header_id])->row();
+
+    }
     public function retrieveRequestBOM(){
 
         $query = $this->db->query("SELECT rh.*,ra.approve_by,ra.approve_date,u.user_name,c.name

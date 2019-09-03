@@ -19,13 +19,14 @@ class M_drawing extends CI_Model
 
     public function join_table()
     {
-		$query = $this->db->query("SELECT rd.request_detail_id, rh.request_no, rd.customer_info_no
+        $query = $this->db->query("SELECT rd.request_detail_id, rh.request_no, rd.customer_info_no
 		, rd.sakura_ref_no, rd.order_qty, c.name as customer_name
 		FROM request_details as rd 
 		LEFT JOIN request_headers as rh ON rh.request_header_id = rd.request_header_id
 		LEFT JOIN request_approves as ra ON rh.request_header_id = ra.request_header_id
 		LEFT JOIN customers as c ON c.customer_code = rh.customer_code
-		WHERE ra.approve_status = 3");
+		LEFT JOIN drawing_specs as ds ON ds.request_detail_id = rd.request_detail_id
+		WHERE ra.approve_status = 3 AND ds.drawing_spec_id is null");
         return  $query->result();
     }
 
@@ -80,12 +81,38 @@ class M_drawing extends CI_Model
         return  $query->result();
     }
 
+    public function drawingDetail($id)
+    {
+        return $query = $this->db->query("SELECT rd.*,rd.status as rd_status,ds.status as draw_status,ds.*
+                FROM request_details as rd
+                LEFT JOIN drawing_specs as ds
+                ON rd.request_detail_id = ds.request_detail_id
+                WHERE rd.request_detail_id = $id
+            ")->row();
+    }
+
     public function note($id){
         $post = $this->input->post();
         $query = $this->db->get_where($this->_table,['request_header_id',$id])->row();
 
         var_dump($query->approve_note);
         exit;
+    }
+
+    public function save()
+    {
+       $post =  $this->input->post();
+
+        $this->request_detail_id = $post['request_detail_id'];
+        $this->sakura_version_no = $post['sakura_version_no'];
+        $this->status = $post['status'];
+        $this->image = str_replace(" ","_",$_FILES['drawing_img']['name']);
+        $this->remark = $post['drawing_remark'];
+        $this->created_at = date('Y-m-d');
+        $this->created_by = $this->session->userdata('id');
+
+        $this->db->insert($this->_table,$this);
+
     }
 
 
