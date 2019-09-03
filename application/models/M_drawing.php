@@ -19,19 +19,13 @@ class M_drawing extends CI_Model
 
     public function join_table()
     {
-        $query = $this->db->query("SELECT ra.*,c.name,u.user_name,ra.approve_status,ra.approve_by,rh.*,us.user_name as name_approve,ra.approve_date
-                FROM request_approves as ra
-                LEFT JOIN request_headers as rh
-                ON ra.request_header_id = rh.request_header_id
-                LEFT JOIN users as u
-                ON u.id = ra.approve_by
-                LEFT JOIN users as us
-                ON ra.approve_by = us.id
-                LEFT JOIN customers as c
-                ON rh.customer_code = c.customer_code
-                WHERE ra.approve_status = 3
-                
-            ");
+		$query = $this->db->query("SELECT rd.request_detail_id, rh.request_no, rd.customer_info_no
+		, rd.sakura_ref_no, rd.order_qty, c.name as customer_name
+		FROM request_details as rd 
+		LEFT JOIN request_headers as rh ON rh.request_header_id = rd.request_header_id
+		LEFT JOIN request_approves as ra ON rh.request_header_id = ra.request_header_id
+		LEFT JOIN customers as c ON c.customer_code = rh.customer_code
+		WHERE ra.approve_status = 3");
         return  $query->result();
     }
 
