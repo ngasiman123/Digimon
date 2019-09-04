@@ -58,6 +58,8 @@ class Drawing extends CI_Controller
         if ($this->input->post('status')==1) {
             $drawing = $this->M_drawing;
             $res = $drawing->save();
+            $detail = $this->M_request_detail;
+            $res = $detail->updateRequest();
         }else{
             $detail = $this->M_request_detail;
             $res = $detail->updateRequest();

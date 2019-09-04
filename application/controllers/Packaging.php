@@ -5,9 +5,11 @@ class Packaging extends CI_Controller
     public function __construct(){
         parent::__construct();
 
-        $this->load->model('m_request_header');
-        $this->load->model('m_packaging');
-        $this->load->model('m_request_detail');
+        $this->load->model('M_request_header');
+        $this->load->model('M_packaging');
+        $this->load->model('M_request_detail');
+        $this->load->model('M_drawing');
+
 
         if($this->session->userdata('status') != 'login'){
                 redirect('auth');
@@ -22,7 +24,8 @@ class Packaging extends CI_Controller
         $data['footer'] = "templates/v_footer";
         $data['pluginjs'] = "templates/v_pluginjs";
         $data['body'] = "packaging/v_list_packaging";
-        $data['listRequest'] = $this->m_packaging->retrievePackagingJoin();
+        // $data['listRequest'] = $this->m_packaging->retrievePackagingJoin();
+        $data['listPackaging'] = $this->M_packaging->join_table();
         
         $this->load->view('v_home', $data);
     }
@@ -36,22 +39,57 @@ class Packaging extends CI_Controller
         $data['body'] = "packaging/v_detail_packaging";
 
         $id = $this->uri->segment(3);
-
-        $request_header = $this->m_request_header;
-        $data['res'] = $request_header->retrieveRequestHeaderJoin($id);
-
-        $packaging = $this->m_packaging;
-        $data['listDetail'] = $packaging->retrievePackagingDetail($id);
-        $data['no'] =1;
-
+        $packaging = $this->M_packaging;
+        $data['drawing_spec_id'] =$id;
+        $data['res'] = $packaging->packagingDetail($id);
+        // var_dump($data['res']);
+        // exit;
+        // $request_header = $this->m_request_header;
+        // $data['res'] = $request_header->retrieveRequestHeaderJoin($id);
 
         // $packaging = $this->m_packaging;
-        // $req_detail = $this->m_request_detail;
-        // $data['res'] = $packaging->retrievePackagingHeader($id);
-        // $data['listDetail'] = $req_detail->retrieveRequestDetailId($id);
-        
-        $data['no']=1;
+        // $data['listDetail'] = $packaging->retrievePackagingDetail($id);
         $this->load->view('v_home', $data);
+    }
+    public function save(){
+
+        $config['upload_path']          = './uploads/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        $config['max_size']             = '0';
+
+        $this->load->library('upload');
+        $this->upload->initialize($config);
+        $this->upload->do_upload('pack_img');
+        $image_data = $this->upload->data();
+
+
+        if ($this->input->post('status')==1) {
+
+            $packaging = $this->M_packaging;
+            $result = $packaging->save();
+            $drawing = $this->M_drawing;
+            $res = $drawing->updateStatus();
+            
+        }else{
+
+            $drawing = $this->M_drawing;
+            $res = $drawing->updateStatus();
+        }
+
+        if ($res){
+            $this->session->set_flashdata("msg", "<div class='alert alert-danger' role='alert'>
+            <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+            <strong>Warning!</strong> Failed saved.
+            </div>");
+            redirect('Packaging');
+        }else{
+            $this->session->set_flashdata("msg", "<div class='alert alert-info' role='alert'>
+            <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+            <strong>Information!</strong> Data has been saved. 
+            </div>");
+            redirect('Packaging');
+        }
+
     }
     public function updaterow(){
 

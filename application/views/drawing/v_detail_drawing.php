@@ -8,7 +8,7 @@
 						<div class="panel-body">
 							<input type="hidden" name="request_detail_id" value="<?= $request_id ?>">
 							<label>Customer No Info</label>
-							<input type="text" class="form-control" name="sakura_no_info" value="<?= $res->customer_info_no ?>" readonly>
+							<input type="text" class="form-control" name="cusomter_no_info" value="<?= $res->customer_info_no ?>" readonly>
 							<label>Sakura No Reff</label>
 							<input type="text" class="form-control" name="sakura_no_reff" value="<?= $res->sakura_ref_no ?>" readonly>
 							<label>Manufacture</label>
@@ -35,10 +35,10 @@
 					            <div class="mt-2">
                                     <img id="blah" class="img-thumbnail" src="#" alt="your image" width="200" height="200" />
                                 </div>
-                                <label>Drawing Remark</label>
-								<input type="text" class="form-control" name="drawing_remark" autocomplete="off">
 					         </div>
-							
+
+							<label>Drawing Remark</label>
+								<input type="text" class="form-control" name="drawing_remark" value="<?= $res->rd_remark ?>" autocomplete="off">
 							<br/>
 							<button type="submit" class="btn btn-primary">Save</button>
 							<a href="<?php echo base_url();?>Drawing"  class="btn btn-danger">

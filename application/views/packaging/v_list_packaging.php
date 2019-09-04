@@ -1,6 +1,3 @@
-<?php
-
-?>
 <div class="row">
     <div class="col-lg-12 grid-margin">
         <div class="card">
@@ -12,41 +9,32 @@
                             <thead>
                                 <tr>
                                     <th>Request No</th>
+                                    <th>Customer Info No</th>
+                                    <th>Sakura Ref No</th>
                                     <th>Customer Name</th>
-                                    <th>Customer PO No</th>
                                     <th>Created By</th>
                                     <th>Created At</th>
-                                    <th>Sales</th>
+                                    <!-- <th>Sales</th> -->
+                                    <th>Order Qty</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($listRequest as $row) { ?>
+                                <?php foreach ($listPackaging as $row) { ?>
                                 <tr>
-                                    <td><?= $row->request_no  ?></td>
-                                    <td><?= $row->name  ?></td>
-                                    <td><?= $row->po_number_customer  ?></td>
-                                    <td><?= $row->user_name  ?></td>
-                                    <td><?= date('d-M-Y',strtotime($row->created_at))?></td>
-                                    <td><?= $row->sales  ?>
-                                        <td>
-                                        <a href="<?php echo base_url();?>Packaging/detail/<?= $row->request_header_id ?>">Detail</a>
+                                    <td><?= $row->request_no; ?></td>
+                                    <td><?= $row->customer_info_no; ?></td>
+                                    <td><?= $row->sakura_ref_no; ?></td>
+                                    <td><?= $row->c_name; ?></td>
+                                    <td><?= $row->user_name; ?></td>
+                                    <td><?= date('d-M-Y',strtotime($row->created_at)); ?></td>
+                                    <!-- <td><?= $row->created_by; ?></td> -->
+                                    <td><?= $row->order_qty; ?></td>
+                                     <td>
+                                        <a href="<?php echo base_url();?>Packaging/detail/<?= $row->drawing_spec_id; ?>">Detail</a>
                                     </td>
-                                    </td>
-
                                 </tr>
                                 <?php } ?>
-                                <!-- <tr>
-                                    <td>RQM000001</td>
-                                    <td>Allied (M) Filtration Solution Nc</td>
-                                    <td>PO no: A-20190823-125</td>
-                                    <td>Nurahman_1</td>
-                                    <td>25-Aug-2019</td>
-                                    <td>Lavinia_j</td>
-                                    <td>
-                                        <a href="<?php echo base_url();?>index.php/Packaging/detail">Detail</a>
-                                    </td>
-                                </tr> -->
                             </tbody>
                         </table>
                     </div>

@@ -11,6 +11,8 @@ class M_request_detail extends CI_Model
     public $manufacture_code;
     public $order_qty;
     public $item_images;
+    public $status;
+    public $remark;
 
     public function retriveRequestDetail(){
         $query = $this->db->query('SELECT request_no,request_header_id,customer_code, request_date, po_number_customer FROM request_header WHERE deleted_at IS NULL order by request_no');
@@ -102,8 +104,18 @@ class M_request_detail extends CI_Model
 
     public function updateRequest()
     {
-        $id = $this->input->post('request_detail_id');
-        $data['status'] = 1;
+        $post = $this->input->post();
+
+        $id = $post['request_detail_id'];
+        if ($post['status']==0) {
+
+            $data['status'] = 1;
+            $data['remark'] = $post['drawing_remark'];
+
+        }else{
+            $data['status'] = 2;
+            $data['remark'] = $post['drawing_remark'];
+        }
 
         $this->db->where('request_detail_id',$id);
         $this->db->update($this->_table,$data);
