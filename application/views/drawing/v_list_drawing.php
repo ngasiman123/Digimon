@@ -16,6 +16,7 @@
                                     <th>Created At</th>
                                     <th>Sales</th>
                                     <th>Order Qty</th>
+                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -30,6 +31,13 @@
                                     <td><?= $row->user_name ?></td>
                                     <td><?= $row->sales ?></td>
                                     <td><?= $row->order_qty; ?></td>
+                                    <td>
+                                        <?php if ($row->rd_status == 1) {
+                                            echo "Peding";
+                                        }elseif($row->rd_status==null){
+                                            echo "New";
+                                        } ?>
+                                    </td>
                                      <td>
                                         <a href="<?php echo base_url();?>drawing/detail/<?= $row->request_detail_id; ?>">Detail</a>
                                     </td>
