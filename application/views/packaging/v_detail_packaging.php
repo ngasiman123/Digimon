@@ -39,7 +39,12 @@
 					            <input type="text" name="outter_box" value="" class="form-control" autocomplete="off">
 					         </div>
 					         <label>Packaging Remark</label>
-								<input type="text" class="form-control" name="packaging_remark" value="<?= $res->ds_remark ?>" autocomplete="off">
+					         <?php if ($res->ds_status == null) { ?>
+					         	<input type="text" class="form-control" name="packaging_remark" value=" " autocomplete="off">
+					        <?php }else{ ?>
+					        	<input type="text" class="form-control" name="packaging_remark" value="<?= $res->ds_remark ?>" autocomplete="off">
+					    	<?php } ?>
+								
 							
 							<br/>
 							<button type="submit" class="btn btn-primary">Save</button>
