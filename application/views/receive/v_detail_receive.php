@@ -1,88 +1,33 @@
-<form action="<?= base_url() ?>/Receive/confirm" method="POST">
-    <div class="row">
-        <div class="col-lg-12 grid-margin">
-            <div class="card">
-                <div class="card-heading mt-3 mx-auto"><b> Request Header</b></div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-lg-2"><label>Request No :</label></div>
-                        <div class="col-lg-2"><input type="text" readonly class="form-control" value="<?= $res->request_no  ?>"></div>
-                        <div class="col-lg-2"></div>
-                        <div class="col-lg-2"></div>
-                        <div class="col-lg-2"><label>Request Date :</label></div>
-                        <div class="col-lg-2"><input type="text" readonly class="form-control" value="<?= date('d-M-Y',strtotime($res->request_date));  ?>"></div>
-                    </div><br>
-                    <div class="row">
-                        <div class="col-lg-2"><Label>Customer :</Label></div>
-                        <div class="col-lg-2"><input type="text" readonly class="form-control" value="<?= $res->customer_code ?>"></div>
-                        <div class="col-lg-2"></div>
-                        <div class="col-lg-2"></div>
-                        <div class="col-lg-2"><label>Po No Customer</label></div>
-                        <div class="col-lg-2"><input class="form-control" type="text" name="customer_po_no" readonly value="<?= $res->po_number_customer ?>" ></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-12 grid-margin">
-            <div class="card">
-                <div class="card-heading mt-3 mx-auto"><b>Detail Items</b></div>
-                <div class="card-body">
-                <table class="table table-bordered table-bordered">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Customer No Info</th>
-                                <th>Sakura No Version</th>
-                                <th>Brand</th>
-                                <th>Created Master At</th>
-                                <th>Movex Filter Master</th>
-                                <th>SAP Filter Master</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($listDetail as $row) { ?>
-                            <tr>
-                                <td><?= $no++ ?></td>
-                                <td><?= $row->customer_info_no ?></td>
-                                <td><?= $row->sakura_version_no ?></td>
-                                <td><?= $row->brand_code ?></td>
-                                <td><?= date('d-M-Y',strtotime($row->bom_created_at)) ?></td>
-                                <td><?= $row->movex_filter_master ?></td>
-                                <td><?= $row->sap_filter_master ?></td>
-                            </tr>
-                            <?php } ?>
-                            <!-- <tr>
-                                <td>1</td>
-                                <td>1111.1111</td>
-                                <td>C-1123-V23</td>
-                                <td>CLS</td>
-                                <td>25-Aug-2019</td>
-                                <td>1111.1111   UF</td>
-                                <td>EUF1-CLS1-C-1123-V23</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>2222.1111</td>
-                                <td>C-2223-V23A</td>
-                                <td>CLS</td>
-                                <td>25-Aug-2019</td>
-                                <td>2222.1111    TF</td>
-                                <td>EUF1-CLS1-C-2223-V23A</td>
-                            </tr> -->
-                        </tbody>
-                    </table>
-                    <br><br>
-                        <?php foreach ($listDetail as $row): ?>
-                            <input type="hidden" name="bom_id[]" value="<?= $row->bom_id ?>">    
-                        <?php endforeach ?>
-                        <button  type="submit" class="btn btn-success">Confirm</button>
-                    
-                    <a href="<?= base_url(); ?>index.php/receive" class="btn btn-info ml-1" style="float:right;" type="close">Back</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</form>
+<div class="row">
+	<div class="col-lg-12 grid-margin">
+		<div class="card">
+			<div class="card-body">
+				<form method="post" action="<?php echo base_url();?>Receive/confirm" >
+					<div class="panel panel-default">
+						<div class="panel-heading">Receive</div>
+						<div class="panel-body">
+							<input type="hidden" name="bom_id" value="<?= $bom_id ?>" >
+							<label>Customer No Info</label>
+							<input type="text" class="form-control" name="cusomter_no_info" value="<?= $res->customer_info_no ?>" readonly>
+							<label>Sakura No Info</label>
+							<input type="text" class="form-control" name="sakura_version_no" value="<?= $res->sakura_version_no ?>" readonly>
+							<label>Sakura No Version</label>
+							<input type="text" class="form-control" name="sakura_version_no" value="<?= $res->sakura_version_no ?>" readonly>
+							<label>Brand</label>
+							<input type="text" name="brand" value="<?= $res->brand_code ?>" class="form-control" readonly>
+							<label>Movex Filter Master</label>
+							<input type="text" name="brand" value="<?= $res->movex_filter_master ?>" class="form-control" readonly>
+							<label>Sap Filter Master</label>
+							<input type="text" name="brand" value="<?= $res->sap_filter_master ?>" class="form-control" readonly>
+							<br/>
+							<button type="submit" class="btn btn-success">Confirm</button>
+							<a href="<?php echo base_url();?>Packaging"  class="btn btn-danger">
+								Cancel
+							</a>
+						</div>
+					</div>
+				</form>			
+			</div>
+		</div>		
+	</div>
+</div>

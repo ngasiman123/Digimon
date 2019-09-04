@@ -10,12 +10,12 @@
                                 <tr>
                                     <th>Request No</th>
                                     <th>Customer Info No</th>
-                                    <th>Sakura Ref No</th>
+                                    <!-- <th>Sakura Ref No</th> -->
                                     <th>Customer Name</th>
                                     <th>Created By</th>
                                     <th>Created At</th>
                                     <th>Sales</th>
-                                    <th>Order Qty</th>
+                                    <!-- <th>Order Qty</th> -->
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -25,12 +25,12 @@
                                 <tr>
                                     <td><?= $row->request_no; ?></td>
                                     <td><?= $row->customer_info_no; ?></td>
-                                    <td><?= $row->sakura_ref_no; ?></td>
+                                    <!-- <td><?= $row->sakura_ref_no; ?></td> -->
                                     <td><?= $row->customer_name; ?></td>
                                     <td><?= date('d-M-Y',strtotime($row->rh_created_at)) ?></td>
                                     <td><?= $row->user_name ?></td>
                                     <td><?= $row->sales ?></td>
-                                    <td><?= $row->order_qty; ?></td>
+                                    <!-- <td><?= $row->order_qty; ?></td> -->
                                     <td>
                                         <?php if ($row->rd_status == 1) {
                                             echo "Peding";

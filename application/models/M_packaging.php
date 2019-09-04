@@ -20,7 +20,7 @@ class M_packaging extends CI_Model
 
     public function join_table()
     {
-        return $query = $this->db->query("SELECT ds.*,rd.*,rh.*,c.name as c_name,u.user_name
+        return $query = $this->db->query("SELECT ds.*,rd.*,rh.*,c.name as c_name,u.user_name,ds.status as ds_status
                 FROM drawing_specs as ds
                 LEFT JOIN request_details as rd ON ds.request_detail_id = rd.request_detail_id
                 LEFT JOIN request_headers as rh ON rd.request_header_id = rh.request_header_id
@@ -50,12 +50,32 @@ class M_packaging extends CI_Model
         $this->outter_box_spec = $post['outter_box'];
         // $this->status = $post['status'];
         $this->image = $_FILES['pack_img']['name'];
-        $this->remark = $post['packaging_remark'];
+        // $this->remark = $post['packaging_remark'];
         $this->created_at = date('Y-m-d');
         $this->created_by = $this->session->userdata('id');
         $this->db->insert($this->_table,$this);
 
     }
+
+    public function updateStatus()
+    {
+        $post = $this->input->post();
+
+        $id = $post['packaging_id'];
+        if ($post['status']==0) {
+
+            $data['status'] = 1;
+            $data['remark'] = $post['bom_remark'];
+
+        }else{
+            $data['status'] = 2;
+            $data['remark'] = $post['bom_remark'];
+        }
+
+        $this->db->where('packaging_id',$id);
+        $this->db->update($this->_table,$data);
+    }
+
     public function retrievePackagingJoin(){
 
         $query = $this->db->query("SELECT rh.*,c.name,u.user_name,ra.approve_status,ra.approve_note,s.user_name as sales

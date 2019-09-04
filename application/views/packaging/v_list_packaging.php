@@ -10,12 +10,13 @@
                                 <tr>
                                     <th>Request No</th>
                                     <th>Customer Info No</th>
-                                    <th>Sakura Ref No</th>
+                                    <!-- <th>Sakura Ref No</th> -->
                                     <th>Customer Name</th>
                                     <th>Created By</th>
                                     <th>Created At</th>
-                                    <!-- <th>Sales</th> -->
-                                    <th>Order Qty</th>
+                                    <th>Sales</th>
+                                    <!-- <th>Order Qty</th> -->
+                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -24,12 +25,18 @@
                                 <tr>
                                     <td><?= $row->request_no; ?></td>
                                     <td><?= $row->customer_info_no; ?></td>
-                                    <td><?= $row->sakura_ref_no; ?></td>
+                                    <!-- <td><?= $row->sakura_ref_no; ?></td> -->
                                     <td><?= $row->c_name; ?></td>
                                     <td><?= $row->user_name; ?></td>
                                     <td><?= date('d-M-Y',strtotime($row->created_at)); ?></td>
-                                    <!-- <td><?= $row->created_by; ?></td> -->
-                                    <td><?= $row->order_qty; ?></td>
+                                    <td><?= $row->user_name; ?></td>
+                                    <td>
+                                    <?php if ($row->ds_status == null) {
+                                        echo "New";
+                                    }elseif($row->ds_status==1){
+                                        echo "Pending";
+                                    } ?>
+                                    </td>
                                      <td>
                                         <a href="<?php echo base_url();?>Packaging/detail/<?= $row->drawing_spec_id; ?>">Detail</a>
                                     </td>
