@@ -7,6 +7,7 @@ class dashboard extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('M_request_header');
+        $this->load->model('M_request_detail');
         $this->load->model('M_approve');
         $this->load->model('M_drawing');
         $this->load->model('M_packaging');
@@ -30,6 +31,7 @@ class dashboard extends CI_Controller {
         $data['itemApprove'] = $this->M_approve->join_table();
         $data['itemDrawing'] = $this->M_drawing->join_table();
         $data['itemPackaging'] = $this->M_packaging->join_table();
+        $data['listDashboard'] = $this->M_request_detail->retrieveDashboard();
 
 
         $this->load->view('v_home',$data);

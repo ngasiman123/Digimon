@@ -22,8 +22,39 @@ class M_request_detail extends CI_Model
     public function retrieveRequestDetailId($request_header_id)
     {
         return $this->db->get_where($this->_table, ["request_header_id" => $request_header_id])->result();
-
+    }
+    
+    public function retrieveDashboard(){
+        $query = "SELECT rh.request_no, rd.customer_info_no , c.name AS customer_name, u.user_name AS created_by
+                    , CASE WHEN ra.approve_status IS NULL THEN 'NEW'
+	                    WHEN ra.approve_status = 0 THEN 'REJECT'
+	                    WHEN ra.approve_status = 3 THEN 'APPROVED'
+                        WHEN ra.approve_status = 2 THEN 'REVISI' ELSE 'UNDEFINED' END 'request_status'
+                    , CASE WHEN ds.status IS NULL THEN 'NOT YET'
+	                    WHEN ds.status = 1 THEN 'PENDING'
+                        WHEN ds.status = 2 THEN 'OK' ELSE 'UNDEFINED' END 'drawing_spec_status'
+                    , CASE WHEN p.status IS NULL THEN 'NOT YET'
+                    	WHEN p.status = 1 THEN 'PENDING'
+                        WHEN p.status = 2 THEN 'OK' ELSE 'UNDEFINED' END 'packaging_status'
+                    , CASE WHEN b.status IS NULL THEN 'NOT YET'
+                    	WHEN b.status = 1 THEN 'PENDING'
+                        WHEN b.status = 2 THEN 'OK' ELSE 'UNDEFINED' END 'bom_status'
+                    , CASE WHEN r.status IS NULL THEN 'NOT YET'
+                    	WHEN r.status = 1 THEN 'PENDING'
+                        WHEN r.status = 2 THEN 'OK' ELSE 'UNDEFINED' END 'receive_status'
+                    FROM request_details AS rd 
+                    INNER JOIN request_headers AS rh ON rh.request_header_id = rd.request_header_id
+                    LEFT JOIN request_approves AS ra ON ra.request_header_id = rh.request_header_id
+                    LEFT JOIN drawing_specs AS ds ON ds.request_detail_id = rd.request_detail_id
+                    LEFT JOIN packagings AS p ON p.drawing_spec_id = ds.drawing_spec_id
+                    LEFT JOIN bill_of_materials AS b ON b.packaging_id = p.packaging_id
+                    LEFT JOIN receives AS r ON r.bom_id = b.bom_id
+                    LEFT JOIN customers AS c ON c.customer_code = rh.customer_code
+                    LEFT JOIN users AS u ON u.id = rh.created_by
+                    WHERE rh.deleted_at IS NULL";
         
+        $sql = $this->db->query($query);
+        return $sql->result();
     }
 
     public function saveDetail(){
