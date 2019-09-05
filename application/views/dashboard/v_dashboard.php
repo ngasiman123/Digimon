@@ -9,7 +9,7 @@
 			<div class="float-right">
 				<p class="mb-0 text-right">Item Request</p>
 				<div class="fluid-container">
-				<h3 class="font-weight-medium text-right mb-0">0</h3>
+				<h3 class="font-weight-medium text-right mb-0"><?= count($itemRequest); ?></h3>
 				</div>
 			</div>
 			</div>
@@ -26,7 +26,7 @@
 			<div class="float-right">
 				<p class="mb-0 text-right">Item Request Approve</p>
 				<div class="fluid-container">
-				<h3 class="font-weight-medium text-right mb-0">0</h3>
+				<h3 class="font-weight-medium text-right mb-0"><?= count($itemApprove); ?></h3>
 				</div>
 			</div>
 			</div>
@@ -43,7 +43,7 @@
 			<div class="float-right">
 				<p class="mb-0 text-right">Drawing Spec</p>
 				<div class="fluid-container">
-				<h3 class="font-weight-medium text-right mb-0">0</h3>
+				<h3 class="font-weight-medium text-right mb-0"><?= count($itemDrawing) ?></h3>
 				</div>
 			</div>
 			</div>
@@ -60,7 +60,7 @@
 			<div class="float-right">
 				<p class="mb-0 text-right">Packaging</p>
 				<div class="fluid-container">
-				<h3 class="font-weight-medium text-right mb-0">0</h3>
+				<h3 class="font-weight-medium text-right mb-0"><?= count($itemPackaging) ?></h3>
 				</div>
 			</div>
 			</div>
