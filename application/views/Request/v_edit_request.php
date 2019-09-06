@@ -96,7 +96,7 @@
                                     </select>
                                 </td>
                                 <td><input class="form-control" type="number" name="order_qty[]" value="<?= $row->order_qty ?>"></td>
-                                <td><input class="form-control" type="file"></td>
+                                <td><input class="form-control" type="file"><?= $row->item_images ?></td>
                                 <td><a href="<?php echo base_url().'request/deleterow/'.$row->request_detail_id ?>" class="btn btn-danger">-</a></td>
                             </tr>
                         <?php } ?>
@@ -109,7 +109,7 @@
                     <br>
                     <a href="<?= base_url(); ?>request" class="btn btn-danger ml-1" style="float:right;">Cancel</a>
                     <button type="submit" class="btn btn-info ml-1" style="float:right;" type="submit">Submit</button>
-                    <a href="<?= base_url() ?>request/print/<?= $res->request_header_id  ?>" class="btn btn-warning" style="float:right;" type="reset">Print</a>
+                    <a href="<?= base_url() ?>request/printRequest/<?= $res->request_header_id  ?>" class="btn btn-warning" style="float:right;" type="reset">Print</a>
                 </div>
             </div>
         </div>

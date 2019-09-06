@@ -10,7 +10,7 @@
                     </div>
                     <div class="panel-body">
                         <label>Zone Code:</label>
-                        <input class="form-control" type="text" name="zone_code" maxlength="4" required autocomplete="off">
+                        <input class="form-control" type="text" name="zone_code" readonly value="<?php echo $codeZone; ?>">
                         <label>Zone Name:</label>
                         <input class="form-control" type="text" name="zone_name" required autocomplete="off">
                         <br>

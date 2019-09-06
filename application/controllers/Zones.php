@@ -30,6 +30,7 @@
             $data['footer'] = "templates/v_footer";
             $data['pluginjs'] = "templates/v_pluginjs";
             $data['body'] = "zones/v_add_zone";
+            $data['codeZone'] = $this->m_zone->kode();
 
             $this->load->view('v_home', $data);
         }

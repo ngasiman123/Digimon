@@ -34,6 +34,25 @@ class M_customer extends CI_Model
 
 		return $this->db->get('zones')->result_array();
 	}
+	
+	public function kode(){
+        $this->db->select('RIGHT(customers.customer_code,2) as customer_code', FALSE);
+        $this->db->order_by('customer_code','DESC');    
+        $this->db->limit(1);    
+        $query = $this->db->get('customers');  //cek dulu apakah ada sudah ada kode di tabel.    
+        if($query->num_rows() <> 0){      
+           //cek kode jika telah tersedia    
+           $data = $query->row();      
+           $kode = intval($data->customer_code) + 1; 
+        }
+        else{      
+           $kode = 1;  //cek jika kode belum terdapat pada table
+        }
+        
+        $batas = str_pad($kode, 3, "0", STR_PAD_LEFT);    
+        $kodetampil = "CS".$batas;  //format kode
+        return $kodetampil;  
+    }
 
     public function save(){
         $post = $this->input->post();

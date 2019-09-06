@@ -32,6 +32,7 @@ class customers extends CI_Controller
         $data['pluginjs'] = "templates/v_pluginjs";
         $data['body'] = "customers/v_add_customer";
         $data['listZone'] = $this->m_customer->retrieveZone();
+        $data['codeCustomer'] = $this->m_customer->kode();
 
         $this->load->view('v_home', $data);
     }

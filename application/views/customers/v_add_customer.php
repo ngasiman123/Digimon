@@ -9,7 +9,7 @@
                         </div>
                         <div class="panel-body">
                             <label>Customer Code:</label>
-                            <input type="text" name="customer_code" class="form-control" maxlength="6" required autocomplete="off">
+                            <input type="text" name="customer_code" class="form-control" maxlength="6" readonly value="<?php echo $codeCustomer; ?>">
                             <label>Customer Name:</label>
                             <input type="text" name="name" class="form-control" required autocomplete="off">  
                             <label>Address:</label>
