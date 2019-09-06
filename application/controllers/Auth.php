@@ -76,7 +76,7 @@ class Auth extends CI_controller
                 'Masters' => [
                     'Manufactures', 'Brands', 'Warehouses'
                 ],
-                'Transaction' => ['BOM'],
+                'Transaction' => ['Bom'],
                 'Report' => [0]
             ];
 
@@ -91,7 +91,7 @@ class Auth extends CI_controller
                     'Users','Manufactures','Brands','Warehouses','Customers','Zones'
                 ],
                 'Transaction' => [
-                    'Request', 'approves','Drawing','Packaging','BOM','Receive'
+                    'Request', 'approves','Drawing','Packaging','Bom','Receive'
                 ],
                 'Report' => [1]
 
