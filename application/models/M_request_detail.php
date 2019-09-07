@@ -25,7 +25,7 @@ class M_request_detail extends CI_Model
     }
     
     public function retrieveDashboard(){
-        $query = "SELECT rh.request_no, rd.customer_info_no , c.name AS customer_name, u.name AS created_by
+        $query = "SELECT rh.request_no, rd.customer_info_no , c.name AS customer_name, u.name AS created_by,us.name AS approve_by
                     , CASE WHEN ra.approve_status IS NULL THEN 'New'
 	                    WHEN ra.approve_status = 0 THEN 'Reject'
 	                    WHEN ra.approve_status = 3 THEN 'Approved'
@@ -48,6 +48,7 @@ class M_request_detail extends CI_Model
                     LEFT JOIN receives AS r ON r.bom_id = b.bom_id
                     LEFT JOIN customers AS c ON c.customer_code = rh.customer_code
                     LEFT JOIN users AS u ON u.id = rh.created_by
+					LEFT JOIN users as us ON us.id = ra.approve_by
                     WHERE rh.deleted_at IS NULL AND r.status < 2 ORDER BY rh.request_header_id DESC";
         
         $sql = $this->db->query($query);

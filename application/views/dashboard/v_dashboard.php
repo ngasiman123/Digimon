@@ -118,7 +118,7 @@
 						<td><?= $row->drawing_spec_status; ?></td>
 						<td><?= $row->packaging_status; ?></td>
 						<td><?= $row->bom_status; ?></td>
-						<td><?= $row->receive_status; ?></td>
+						<td><?= $row->approve_by; ?></td>
 					</tr>
                     <?php } ?>
 					</tbody>
