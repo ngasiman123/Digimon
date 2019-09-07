@@ -48,7 +48,7 @@ class M_request_detail extends CI_Model
                     LEFT JOIN receives AS r ON r.bom_id = b.bom_id
                     LEFT JOIN customers AS c ON c.customer_code = rh.customer_code
                     LEFT JOIN users AS u ON u.id = rh.created_by
-                    WHERE rh.deleted_at IS NULL AND r.status < 2";
+                    WHERE rh.deleted_at IS NULL AND r.status < 2 ORDER BY rh.request_header_id DESC";
         
         $sql = $this->db->query($query);
         return $sql->result();

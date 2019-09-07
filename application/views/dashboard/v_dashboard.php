@@ -75,7 +75,7 @@
 			<div class="card-body">
 				<h4 class="card-title">Item Request</h4>
 				<div class="table-responsive">
-				<table class="table table-bordered">
+				<table class="table table-bordered" id="dtdashboard">
 					<thead>
 					<tr>
 						<th>
@@ -128,3 +128,12 @@
 		</div>
 	</div>
 </div>
+
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dataTables.bootstrap.css">
+<script src="<?php echo base_url(); ?>assets/js/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/dataTables.bootstrap.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$("#dtdashboard").DataTable();
+	});
+</script>
