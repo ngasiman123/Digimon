@@ -36,21 +36,35 @@
         }
 
         public function Save(){
-            $brand = $this->m_brand;
-            $res = $brand->save();
 
-            if ($res){
+            $query = $this->db->get_where('brands',['brand_code'=>$this->input->post('brand_code')])->row();
+
+            if (count($query) > 0 ) {
+                
                 $this->session->set_flashdata("msg", "<div class='alert alert-danger' role='alert'>
                 <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-                <strong>Warning!</strong> Failed saved.
+                <strong>Warning!</strong> This brand code is already exists !.
                 </div>");
-                redirect("index.php/brands");
+                redirect("Brands");
+
             }else{
-                $this->session->set_flashdata("msg", "<div class='alert alert-info' role='alert'>
-                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-                <strong>Information!</strong> Data has been saved. 
-                </div>");
-                redirect("index.php/brands");
+
+                $brand = $this->m_brand;
+                $res = $brand->save();
+
+                if ($res){
+                    $this->session->set_flashdata("msg", "<div class='alert alert-danger' role='alert'>
+                    <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                    <strong>Warning!</strong> Failed saved.
+                    </div>");
+                    redirect("Brands");
+                }else{
+                    $this->session->set_flashdata("msg", "<div class='alert alert-info' role='alert'>
+                    <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                    <strong>Information!</strong> Data has been saved. 
+                    </div>");
+                    redirect("Brands");
+                }
             }            
         }
 

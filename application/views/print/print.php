@@ -43,7 +43,7 @@
                                 <th>Warehouse</th>
                                 <th>Brand</th>
                                 <th>Order Qty</th>
-                                <th>Image Ref</th>
+                               <!--  <th>Image Ref</th> -->
                                 <!-- <th>Action</th> -->
                             </tr>
                         </thead>
@@ -65,7 +65,6 @@
                                     <?= $row->brand_code ?>
                                 </td>
                                 <td><?= $row->order_qty ?></td>
-                                <td><!-- <input class="form-control" type="file"> --></td>
                                 <!-- <td><a href="<?php echo base_url().'request/deleterow/'.$row->request_detail_id ?>" class="btn btn-danger">-</a></td> -->
                             </tr>
                         <?php } ?>

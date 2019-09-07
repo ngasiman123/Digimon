@@ -27,7 +27,7 @@ class M_customer extends CI_Model
 
     public function retrieveCustomerGet()
     {
-        return $this->db->get('customers')->result();
+        return $query =  $this->db->query("SELECT * FROM customers WHERE deleted_at IS null ")->result();
     }
 
     public function retrieveZone(){

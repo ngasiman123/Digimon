@@ -1,5 +1,5 @@
 <?php 
-echo $this->session->flashdata("msg");
+    echo $this->session->flashdata("msg");
 ?>
 
 <div class="row">
@@ -11,7 +11,7 @@ echo $this->session->flashdata("msg");
                         <h3>Manufactures</h3>
                     </div>
                     <div class="panel-body">
-                    <a href="<?php echo base_url(); ?>index.php/manufactures/add" class="btn btn-info">ADD</a>
+                    <a href="<?php echo base_url(); ?>Manufactures/add" class="btn btn-info">ADD</a>
                     <br/><br/>
                         <table id="dtmanufacture" class="table table-bordered table-hover">
                             <thead>
@@ -27,8 +27,8 @@ echo $this->session->flashdata("msg");
                                     <td><?= $row->manufacture_code; ?></td>
                                     <td><?= $row->manufacture_name; ?></td>
                                     <td>
-                                        <a href="<?php echo base_url(); ?>index.php/Manufactures/edit/<?php echo $row->manufacture_code; ?>">Edit</a> | 
-                                        <a href="<?php echo base_url(); ?>index.php/Manufactures/delete/<?php echo $row->manufacture_code; ?>">Delete</a>
+                                        <a href="<?php echo base_url(); ?>Manufactures/edit/<?php echo $row->manufacture_code; ?>">Edit</a> | 
+                                        <a href="<?php echo base_url(); ?>Manufactures/delete/<?php echo $row->manufacture_code; ?>">Delete</a>
                                     </td>
                                 </tr>
                                 <?php endforeach; ?>

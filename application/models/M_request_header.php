@@ -153,6 +153,18 @@ class M_request_header extends CI_Model
 
     }
 
+    public function noRequest()
+    {
+        $tanggal = date('dmy');
+        return $query = $this->db->query("SELECT max(request_no) as last  FROM request_headers WHERE request_no LIKE '$tanggal%' ")->row();
+        $noRequest = $query->last;
+        $noUrut = substr($noRequest, 8,4);
+        $noRequestUrut = $noUrut +1;
+        $requestNo = $tanggal.sprintf('%04s',$noRequestUrut);
+        var_dump($tanggal);
+        exit;
+    }
+
 }
 
 

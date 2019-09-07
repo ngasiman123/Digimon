@@ -2,7 +2,7 @@
     <div class="col-lg-12 grid-margin">
         <div class="card">
             <div class="card-body">
-                <form action="<?= base_url(); ?>index.php/manufactures/save" method="post">
+                <form action="<?= base_url(); ?>Manufactures/save" method="post">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h3>Add Manufactures</h3>
@@ -14,7 +14,7 @@
                             <input type="text" name="manufacture_name" class="form-control" required autocomplete="off">  
                             <br>  
                             <button type="submit" class="btn btn-primary">Save</button>
-                            <a href="<?= base_url(); ?>index.php/manufacture" class="btn btn-danger">Cancel</a>
+                            <a href="<?= base_url(); ?>Manufactures" class="btn btn-danger">Cancel</a>
                         </div>
                     </div>
                 </form>

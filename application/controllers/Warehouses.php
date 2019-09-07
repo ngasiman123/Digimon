@@ -37,23 +37,35 @@ class warehouses extends CI_Controller
     }
 
     public function Save(){
-        $warehouse = $this->m_warehouse;
-        $res = $warehouse->Save();
 
-        if ($res) {
-            $this->session->flashdata("msg", 
-            "<div class='alert alert-danger' role='alert'>
-                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-                <b>Warning !</b> Failed Saved.
-            </div>");
-            redirect("index.php/warehouses");
-        } else {
-            $this->session->flashdata("msg", 
-            "<div class='alert alert-info' role='alert'>
-                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-                <b>Information!</b> Data has been Saved.
-            </div>");
-            redirect("index.php/warehouses");
+        $query = $this->db->get_where('warehouses',['warehouse_code'=>$this->input->post('warehouse_code')])->row();
+        if (count($query) > 0) {
+            
+             $this->session->set_flashdata("msg", "<div class='alert alert-danger' role='alert'>
+                    <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                    <strong>Warning!</strong> This data is already exists !.
+                    </div>");
+                    redirect("Warehouses");
+
+        }else{
+
+            $warehouse = $this->m_warehouse;
+            $res = $warehouse->Save();
+
+            if ($res) {
+                $this->session->set_flashdata("msg", "<div class='alert alert-danger' role='alert'>
+                    <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                    <strong>Warning!</strong> Failed saved.
+                    </div>");
+                    redirect("Warehouses");
+            } else {
+                $this->session->set_flashdata("msg", 
+                "<div class='alert alert-info' role='alert'>
+                    <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                    <b>Information!</b> Data has been Saved.
+                </div>");
+                redirect("Warehouses");
+            }
         }
         
     }

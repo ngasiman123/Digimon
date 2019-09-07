@@ -38,22 +38,35 @@ class customers extends CI_Controller
     }
 
     public function Save(){
-        $customer = $this->m_customer;
-		$res = $customer->save();
 
-		if ($res){
-			$this->session->set_flashdata("msg", "<div class='alert alert-danger' role='alert'>
-			<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-			<strong>Warning!</strong> Failed saved.
-			</div>");
-			redirect("index.php/customers");
-		}else{
-			$this->session->set_flashdata("msg", "<div class='alert alert-info' role='alert'>
-			<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-			<strong>Information!</strong> Data has been saved. 
-			</div>");
-			redirect("index.php/customers");
-		}
+        $query = $this->db->get_where('customers',['name'=>$this->input->post('name')])->row();
+
+        if (count($query) > 0 ) {
+            
+            $this->session->set_flashdata("msg", "<div class='alert alert-danger' role='alert'>
+                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <strong>Warning!</strong> This data is already exists !.
+                </div>");
+                redirect("Customers");
+        }else{
+
+            $customer = $this->m_customer;
+    		$res = $customer->save();
+
+    		if ($res){
+    			$this->session->set_flashdata("msg", "<div class='alert alert-danger' role='alert'>
+    			<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+    			<strong>Warning!</strong> Failed saved.
+    			</div>");
+    			redirect("Customers");
+    		}else{
+    			$this->session->set_flashdata("msg", "<div class='alert alert-info' role='alert'>
+    			<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+    			<strong>Information!</strong> Data has been saved. 
+    			</div>");
+    			redirect("Customers");
+    		}
+        }
     }
 
     public function Edit(){

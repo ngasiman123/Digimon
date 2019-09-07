@@ -20,7 +20,7 @@ class M_manufacture extends CI_Model
 
     public function retrieveManufactureGet()
     {
-        return $this->db->get('manufactures')->result();
+        return $this->db->query("SELECT * FROM manufactures WHERE deleted_at IS NUll ")->result();
     }
 
     public function retrieveManufactureByID($manufacture_code){

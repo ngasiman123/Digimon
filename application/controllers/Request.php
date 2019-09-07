@@ -4,13 +4,13 @@ class Request extends CI_Controller
 {
     public function __construct(){
         parent::__construct();
-        $this->load->model('m_customer');
-        $this->load->model('m_manufacture');
-        $this->load->model('m_warehouse');
-        $this->load->model('m_brand');
-        $this->load->model('m_request_header');
-        $this->load->model('m_request_detail');
-        $this->load->model('m_approve');
+        $this->load->model('M_customer');
+        $this->load->model('M_manufacture');
+        $this->load->model('M_warehouse');
+        $this->load->model('M_brand');
+        $this->load->model('M_request_header');
+        $this->load->model('M_request_detail');
+        $this->load->model('M_approve');
 
 
         $this->load->helper(array('form', 'url','file'));
@@ -29,7 +29,7 @@ class Request extends CI_Controller
         $data['footer'] = "templates/v_footer";
         $data['pluginjs'] = "templates/v_pluginjs";
         $data['body'] = "Request/v_list_request";
-        $data['listRequest'] = $this->m_request_header->retrieveRequest();
+        $data['listRequest'] = $this->M_request_header->retrieveRequest();
 
         // var_dump($data['listRequest']);
         // exit;
@@ -63,9 +63,9 @@ class Request extends CI_Controller
             move_uploaded_file($tmp, 'uploads/'.$namafile);
         }
 
-        $request_header = $this->m_request_header;
-        $request_detail = $this->m_request_detail;
-        $request_approve = $this->m_approve;
+        $request_header = $this->M_request_header;
+        $request_detail = $this->M_request_detail;
+        $request_approve = $this->M_approve;
 
         $ress_header = $request_header->saveHeader();
         $ress_detail = $request_detail->saveDetail();
@@ -96,13 +96,21 @@ class Request extends CI_Controller
         $data['footer'] = "templates/v_footer";
         $data['pluginjs'] = "templates/v_pluginjs";
         $data['body'] = "Request/v_add_request";
-        $data['listCustomer']  = $this->m_customer->retrieveCustomerGet();
-        $data['listZone'] = $this->m_customer->retrieveZone();
-        $data['listManufacture'] = $this->m_manufacture->retrieveManufactureGet();
-        $data['listWarehouse'] = $this->m_warehouse->retrieveWarehouseGet();
-        $data['listBrand'] = $this->m_brand->retrieveBrand();
 
+        $tanggal = 'RQ'.date('dmy');
+        $query = $this->db->query("SELECT max(request_no) as last  FROM request_headers WHERE request_no LIKE '$tanggal%' ")->row();
+        $noRequest = $query->last;
+        $noUrut = substr($noRequest, 8,4);
+        $noRequestUrut = $noUrut +1;
+        $requestNo = $tanggal.sprintf('%04s',$noRequestUrut);
 
+        $data['listCustomer']  = $this->M_customer->retrieveCustomerGet();
+        $data['listZone'] = $this->M_customer->retrieveZone();
+        $data['pola'] = $requestNo;
+        $data['listManufacture'] = $this->M_manufacture->retrieveManufactureGet();
+        $data['listWarehouse'] = $this->M_warehouse->retrieveWarehouseGet();
+        $data['listBrand'] = $this->M_brand->retrieveBrand();
+        
         $this->load->view('v_home', $data);
     }
 
@@ -115,21 +123,21 @@ class Request extends CI_Controller
         $data['body'] = "Request/v_edit_request";
 
         $request_header_id = $this->uri->segment(3);
-        $request_header = $this->m_request_header;
+        $request_header = $this->M_request_header;
         $data['res'] = $request_header->retrieveRequestId($request_header_id);
-        $data['listCustomer']  = $this->m_customer->retrieveCustomerGet();
-        $data['listRequesDetail'] = $this->m_request_detail->retrieveRequestDetailId($request_header_id);
-        $data['listManufacture'] = $this->m_manufacture->retrieveManufactureGet();
-        $data['listWarehouse'] = $this->m_warehouse->retrieveWarehouseGet();
-        $data['listBrand'] = $this->m_brand->retrieveBrand();
+        $data['listCustomer']  = $this->M_customer->retrieveCustomerGet();
+        $data['listRequesDetail'] = $this->M_request_detail->retrieveRequestDetailId($request_header_id);
+        $data['listManufacture'] = $this->M_manufacture->retrieveManufactureGet();
+        $data['listWarehouse'] = $this->M_warehouse->retrieveWarehouseGet();
+        $data['listBrand'] = $this->M_brand->retrieveBrand();
 
         $this->load->view('v_home', $data);
     }
 
     public function update(){
-        $request_header = $this->m_request_header;
-        $request_detail = $this->m_request_detail;
-        $request_approve = $this->m_approve;
+        $request_header = $this->M_request_header;
+        $request_detail = $this->M_request_detail;
+        $request_approve = $this->M_approve;
         $ress_header = $request_header->updateHeader();
         $ress_detail = $request_detail->updateDetail();
         $ress_approve = $request_approve->revisied();
@@ -153,7 +161,7 @@ class Request extends CI_Controller
 
         $id= $this->uri->segment(3);
 
-        $header = $this->m_request_header->delete($id);
+        $header = $this->M_request_header->delete($id);
         
         if ($approves){
             $this->session->set_flashdata("msg", "<div class='alert alert-danger' role='alert'>
@@ -175,7 +183,7 @@ class Request extends CI_Controller
         $deleterow = $this->uri->segment(3);
 
 
-        $res = $this->m_request_detail->retrieveDeleteRow($deleterow);
+        $res = $this->M_request_detail->retrieveDeleteRow($deleterow);
 
          if ($res){
             $this->session->set_flashdata("msg", "<div class='alert alert-danger' role='alert'>
@@ -206,13 +214,13 @@ class Request extends CI_Controller
         $data['body'] = "print/print";
 
         $request_header_id = $this->uri->segment(3);
-        $request_header = $this->m_request_header;
+        $request_header = $this->M_request_header;
         $data['res'] = $request_header->retrieveRequestId($request_header_id);
-        $data['listCustomer']  = $this->m_customer->retrieveCustomerGet();
-        $data['listRequesDetail'] = $this->m_request_detail->retrieveRequestDetailId($request_header_id);
-        $data['listManufacture'] = $this->m_manufacture->retrieveManufactureGet();
-        $data['listWarehouse'] = $this->m_warehouse->retrieveWarehouseGet();
-        $data['listBrand'] = $this->m_brand->retrieveBrand();
+        $data['listCustomer']  = $this->M_customer->retrieveCustomerGet();
+        $data['listRequesDetail'] = $this->M_request_detail->retrieveRequestDetailId($request_header_id);
+        $data['listManufacture'] = $this->M_manufacture->retrieveManufactureGet();
+        $data['listWarehouse'] = $this->M_warehouse->retrieveWarehouseGet();
+        $data['listBrand'] = $this->M_brand->retrieveBrand();
 
         $this->load->view('print/p_request', $data);
 

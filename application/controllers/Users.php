@@ -41,23 +41,36 @@ class users extends CI_Controller {
 	}
 	
 	public function save()
-	{
-		$user = $this->m_user;
-		$res = $user->save();
+	{	
+		$query = $this->db->get_where('users',['user_name'=>$this->input->post('user_name')])->row();
+		if (count($query) > 0) {
 
-		if ($res){
 			$this->session->set_flashdata("msg", "<div class='alert alert-danger' role='alert'>
 			<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-			<strong>Warning!</strong> Failed saved.
+			<strong>Warning!</strong> This username is already exists !.
 			</div>");
-			redirect("index.php/users");
+			redirect("users");
+
 		}else{
-			$this->session->set_flashdata("msg", "<div class='alert alert-info' role='alert'>
-			<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-			<strong>Information!</strong> Data has been saved. 
-			</div>");
-			redirect("index.php/users");
+
+			$user = $this->m_user;
+			$res = $user->save();
+
+			if ($res){
+				$this->session->set_flashdata("msg", "<div class='alert alert-danger' role='alert'>
+				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+				<strong>Warning!</strong> Failed saved.
+				</div>");
+				redirect("index.php/users");
+			}else{
+				$this->session->set_flashdata("msg", "<div class='alert alert-info' role='alert'>
+				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+				<strong>Information!</strong> Data has been saved. 
+				</div>");
+				redirect("index.php/users");
+			}
 		}
+		
 	}
 
 	public function edit()

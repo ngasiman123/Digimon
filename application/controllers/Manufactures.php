@@ -36,21 +36,33 @@
         }
 
         public function Save(){
-            $manufacture = $this->m_manufacture;
-            $res = $manufacture->save();
 
-            if ($res){
+            $query = $this->db->get_where('manufactures',['manufacture_code'=>$this->input->post('manufacture_code')])->row();
+            if (count($query) > 0) {
+
                 $this->session->set_flashdata("msg", "<div class='alert alert-danger' role='alert'>
                 <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-                <strong>Warning!</strong> Failed saved.
+                <strong>Warning!</strong> This this Manufacture Code is already exists!.
                 </div>");
                 redirect("index.php/manufactures");
             }else{
-                $this->session->set_flashdata("msg", "<div class='alert alert-info' role='alert'>
-                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-                <strong>Information!</strong> Data has been saved. 
-                </div>");
-                redirect("index.php/manufactures");
+
+                $manufacture = $this->m_manufacture;
+                $res = $manufacture->save();
+
+                if ($res){
+                    $this->session->set_flashdata("msg", "<div class='alert alert-danger' role='alert'>
+                    <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                    <strong>Warning!</strong> Failed saved.
+                    </div>");
+                    redirect("index.php/manufactures");
+                }else{
+                    $this->session->set_flashdata("msg", "<div class='alert alert-info' role='alert'>
+                    <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                    <strong>Information!</strong> Data has been saved. 
+                    </div>");
+                    redirect("index.php/manufactures");
+                }
             }
         }
 

@@ -103,7 +103,7 @@
 						    BOM Status
 						</th>
 						<th>
-						    Receive Status
+						    Sales Name
 						</th>
 					</tr>
 					</thead>

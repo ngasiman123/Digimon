@@ -8,7 +8,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-2"><label>Request No :</label></div>
-                        <div class="col-lg-2"><input type="text" readonly name="request_no" class="form-control" value="<?= time();  ?>"></div>
+                        <div class="col-lg-2"><input type="text" readonly name="request_no" class="form-control" value="<?= $pola  ?>"></div>
                         <div class="col-lg-2"></div>
                         <div class="col-lg-2"></div>
                         <div class="col-lg-2"><label>Request Date :</label></div>
@@ -91,7 +91,7 @@
                     <br><br>
                     <a href="<?= base_url(); ?>index.php/request" class="btn btn-danger ml-1" style="float:right;">Cancel</a>
                     <button class="btn btn-info ml-1" style="float:right;" type="submit">Submit</button>
-                    <button class="btn btn-success" style="float:right;">Print</button>
+                    <!-- <button class="btn btn-success" style="float:right;">Print</button> -->
                 </div>
             </div>
         </div>

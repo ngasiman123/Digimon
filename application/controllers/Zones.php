@@ -73,21 +73,35 @@
 
         
         public function Save(){
-            $zone = $this->m_zone;
-            $res = $zone->save();
-            if ($res){
-                $this->session->set_flashdata("msg", "<div class='alert alert-danger' role='alert'>
+
+            $query = $this->db->get_where('zones',['zone_name'=>$this->input->post('zone_name')])->row();
+
+            if (count($query) > 0 ) {
+                
+                 $this->session->set_flashdata("msg", "<div class='alert alert-danger' role='alert'>
                 <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-                <strong>Warning!</strong> Failed saved.
+                <strong>Warning!</strong> This zone name is already exists !.
                 </div>");
-                redirect("index.php/zones");
+                redirect("zones");
+
             }else{
-                $this->session->set_flashdata("msg", "<div class='alert alert-info' role='alert'>
-                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-                <strong>Information!</strong> Data has been saved. 
-                </div>");
-                redirect("index.php/zones");
-            }            
+
+                $zone = $this->m_zone;
+                $res = $zone->save();
+                if ($res){
+                    $this->session->set_flashdata("msg", "<div class='alert alert-danger' role='alert'>
+                    <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                    <strong>Warning!</strong> Failed saved.
+                    </div>");
+                    redirect("zones");
+                }else{
+                    $this->session->set_flashdata("msg", "<div class='alert alert-info' role='alert'>
+                    <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                    <strong>Information!</strong> Data has been saved. 
+                    </div>");
+                    redirect("zones");
+                }
+            }           
         }
 
         public function update(){

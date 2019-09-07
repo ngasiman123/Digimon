@@ -1,5 +1,5 @@
 <?php 
-echo $this->session->flashdata("msg");
+    echo $this->session->flashdata("msg");
 ?>
 
 <div class="row">
@@ -11,7 +11,7 @@ echo $this->session->flashdata("msg");
                         <h3>Warehouses</h3>
                     </div>
                     <div class="panel-body">
-                        <a href="<?= base_url(); ?>index.php/warehouses/add" class="btn btn-info">ADD</a>
+                        <a href="<?= base_url(); ?>Warehouses/add" class="btn btn-info">ADD</a>
                         <br><br>
                         <table id="dtwarehouse" class="table table-bordered table-hover">
                             <thead>

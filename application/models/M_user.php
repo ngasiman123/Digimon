@@ -32,8 +32,8 @@ class M_user extends CI_Model{
 	}
 
 	public function save()
-    {
-        $post = $this->input->post();
+    {	
+    	$post = $this->input->post();
         $this->user_name = $post["user_name"];
         $this->password = md5($post["password"]);
 		$this->name = $post["name"];

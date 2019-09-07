@@ -19,7 +19,7 @@ class M_warehouse extends CI_Model
 
     public function retrieveWarehouseGet()
     {
-      return $this->db->get('warehouses')->result();
+      return $this->db->query("SELECT * FROM warehouses WHERE deleted_at IS Null")->result();
     }
 
     public function retrieveWarehouseByID($id){
